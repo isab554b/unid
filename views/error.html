@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <section class="bg-unidBeige w-full lg:h-screen">
+      <div class="flex justify-center items-center h-full">
+        <div class="width_standard">
+          <div
+            class="padding_y_standard space_y_standard flex flex-col items-center lg:py-0 lg:flex-row gap-8 md:gap-10 lg:gap-16"
+          >
+            <div
+              class="lg:w-2/3 flex justify-center items-center text-center flex-col gap-y-8 md:gap-y-12"
+            >
+              <div class="space-y-2">
+                <p id="decorative_header">{{ error_title_text }}</p>
+                <div class="space-y-6">
+                  <h2>{{ header_text }}</h2>
+                  <p id="subheader">{{ error_message_text }}</p>
+                </div>
+              </div>
+              <div class="w-fit">
+                <!-- prettier-ignore -->
+                <a href="{{button_link}}">
+                    % include('utilities/buttons/primary_button', type='button', link='/', button_text=button_text)
+                </a>
+              </div>
+            </div>
+            <div class="w-2/3">
+              <img
+                src="/assets/illustrations/{{ illustration }}"
+                alt="{{ illustration_alt }}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

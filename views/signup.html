@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <section
+      id="signup"
+      class="grid grid-cols-1 lg:grid-cols-3 xl:h-screen xl:min-w-screen bg-unidYellow bg-wave bg-cover overflow-clip"
+    >
+      <div class="lg:col-span-2 flex flex-col items-center justify-center">
+        <div
+          class="space-y-6 justify-center flex flex-col mx-auto width_standard py-20 lg:py-16 xl:py-0"
+        >
+          <div class="space-y-10 lg:space-y-12">
+            <div class="space-y-3 lg:space-y-6">
+              <h1>{{signup_content['header_text']}}</h1>
+              <p id="subheader">{{signup_content['subheader_text']}}</p>
+            </div>
+            <form class="grid lg:grid-cols-2 gap-x-14 gap-y-6 lg:gap-y-0">
+              <div class="space-y-4 lg:space-y-6">
+                <!-- FIRST NAME -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['first_name']['label_for'], form_label=global_content['form_inputs']['first_name']['text'], form_svg='user_name_semi', type=global_content['form_inputs']['first_name']['type'], name=global_content['form_inputs']['first_name']['name'], inputmode=global_content['form_inputs']['first_name']['inputmode'], placeholder=global_content['form_inputs']['first_name']['placeholder'], form_info=global_content['form_inputs']['first_name']['form_info'])
+                <!-- LAST NAME -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['last_name']['label_for'], form_label=global_content['form_inputs']['last_name']['text'], form_svg='user_name_full', type=global_content['form_inputs']['last_name']['type'], name=global_content['form_inputs']['last_name']['name'], inputmode=global_content['form_inputs']['last_name']['inputmode'], placeholder=global_content['form_inputs']['last_name']['placeholder'], form_info=global_content['form_inputs']['last_name']['form_info'])
+                <!-- USERNAME -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['username']['label_for'], form_label=global_content['form_inputs']['username']['text'], form_svg='user', type=global_content['form_inputs']['username']['type'], name=global_content['form_inputs']['username']['name'], inputmode=global_content['form_inputs']['username']['inputmode'], placeholder=global_content['form_inputs']['username']['placeholder'], form_info=global_content['form_inputs']['username']['form_info'])
+                <!-- PASSWORD -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/password_input_field')
+              </div>
+              <div class="space-y-4 lg:space-y-6">
+                <!-- EMAIL -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['email']['label_for'], form_label=global_content['form_inputs']['email']['text'], form_svg='email', type=global_content['form_inputs']['phone']['type'], name=global_content['form_inputs']['email']['name'], inputmode=global_content['form_inputs']['email']['inputmode'], placeholder=global_content['form_inputs']['email']['placeholder'], form_info=global_content['form_inputs']['email']['form_info'])
+                <!-- PHONE -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['phone']['label_for'], form_label=global_content['form_inputs']['phone']['text'], form_svg='phone', type=global_content['form_inputs']['phone']['type'], name=global_content['form_inputs']['phone']['name'], inputmode=global_content['form_inputs']['phone']['inputmode'], placeholder=global_content['form_inputs']['phone']['placeholder'], form_info=global_content['form_inputs']['phone']['form_info'])
+                <!-- WEBSITE NAME -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['website_name']['label_for'], form_label=global_content['form_inputs']['website_name']['text'], form_svg='pen_line', type=global_content['form_inputs']['website_name']['type'], name=global_content['form_inputs']['website_name']['name'], inputmode=global_content['form_inputs']['website_name']['inputmode'], placeholder=global_content['form_inputs']['website_name']['placeholder'], form_info=global_content['form_inputs']['website_name']['form_info'])
+                <!-- WEBSITE URL -->
+                <!-- prettier-ignore -->
+                % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['website_url']['label_for'], form_label=global_content['form_inputs']['website_url']['text'], form_svg='www', type=global_content['form_inputs']['website_url']['type'], name=global_content['form_inputs']['website_url']['name'], inputmode=global_content['form_inputs']['website_url']['inputmode'], placeholder=global_content['form_inputs']['website_url']['placeholder'], form_info=global_content['form_inputs']['website_url']['form_info'])
+              </div>
+            </form>
+          </div>
+          <div
+            class="flex pt-2 text-sm gap-4 text-unidLightBlue border-t border-unidLightBlue"
+          >
+            <div class="flex items-center h-5">
+              <input
+                type="checkbox"
+                id="form_checkbox"
+                class="w-4 h-4"
+                required
+              />
+            </div>
+            <div class="flex gap-1.5">
+              <p>Jeg accepterer</p>
+              <a
+                href="#"
+                class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+              >
+                vilkår & betingelser
+                <span
+                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                ></span>
+              </a>
+            </div>
+          </div>
+          <!-- ERROR MESSAGE -->
+          <div
+            id="form_input_error_message"
+            class="object_hidden items-center gap-3"
+          >
+            <div class="w-5 h-5">
+              <!-- prettier-ignore -->
+              % include(global_content['ui_icons']['error'])
+            </div>
+            <div class="flex-col">
+              <p class="font-bold">Hov!</p>
+              <p id="error_message"></p>
+            </div>
+          </div>
+          <div
+            class="lg:w-fit w-full pt-4 items-center mx-auto flex justify-center"
+          >
+            <div onclick="signUp()">
+              <!-- prettier-ignore -->
+              % include('utilities/buttons/primary_button', type='submit', link='signUp()', button_text=signup_content['button_text'])
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-unidLightBlue h-full w-full flex flex-col py-20 lg:py-0 justify-center mx-auto"
+      >
+        <a href="/">
+          <img
+            class="w-8/12 mx-auto"
+            src="/assets/logos/{{ global_content['logos']['unid']['primary_logo'] }}"
+            alt="{{ global_content['logos']['unid']['logo_alt'] }}"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

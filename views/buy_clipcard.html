@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Køb Klippekort</title>
+  </head>
+  <body
+    class="h-screen w-screen flex justify-center bg-unidYellow bg-wave bg-cover"
+  >
+    <div
+      class="width_small flex flex-col space-y-10 lg:space-y-12 justify-center mx-auto"
+    >
+      <div class="space-y-8">
+        <div class="space-y-2">
+          <p id="decorative_header">
+            {{ profile_content["buy_clipcard"]["decorative_header_text"] }}
+          </p>
+          <h2>{{ profile_content["buy_clipcard"]["header_text"] }}</h2>
+        </div>
+        <div>
+          <div id="content_box_styling">
+            <div id="content_box_header_styling">
+              <div
+                class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
+              >
+                <div id="icon_medium" class="fill-unidPurple">
+                  % include(global_content['ui_icons']['card'])
+                </div>
+                <p id="content_box_header_text">
+                  Klippekort {{ clipcard_type }}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-10 p-6 text-unidPurple">
+              <form
+                action="/process_payment"
+                method="post"
+                class="space-y-8 w-full"
+              >
+                <input
+                  type="hidden"
+                  name="csrf_token"
+                  value="{{ csrf_token }}"
+                />
+                <div class="flex flex-col gap-2 text-sm">
+                  <div class="space-y-1">
+                    <p id="form_label">Oplysninger om klippekortet</p>
+                    <hr />
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                      <p class="font-semibold">Antal timer:</p>
+                      <p>{{ clipcard_type }}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p class="font-semibold">Pris:</p>
+                      <p>{{ clipcard_price }} DKK</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-2 text-sm">
+                  <div class="space-y-1">
+                    <p id="form_label">Betalingsoplysninger</p>
+                    <hr />
+                  </div>
+                  <div class="grid grid-cols-2 gap-2 items-center">
+                    <label class="font-semibold" for="cardnumber"
+                      >Kortnummer:</label
+                    >
+                    <input
+                      class="form_input_no_icon"
+                      type="text"
+                      id="cardnumber"
+                      name="cardnumber"
+                      required
+                      placeholder="Eks. 1234 5678 9000 0000"
+                    />
+                  </div>
+                  <div class="grid grid-cols-2 gap-2 items-center">
+                    <label class="font-semibold" for="expiration_date"
+                      >Gyldigt til (mm/åå):</label
+                    >
+                    <input
+                      class="form_input_no_icon"
+                      type="text"
+                      id="expiration_date"
+                      name="expiration_date"
+                      required
+                      placeholder="Eks. 12/24"
+                    />
+                  </div>
+                  <div class="grid grid-cols-2 gap-2 items-center">
+                    <label class="font-semibold" for="security_code"
+                      >Kontrolcifre:</label
+                    >
+                    <input
+                      class="form_input_no_icon"
+                      type="text"
+                      id="security_code"
+                      name="security_code"
+                      required
+                      placeholder="Eks. 123"
+                    />
+                  </div>
+                  <div class="grid grid-cols-2 gap-2 items-center">
+                    <label class="font-semibold" for="name"
+                      >Kortholderens navn:</label
+                    >
+                    <input
+                      class="form_input_no_icon"
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      placeholder="Eks. Jens Jensen"
+                    />
+                  </div>
+                </div>
+                <div class="hidden">
+                  <input
+                    type="hidden"
+                    name="clipcard_type"
+                    value="{{ clipcard_type }}"
+                  />
+                  <input
+                    type="hidden"
+                    name="clipcard_price"
+                    value="{{ clipcard_price }}"
+                  />
+                </div>
+                <div class="mx-auto w-fit">
+                  <button type="submit" id="primary_button">Bekræft køb</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>
