@@ -52,7 +52,7 @@ def verify_csrf_token(secret_key, token):
         csrf_token, signature = token.split('.')
         expected_signature = hmac.new(secret_key.encode(), csrf_token.encode(), hashlib.sha256).hexdigest()
         return hmac.compare_digest(expected_signature, signature)
-    except (ValueError, KeyError):
+    except ValueError:
         return False
     
 

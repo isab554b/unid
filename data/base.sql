@@ -122,3 +122,33 @@ CREATE TABLE IF NOT EXISTS messages (
 	PRIMARY KEY(message_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
 ) WITHOUT ROWID;
+
+
+-- ##############################
+-- VIEWS
+CREATE VIEW active_clipcards AS
+SELECT cc.clipcard_id, cc.remaining_time, cc.time_used, cc.created_at,
+       u.user_id, u.first_name, u.last_name, u.username, u.email, u.phone,
+       cust.website_name, cust.website_url, ct.clipcard_type_title
+FROM clipcards cc
+JOIN payments p ON cc.clipcard_id = p.clipcard_id
+JOIN users u ON p.user_id = u.user_id
+JOIN customers cust ON u.user_id = cust.customer_id
+JOIN card_types ct ON cc.clipcard_type_id = ct.clipcard_type_id
+WHERE cc.is_active = 1;
+
+-- HOW TO USE THE VIEW IN THE CODE
+SELECT * FROM active_clipcards;
+
+
+-- ##############################
+-- TRIGGERS
+CREATE TRIGGER update_clipcard_data
+AFTER INSERT ON tasks
+FOR EACH ROW
+BEGIN
+    UPDATE clipcards
+    SET time_used = time_used + NEW.time_spent,
+        remaining_time = remaining_time - NEW.time_spent
+    WHERE clipcard_id = NEW.clipcard_id;
+END;
