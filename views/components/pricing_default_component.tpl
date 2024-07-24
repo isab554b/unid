@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 % for clipcard_key, clipcard in services_and_prices_content['prices_section']['pricings']['pricing_default'].items():
 <div>
   <div class="flex justify-end">
@@ -43,7 +44,6 @@
           <p
             class="text-unidPurple text-right text-2xl xl:text-3xl font-saira font-bold"
           >
-          <!-- sadsdasd -->
             {{ clipcard["info"]["price"] }}
           </p>
           <div class="flex flex-col text-xs text-unidPurple">

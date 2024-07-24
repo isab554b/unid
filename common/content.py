@@ -490,7 +490,7 @@ services_and_prices_content = {
     },
     # PRICES SECTION
     "prices_section": {
-        "header_text": "Find det rette klippekort til dig",
+        "header_text": "Find den rette pakke til dig",
         "decorative_header_text": "Priser",
         "pricings": {
             # Pricing default
@@ -498,56 +498,100 @@ services_and_prices_content = {
                 "clipcard_a": {
                     "button_text": "Køb nu",
                     "info": {
-                        "title": "Klippekort",
-                        "hours": "10 timer",
-                        "discount": "Spar 1.234 DKK",
-                        "price": "12.345 DKK",
+                        "title": "- til den lille start up",
+                        "hours": "Get started",
+                        "discount": "Studiepris: 6.400 DKK",
+                        "price": "8.000 KR.",
                     },
                     "selling_points": [
-                        {"text": "Selling point 1"},
-                        {"text": "Selling point 2"},
-                        {"text": "Selling point 3"},
-                        {"text": "Selling point 4"},
+                        {"text": "Opstartsmøde"},
+                        {"text": "Installation af WordPress"},
+                        {"text": "Opsætning og tilpasning af tema"},
+                        {"text": "Implementering af visuel identitet"},
+                        {"text": "Opsætning af op til 5 sider"},
+                        {"text": "Professionelt design"},
+                        {"text": "Kontaktformular"},
+                        {"text": "SEO optimering"},
+                        {"text": "Mobilvenlig (Responsivt layout)"},
                     ]
                 },
-                # "clipcard_b": {
-                #     "button_text": "Køb nu",
-                #     "info": {
-                #         "title": "Klippekort",
-                #         "hours": "20 timer",
-                #         "discount": "Spar 1.234 DKK",
-                #         "price": "12.345 DKK",
-                #     },
-                #     "selling_points": [
-                #         {"text": "Selling point 1"},
-                #         {"text": "Selling point 2"},
-                #         {"text": "Selling point 3"},
-                #         {"text": "Selling point 4"},
-                #     ]
-                # },
-            },
-            # Pricing accent
-            "pricing_accent": {
+                "clipcard_b": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "– til dig der vil godt i gang",
+                        "hours": "Let's go",
+                        "discount": "Studiepris: 9.600 DKK",
+                        "price": "12.000 DKK",
+                    },
+                    "selling_points": [
+                        {"text": "Opstartsmøde"},
+                        {"text": "Installation af WordPress"},
+                        {"text": "Opsætning og tilpasning af tema"},
+                        {"text": "Implementering af visuel identitet"},
+                        {"text": "Opsætning af op til 8 sider"},
+                        {"text": "Professionelt design"},
+                        {"text": "Kontaktformular"},
+                        {"text": "SEO optimering"},
+                        {"text": "Mobilvenlig (Responsivt layout)"},
+                        {"text": "1 times support"},
+                    ]
+                },
                 "clipcard_c": {
                     "button_text": "Køb nu",
                     "info": {
-                        "title": "Klippekort C",
-                        "hours": "30 timer",
-                        "discount": "Spar 1.234 DKK",
-                        "price": "12.345 DKK",
+                        "title": "– til dig der vil have en webshop",
+                        "hours": "Get paid",
+                        "discount": "Studiepris: 14.800 DKK",
+                        "price": "18.500 DKK",
                     },
                     "selling_points": [
-                        {"text": "Selling point 1"},
-                        {"text": "Selling point 2"},
-                        {"text": "Selling point 3"},
-                        {"text": "Selling point 4"},
-                        {"text": "Selling point 5"},
-                        {"text": "Selling point 6"},
+                        {"text": "Opstartsmøde"},
+                        {"text": "Installation af WordPress"},
+                        {"text": "Opsætning og tilpasning af tema"},
+                        {"text": "Implementering af visuel identitet"},
+                        {"text": "Opsætning af op til 8 sider"},
+                        {"text": "Professionelt design"},
+                        {"text": "Kontaktformular"},
+                        {"text": "SEO optimering"},
+                        {"text": "Mobilvenlig (Responsivt layout)"},
+                        {"text": "2 timers support"},
+                        {"text": "Webshop"},
+                        {"text": "Oprettelse af 10 produkter"},
                     ]
                 },
-            }
+            },
         }
     },
+    # ADDONS SECTION
+    "addons_section": {
+        "header_text": "Tilkøb",
+        "pricings": {
+            # Pricing default
+            "pricing_default": {
+                "clipcard_a": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "- til den lille start up",
+                        "hours": "Get started",
+                        "discount": "Studiepris: 6.400 DKK",
+                        "price": "8.000 KR.",
+                    },
+                    "selling_points": [
+                        {"text": "Opstartsmøde"},
+                        {"text": "Installation af WordPress"},
+                        {"text": "Opsætning og tilpasning af tema"},
+                        {"text": "Implementering af visuel identitet"},
+                        {"text": "Opsætning af op til 5 sider"},
+                        {"text": "Professionelt design"},
+                        {"text": "Kontaktformular"},
+                        {"text": "SEO optimering"},
+                        {"text": "Mobilvenlig (Responsivt layout)"},
+                    ]
+                },
+            },
+        }
+    },
+
 }
 
 
