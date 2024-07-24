@@ -20,17 +20,17 @@
   >
     <div class="flex flex-col lg:flex-row justify-between gap-6">
       <div class="text-unidPurple space-y-1 p-6">
+        <h3>{{ clipcard["info"]["hours"] }}</h3>
         <p class="text-sm tracking-widest title-font font-medium">
           {{ clipcard["info"]["title"] }}
         </p>
-        <h3>{{ clipcard["info"]["hours"] }}</h3>
       </div>
     </div>
     <div class="border-b border-unidLightBlue mx-6"></div>
     <div class="p-6 space-y-6">
       <div class="space-y-2">
         % for point in clipcard['selling_points']:
-        <div class="flex items-center gap-2 text-unidLightBlue">
+        <div class="flex items-center gap-2 text-unidPurple">
           <div class="text-unidPurple w-5 h-5">
             % include(global_content['ui_icons']['checkmark'])
           </div>

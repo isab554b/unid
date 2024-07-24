@@ -501,7 +501,7 @@ services_and_prices_content = {
                         "title": "- til den lille start up",
                         "hours": "Get started",
                         "discount": "Studiepris: 6.400 DKK",
-                        "price": "8.000 KR.",
+                        "price": "8.000 DKK",
                     },
                     "selling_points": [
                         {"text": "Opstartsmøde"},
@@ -562,31 +562,74 @@ services_and_prices_content = {
             },
         }
     },
-    # ADDONS SECTION
-    "addons_section": {
+    # ADDON SECTION
+    "addon_section": {
         "header_text": "Tilkøb",
-        "pricings": {
-            # Pricing default
-            "pricing_default": {
-                "clipcard_a": {
-                    "button_text": "Køb nu",
+        "addons": {
+            # Addon default
+            "addon_default": {
+                "addon_a": {
                     "info": {
-                        "title": "- til den lille start up",
-                        "hours": "Get started",
-                        "discount": "Studiepris: 6.400 DKK",
-                        "price": "8.000 KR.",
-                    },
-                    "selling_points": [
-                        {"text": "Opstartsmøde"},
-                        {"text": "Installation af WordPress"},
-                        {"text": "Opsætning og tilpasning af tema"},
-                        {"text": "Implementering af visuel identitet"},
-                        {"text": "Opsætning af op til 5 sider"},
-                        {"text": "Professionelt design"},
-                        {"text": "Kontaktformular"},
-                        {"text": "SEO optimering"},
-                        {"text": "Mobilvenlig (Responsivt layout)"},
-                    ]
+                        "title": "Visuel indentitet",
+                        "text": "Indeholder logo, farver, typografi, evt. 5. element samt designguide.",
+                        "price": "7.000 DKK",
+                    },     
+                },
+                "addon_b": {
+                    "info": {
+                        "title": "Sider",
+                        "text": "Har du brug for flere sider på dit website? Prisen er pr. side.",
+                        "price": "650 DKK",
+                    },     
+                },
+                "addon_c": {
+                    "info": {
+                        "title": "Udvidet SEO",
+                        "text": "Bliv fundet i søgemaskinerne med onsite SEO. Prisen er pr. side.",
+                        "price": "300 DKK",
+                    },   
+                },
+                "addon_d": {
+                    "info": {
+                        "title": "Blog",
+                        "text": "Blogfunktion og skabelon til blogindlæg.",
+                        "price": "950 DKK",
+                    },  
+                },
+                "addon_e": {
+                    "info": {
+                        "title": "Produktoprettelse",
+                        "text": "Vi står gerne, for at oprette dine produkter. Prisen er for 10 produkter.",
+                        "price": "650 DKK",
+                    },  
+                },
+                "addon_f": {
+                    "info": {
+                        "title": "Domæne & hosting",
+                        "text": "Få os, til at stå for køb og oprettelse af dit domæne og webshoting.",
+                        "price": "650 DKK",
+                    },  
+                },
+                "addon_g": {
+                    "info": {
+                        "title": "Nyhedsbrev",
+                        "text": "Nyhedsbrevsfunktion, så dine kunder kan tilmelde sig dit nyhedsbrev. ",
+                        "price": "650 DKK",
+                    },  
+                },
+                "addon_h": {
+                    "info": {
+                        "title": "Pop-up",
+                        "text": "En pop-up, som dukker op, når en kunde besøger dit website.",
+                        "price": "650 DKK",
+                    },  
+                },
+                "addon_i": {
+                    "info": {
+                        "title": "Support",
+                        "text": "En times support, der giver adgang til vores ekspertise.",
+                        "price": "650 DKK",
+                    },  
                 },
             },
         }

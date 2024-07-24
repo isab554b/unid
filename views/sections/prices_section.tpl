@@ -40,20 +40,18 @@
         >
           <h2>
             <!-- prettier-ignore -->
-            {{services_and_prices_content["addons_section"]["header_text"]}}
+            {{services_and_prices_content["addon_section"]["header_text"]}}
           </h2>
         </div>
       </div>
-      <div
-        class="grid md:grid-cols-2 xl:grid-cols-4 grid-cols-1 justify-center items-end gap-10"
-      >
+      <div class="">
         <!-- prettier-ignore -->
-        % include('components/pricing_default_component')
+        % include('components/addon_component')
       </div>
       <div class="flex justify-center text-center">
         <p class="italic text-sm">
-          Ved køb af hjemmesidepakke får man -20% på følgende tilkøb. Rabatten
-          er fratrukket ovenstående priser.
+          Ved køb af hjemmesidepakke får man -20% på alle tilkøb. Rabatten er
+          fratrukket ovenstående priser.
         </p>
       </div>
     </div>
