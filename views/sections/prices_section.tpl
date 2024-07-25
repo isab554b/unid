@@ -1,3 +1,4 @@
+<!-- PRICES -->
 <div class="bg-unidPink">
   <div
     class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
@@ -41,7 +42,14 @@
         </p>
       </div>
     </div>
+  </div>
+</div>
 
+<!-- ADDONS -->
+<div class="bg-unidBeige">
+  <div
+    class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
+  >
     <div class="flex flex-col gap-y-6 md:gap-y-8">
       <div class="flex md:justify-center text-center">
         <div
@@ -67,6 +75,7 @@
   </div>
 </div>
 
+<!-- CLIPCARDS -->
 <div class="bg-unidYellow">
   <div
     class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
@@ -83,7 +92,7 @@
         </div>
       </div>
       <div
-        class="grid md:grid-cols-2 xl:grid-cols-3 grid-cols-1 justify-center items-end gap-10"
+        class="grid md:grid-cols-2 xl:grid-cols-3 grid-cols-1 justify-center items-end gap-10 space-y-6"
       >
         <!-- prettier-ignore -->
         % include('components/clipcard_component')

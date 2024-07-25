@@ -488,6 +488,40 @@ services_and_prices_content = {
             },
         ],
     },
+    # SUBSCRIPTION SECTION
+    "subscription_section": {
+        "header_text": "Lad os håndtere vedligeholdesen",
+        "decorative_header_text": "Abonnement",
+        "introduction_text": "Er du træt af at bruge tid på vedligeholdelsen af dit website? Lad os tage ansvaret for opdateringer, sikkerhed og drift.",
+        "illustration": "graphic_design.png",
+        "illustration_alt": "Illustration af grafisk design",
+        # Paragraphs
+        "paragraphs": [
+            {
+                "title": "Websites",
+                "text": "Fokuser på din virksomhed, mens vi tager os af vedligeholdelsen af dit website. Med vores ekspertise sikrer vi, at dit site altid er opdateret, sikkert og fungerer optimalt. Lad os håndtere detaljerne, så du kan bruge din tid på det, der virkelig betyder noget.",
+            },
+        ],
+        "subscriptions": {
+            # Subscription default
+            "subscription_default": {
+                "subscription_a": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "Abonnement",
+                        "hours": "Abonnement",
+                        "price": "300 DKK pr. måned",
+                    },
+                    "selling_points": [
+                        {"text": "Kontrol af ydeevne og hastighed for hjemmesiden"},
+                        {"text": "Opdatering af tema og plugins"},
+                        {"text": "Overvågning af website med Google Search Console"},
+                        {"text": "30 minutters sparring / vores ekspertise til udbedring af fejl"},
+                    ]
+                },
+            },
+        }
+    },
     # PRICES SECTION
     "prices_section": {
         "header_text": "Find den rette pakke til dig",
@@ -498,7 +532,6 @@ services_and_prices_content = {
             # Pricing default
             "pricing_default": {
                 "price_a": {
-                    "button_text": "Køb nu",
                     "info": {
                         "title": "- til den lille start up",
                         "hours": "Get started",
@@ -518,7 +551,6 @@ services_and_prices_content = {
                     ]
                 },
                 "price_b": {
-                    "button_text": "Køb nu",
                     "info": {
                         "title": "– til dig der vil godt i gang",
                         "hours": "Let's go",
@@ -539,7 +571,6 @@ services_and_prices_content = {
                     ]
                 },
                 "price_c": {
-                    "button_text": "Køb nu",
                     "info": {
                         "title": "– til dig der vil have en webshop",
                         "hours": "Get paid",
@@ -631,7 +662,7 @@ services_and_prices_content = {
     },
     # CLIPCARD SECTION
     "clipcard_section": {
-        "header_text": "Find det perfekte klippekort til dine behov",
+        "header_text": "Spar din dyrebare tid med et klippekort",
         "decorative_header_text": "Klippekort",
         "clipcards": {
             # Clipcard default
