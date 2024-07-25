@@ -78,7 +78,7 @@ global_content = {
             "nav_items": [
                 {"text": "Services & Priser", "link": "/services_and_prices"},
                 {"text": "Om UNID Studio", "link": "/about_us"},
-                {"text": "Case portfolio", "link": "/portfolio"},
+                {"text": "Portfolio", "link": "/portfolio"},
                 {"text": "Kontakt", "link": "/contact"},
             ],
         },
@@ -361,7 +361,7 @@ login_content = {
 ##############################
 #   PORTFOLIO
 portfolio_content = {
-    "header_text": "Case portfolio",
+    "header_text": "Portfolio",
     "subheader_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
     "cases_section": [
         {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
@@ -370,6 +370,11 @@ portfolio_content = {
         {"icon": "letter.svg", "text": "Beskeder", "template": "profile_admin_messages"},
         {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_settings"},
     ],
+    # Cases
+    "cases": [
+            {"illustration": "imput1.webp", "illustration_alt": "Billede af Imputs forside", "title": "Imput", "link": "/portfolio_imput"},
+            {"illustration": "nomi1.jpg", "illustration_alt": "Billede af Nomi Creations forside", "title": "Nomi Creations", "link": "/portfolio_nomi"},
+        ],
 }
 
 
@@ -493,8 +498,6 @@ services_and_prices_content = {
         "header_text": "Lad os håndtere vedligeholdesen",
         "decorative_header_text": "Abonnement",
         "introduction_text": "Er du træt af at bruge tid på vedligeholdelsen af dit website? Lad os tage ansvaret for opdateringer, sikkerhed og drift.",
-        "illustration": "graphic_design.png",
-        "illustration_alt": "Illustration af grafisk design",
         # Paragraphs
         "paragraphs": [
             {
