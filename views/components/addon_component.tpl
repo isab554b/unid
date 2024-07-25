@@ -1,31 +1,33 @@
 <!-- prettier-ignore -->
 % for addon_key, addon in services_and_prices_content['addon_section']['addons']['addon_default'].items():
-<div class="w-2/3 md:w-1/2 lg:w-2/3 mx-auto overflow-auto">
-  <table class="table-auto w-full text-left whitespace-no-wrap">
+<div class="w-full flex justify-center overflow-auto">
+  <table class="table-auto w-full max-w-4xl text-left whitespace-no-wrap">
     <tbody>
-      <tr>
-        <td class="text-unidPurple space-y-1 p-6 px-4 py-3">
-          <h5>{{ addon["info"]["title"] }}</h5>
+      <tr class="align-top">
+        <!-- Title and Text -->
+        <td class="text-unidPurple p-4 text-left align-top w-2/3">
+          <div class="space-y-1">
+            <h5>{{ addon["info"]["title"] }}</h5>
+            <p>{{ addon["info"]["text"] }}</p>
+          </div>
         </td>
-        <td class="text-unidPurple px-4 py-3">
-          <p>{{ addon["info"]["text"] }}</p>
-        </td>
-        <td class="px-4 py-3">
-          <div class="flex items-center gap-2">
-            <p
-              class="text-unidPurple text-right text-xl xl:text-2xl font-saira font-bold"
-            >
+        <!-- Price -->
+        <td class="px-4 py-3 text-right align-top w-1/3">
+          <div class="flex justify-end items-center gap-2">
+            <p class="text-unidPurple text-xl xl:text-2xl font-saira font-bold">
               {{ addon["info"]["price"] }}
             </p>
-            <div class="flex flex-col text-xs text-unidPurple">
+            <div class="flex flex-col text-xs text-unidPurple text-right">
               <p>ekskl.</p>
               <p>moms</p>
             </div>
           </div>
         </td>
       </tr>
+      <tr>
+        <td colspan="2" class="border-b border-unidLightBlue"></td>
+      </tr>
     </tbody>
-    <div class="border-b border-unidLightBlue"></div>
   </table>
 </div>
 % end

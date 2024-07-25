@@ -492,10 +492,12 @@ services_and_prices_content = {
     "prices_section": {
         "header_text": "Find den rette pakke til dig",
         "decorative_header_text": "Priser",
+        "paragraph_title": "Vi tilbyder kun det bedste. Skræddersyede, professionelle websites med tilfredshedsgaranti.",
+        "paragraph_text": "Med tilfredshedsgaranti på alle vores ydelser afsluttes projektet først, når du har godkendt det. Ved opstart betales 50% af den aftalte pris, derefter påbegyndes arbejdet. Når projektet er godkendt og afsluttet, betales det resterende beløb.",
         "pricings": {
             # Pricing default
             "pricing_default": {
-                "clipcard_a": {
+                "price_a": {
                     "button_text": "Køb nu",
                     "info": {
                         "title": "- til den lille start up",
@@ -515,7 +517,7 @@ services_and_prices_content = {
                         {"text": "Mobilvenlig (Responsivt layout)"},
                     ]
                 },
-                "clipcard_b": {
+                "price_b": {
                     "button_text": "Køb nu",
                     "info": {
                         "title": "– til dig der vil godt i gang",
@@ -536,7 +538,7 @@ services_and_prices_content = {
                         {"text": "1 times support"},
                     ]
                 },
-                "clipcard_c": {
+                "price_c": {
                     "button_text": "Køb nu",
                     "info": {
                         "title": "– til dig der vil have en webshop",
@@ -598,7 +600,7 @@ services_and_prices_content = {
                 },
                 "addon_e": {
                     "info": {
-                        "title": "Produktoprettelse",
+                        "title": "Oprettelse af produkter",
                         "text": "Vi står gerne, for at oprette dine produkter. Prisen er for 10 produkter.",
                         "price": "650 DKK",
                     },  
@@ -612,24 +614,66 @@ services_and_prices_content = {
                 },
                 "addon_g": {
                     "info": {
-                        "title": "Nyhedsbrev",
-                        "text": "Nyhedsbrevsfunktion, så dine kunder kan tilmelde sig dit nyhedsbrev. ",
+                        "title": "Nyhedsbrev eller pop-up",
+                        "text": "Nyhedsbrevsfunktion eller en pop-up, som dukker op, når en kunde besøger dit website.",
                         "price": "650 DKK",
                     },  
                 },
                 "addon_h": {
                     "info": {
-                        "title": "Pop-up",
-                        "text": "En pop-up, som dukker op, når en kunde besøger dit website.",
-                        "price": "650 DKK",
-                    },  
-                },
-                "addon_i": {
-                    "info": {
                         "title": "Support",
                         "text": "En times support, der giver adgang til vores ekspertise.",
                         "price": "650 DKK",
                     },  
+                },
+            },
+        }
+    },
+    # CLIPCARD SECTION
+    "clipcard_section": {
+        "header_text": "Find det perfekte klippekort til dine behov",
+        "decorative_header_text": "Klippekort",
+        "clipcards": {
+            # Clipcard default
+            "clipcard_default": {
+                "clipcard_a": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "Klippekort",
+                        "hours": "10 timer",
+                        "price": "7.000 DKK",
+                    },
+                    "selling_points": [
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                    ]
+                },
+                "clipcard_b": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "Klippekort",
+                        "hours": "20 timer",
+                        "price": "14.000 DKK",
+                    },
+                    "selling_points": [
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                    ]
+                },
+                "clipcard_c": {
+                    "button_text": "Køb nu",
+                    "info": {
+                        "title": "Klippekort",
+                        "hours": "30 timer",
+                        "price": "19.500 DKK",
+                    },
+                    "selling_points": [
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                        {"text": "Lorem Ipsum"},
+                    ]
                 },
             },
         }
