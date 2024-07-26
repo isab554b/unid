@@ -1,4 +1,4 @@
-<!-- IF USER DOES NOT HAS CLIPCARD -->
+<!-- IF USER DOES NOT HAVE CLIPCARD -->
 % if current_user and not current_user.get('has_active_clipcard'):
 <div class="space-y-8">
   <div class="space-y-2">
@@ -7,26 +7,8 @@
   </div>
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- prettier-ignore -->
-    % for card in clipcards: 
-    % for clipcard_key, clipcard_value in services_and_prices_content['prices_section']['pricings']['pricing_default'].items():
+    % for clipcard_key, clipcard_value in services_and_prices_content['clipcard_section']['clipcards']['clipcard_default'].items():
     <div>
-      <div class="flex justify-end">
-        <div
-          class="w-2/3 md:w-1/2 lg:w-2/3 bg-unidLightBlue border-unidLightBlue rounded-t-lg"
-        >
-          <div
-            class="flex gap-2 p-3 text-unidBeige items-center justify-center"
-          >
-            <div class="w-5 h-5">
-              <!-- prettier-ignore -->
-              % include(global_content['ui_icons']['discount'])
-            </div>
-            <p class="font-medium text-sm tracking-wider">
-              {{ clipcard_value["info"]["discount"] }}
-            </p>
-          </div>
-        </div>
-      </div>
       <div
         class="rounded-l-lg rounded-br-lg border-2 bg-unidYellow border-unidLightBlue flex flex-col"
       >
@@ -35,7 +17,7 @@
             <p class="text-sm tracking-widest title-font font-medium">
               {{ clipcard_value["info"]["title"] }}
             </p>
-            <h3>{{ card["clipcard_type_title"] }}</h3>
+            <h3>{{ clipcard_value["info"]["hours"] }}</h3>
           </div>
         </div>
         <div class="border-b border-unidLightBlue mx-6"></div>
@@ -43,7 +25,7 @@
           <div class="space-y-2">
             <!-- prettier-ignore -->
             % for point in clipcard_value['selling_points']:
-            <div class="flex items-center gap-2 text-unidLightBlue">
+            <div class="flex items-center gap-2 text-unidPurple">
               <div class="text-unidPurple w-5 h-5">
                 % include(global_content['ui_icons']['checkmark'])
               </div>
@@ -57,7 +39,7 @@
               <p
                 class="text-unidPurple text-right text-2xl xl:text-3xl font-saira font-bold"
               >
-                {{ card["clipcard_price"] }} DKK
+                {{ clipcard_value["info"]["price"] }}
               </p>
               <div class="flex flex-col text-xs text-unidPurple">
                 <p>ekskl.</p>
@@ -70,16 +52,15 @@
             type="button"
             id="primary_button"
             class="buy-button"
-            data-clipcard-type="{{ card['clipcard_type_title'] }}"
-            data-clipcard-price="{{ card['clipcard_price'] }}"
+            data-clipcard-type="{{ clipcard_value["info"]["title"] }}"
+            data-clipcard-price="{{ clipcard_value["info"]["price"] }}"
           >
-            Køb nu
+            {{ clipcard_value["button_text"] }}
           </button>
         </div>
       </div>
     </div>
     <!-- prettier-ignore -->
-    % end 
     % end
   </div>
 </div>
@@ -97,7 +78,7 @@
   </div>
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- prettier-ignore -->
-    % if tasks: 
+    % if tasks:
     % for task in tasks:
     <div id="content_box_styling">
       <div id="content_box_header_styling">
@@ -132,7 +113,7 @@
       </div>
     </div>
     <!-- prettier-ignore -->
-    % end 
+    % end
     % else:
     <div class="space-y-1">
       <p class="text-sm font-bold">
