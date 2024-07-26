@@ -9,9 +9,8 @@
     <div class="space-y-3">
       <div class="space-y-1">
         <p class="text-base tracking-widest">{{ employee["employee_name"] }}</p>
-        <h3>{{ employee["employee_job_title"] }}</h3>
+        <h4>{{ employee["employee_job_title"] }}</h4>
       </div>
-      <p class="mb-4">{{ employee["employee_information"] }}</p>
     </div>
   </div>
 </div>

@@ -279,18 +279,13 @@ about_us_content = {
         "decorative_header_text": "Kompetencer",
         # Skills
         "skills": [
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
-            {"icon": "heart.svg", "title": "Lorem ipsum"},
+            {"icon": "code.svg", "title": "Kodning"},
+            {"icon": "pen.svg", "title": "UI/UX design"},
+            {"icon": "documents.svg", "title": "Prototyping"},
+            {"icon": "eye_open.svg", "title": "SEO"},
+            {"icon": "megaphone.svg", "title": "Digital marketing"},
+            {"icon": "desktop.svg", "title": "WordPress"},
+ 
         ],
     },
     # TEAM SECTION
@@ -770,6 +765,7 @@ blog_content = {
 
                     },
                 },
+               
             },
         }
 } 
