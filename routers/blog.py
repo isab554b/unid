@@ -38,9 +38,9 @@ finally:
 
 
 ##############################
-#   PORTFOLIO
+#   BLOG
 @get("/blog")
-def portfolio():
+def blog():
 
     page_name = "blog"
 
@@ -85,3 +85,51 @@ def portfolio():
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
 
+
+##############################
+#   BLOG POST
+@get("/post")
+def blog():
+
+    page_name = "blog_posts/post"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Blog post",
+                        # A-Z
+                        global_content=global_content,
+                        blog_content=blog_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed request for /{page_name}")

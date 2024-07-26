@@ -90,7 +90,7 @@ def portfolio():
 @get("/portfolio_imput")
 def portfolio():
 
-    page_name = "portfolio_imput"
+    page_name = "portfolio/portfolio_imput"
 
     try:
         # Securely retrieve user cookie
@@ -138,7 +138,7 @@ def portfolio():
 @get("/portfolio_nomi")
 def portfolio():
 
-    page_name = "portfolio_nomi"
+    page_name = "portfolio/portfolio_nomi"
 
     try:
         # Securely retrieve user cookie

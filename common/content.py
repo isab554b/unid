@@ -731,4 +731,45 @@ signup_content = {
 blog_content = {
     "header_text": "Blog",
     "subheader_text": "Velkommen til vores blog! Her deler vi vores indsigt, erfaringer og de seneste trends inden for design og udvikling. Vi tilbyder inspiration og praktiske tips, der hjælper dig med at forstå og navigere i den digitale verden.",
+    "posts": {
+            # Clipcard default
+            "post_default": {
+                "post_a": {
+                    "info": {
+                        "title": "Lorem Ipsum",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
+                        "author": "Isabella Nielsen",
+                        "date": "26. juli 2024",
+                        "link": "/post",
+                        "image": "placeholder.jpg",
+                        "image_alt": "Placeholder billede",
+
+                    },
+                },
+                "post_b": {
+                    "info": {
+                        "title": "Lorem Ipsum",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
+                        "author": "Isabella Nielsen",
+                        "date": "26. juli 2024",
+                        "link": "/",
+                        "image": "placeholder.jpg",
+                        "image_alt": "Placeholder billede",
+
+                    },
+                },
+                "post_c": {
+                    "info": {
+                        "title": "Lorem Ipsum",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
+                        "author": "Isabella Nielsen",
+                        "date": "26. juli 2024",
+                        "link": "/",
+                        "image": "placeholder.jpg",
+                        "image_alt": "Placeholder billede",
+
+                    },
+                },
+            },
+        }
 } 
