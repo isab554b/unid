@@ -9,6 +9,7 @@
 #   - Profile
 #   - Services and prices
 #   - Signup
+#   - Blog
 
 
 ##############################
@@ -80,6 +81,7 @@ global_content = {
                 {"text": "Om UNID Studio", "link": "/about_us"},
                 {"text": "Portfolio", "link": "/portfolio"},
                 {"text": "Kontakt", "link": "/contact"},
+                {"text": "Blog", "link": "/blog"},
             ],
         },
         "header_bar": {
@@ -723,3 +725,10 @@ signup_content = {
     "subheader_text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum!",
     "button_text": "Opret bruger",
 }
+
+##############################
+#   BLOG
+blog_content = {
+    "header_text": "Blog",
+    "subheader_text": "Velkommen til vores blog! Her deler vi vores indsigt, erfaringer og de seneste trends inden for design og udvikling. Vi tilbyder inspiration og praktiske tips, der hjælper dig med at forstå og navigere i den digitale verden.",
+} 
