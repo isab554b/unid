@@ -56,54 +56,69 @@
     % include('components/header_component')
     <section class="bg-unidBeige">
       <div class="width_standard padding_y_standard space_y_standard mx-auto">
-        <div class="flex justify-center">
-          <div
-            class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
-          >
-            <h1>{{ portfolio_content["header_text"] }}</h1>
-            <p id="subheader">{{ portfolio_content["subheader_text"] }}</p>
+        <div class="flex flex-col gap-y-6 md:gap-y-8">
+          <div class="flex">
+            <div class="space-y-2 md:w-1/2">
+              <p id="decorative_header">Visuel identitet & website</p>
+              <h2>Imput</h2>
+            </div>
+          </div>
+          <div class="w-full gap-10 grid grid-cols-1 md:grid-cols-2">
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  Virksomheden Imput har fået udarbejdet en visuel identitet,
+                  logo samt et website. Imput har udviklet en app, der gør det
+                  nemt at forbinde sin bil og ladeboks til deres system, hvilket
+                  giver brugeren fuldt overblik over sit forbrug.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  Deres website er simpelt og stilfuldt, og det afspejler både
+                  Imputs vision og hvad de tilbyder som virksomhed. På websitet
+                  bliver man henvist, til at kunne hente Imputs app.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  Til deres nye visuelle identitet valgte vi en farvepalette,
+                  der reflekterer virksomhedens brand. Farverne symboliserer
+                  nordlyset, og den grønne farve, som er fremtrædende, udstråler
+                  bæredygtighed. Logoets symbol består af syv cirkler, der
+                  repræsenterer ladestikket til elbiler, og det er indrammet af
+                  en firkant, som er karakteristisk for apps.
+                </p>
+              </div>
+              <div class="mx-auto w-full md:w-fit lg:w-full xl:w-fit pt-6">
+                <a href="https://imput.dk/" target="_blank">
+                  <button type="button" id="primary_button">Se website</button>
+                </a>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <img
+                alt="Billede af Imputs logo."
+                class="h-4/5"
+                src="/assets/images/portfolio/imput2.webp"
+              />
+            </div>
           </div>
         </div>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-4"
-        >
-          <img
-            alt="gallery"
-            class="w-full object-cover h-full block opacity-25 inset-0"
-            src="/assets/images/portfolio/imput3.webp"
-          />
-          <img
-            alt="gallery"
-            class="w-full object-cover h-full block opacity-25 inset-0"
-            src="/assets/images/portfolio/imput2.webp"
-          />
-          <img
-            alt="gallery"
-            class="w-full object-cover h-full block opacity-25 inset-0"
-            src="/assets/images/portfolio/imput4.webp"
-          />
-        </div>
 
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-          <div class="h-32 rounded-lg bg-gray-200">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+          <div>
             <img
-              alt="gallery"
-              class="w-full object-cover h-full block opacity-25 inset-0"
+              alt="Udklip af Imputs designguide, der afspejler deres visuelle identitet."
+              class="w-full object-cover h-full"
               src="/assets/images/portfolio/imput4.webp"
             />
           </div>
-          <div class="h-32 rounded-lg bg-gray-200 lg:col-span-2">
+          <div class="lg:col-span-2">
             <img
-              alt="gallery"
-              class="w-full object-cover h-full block opacity-25 inset-0"
+              alt="Udklip fra Imputs website."
+              class="w-full object-cover h-full"
               src="/assets/images/portfolio/imput3.webp"
-            />
-          </div>
-          <div class="h-32 rounded-lg bg-gray-200">
-            <img
-              alt="gallery"
-              class="w-full object-cover h-full block opacity-25 inset-0"
-              src="/assets/images/portfolio/imput2.webp"
             />
           </div>
         </div>

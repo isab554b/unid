@@ -362,7 +362,7 @@ login_content = {
 #   PORTFOLIO
 portfolio_content = {
     "header_text": "Portfolio",
-    "subheader_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
+    "subheader_text": "Velkommen til vores portfolio! Her kan du se vores seneste arbejde og projekter, hvor vi har skabt unikke visuelle identiteter, logoer, websites og meget mere.",
     "cases_section": [
         {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
         {"icon": "card.svg", "text": "Klippekort", "template": "profile_admin_clipcard"},
