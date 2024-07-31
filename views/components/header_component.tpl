@@ -47,3 +47,11 @@
     </div>
   </div>
 </header>
+
+<!-- Mobil navigation -->
+<nav
+  id="mobile-nav"
+  class="flex flex-col items-center lg:hidden bg-unidLightBlue text-white p-4 space-y-2"
+>
+  % include('elements/nav_items_element')
+</nav>

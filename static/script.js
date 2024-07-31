@@ -18,7 +18,6 @@
 // PROFILE.HTML
 
 document.addEventListener("DOMContentLoaded", function () {
-
   const buttons = document.querySelectorAll(".menu_button");
 
   // Add styling to the first menu button
@@ -177,7 +176,8 @@ async function login(event) {
       if (data.error) {
         // If the response contains an error, display it on the login form
         document.getElementById("error_message").innerText = data.error;
-        document.getElementById("form_input_error_message").style.display = "flex";
+        document.getElementById("form_input_error_message").style.display =
+          "flex";
       } else {
         // If login is successful, log a success message and redirect to the homepage
         console.log("Login successful");
@@ -187,12 +187,15 @@ async function login(event) {
       // Handle non-JSON response
       const text = await response.text();
       console.error("Unexpected response format:", text);
-      document.getElementById("error_message").innerText = "Unexpected server response. Please try again.";
-      document.getElementById("form_input_error_message").style.display = "flex";
+      document.getElementById("error_message").innerText =
+        "Unexpected server response. Please try again.";
+      document.getElementById("form_input_error_message").style.display =
+        "flex";
     }
   } catch (error) {
     console.error("Error during login:", error);
-    document.getElementById("error_message").innerText = "An error occurred during login. Please try again.";
+    document.getElementById("error_message").innerText =
+      "An error occurred during login. Please try again.";
     document.getElementById("form_input_error_message").style.display = "flex";
   }
 }
@@ -223,7 +226,7 @@ $(document).ready(function () {
         $("#contactForm")[0].reset();
 
         // Hide the success message after 2 seconds
-        setTimeout(function() {
+        setTimeout(function () {
           $("#messageSent").fadeOut();
         }, 2000);
       },
@@ -348,8 +351,8 @@ $(document).ready(function () {
     var hours = $("#hours").val();
     var minutes = $("#minutes").val();
 
-    if (hours === '' && minutes === '') {
-      alert('Du skal udfylde mindst et af felterne i tidsregistrering');
+    if (hours === "" && minutes === "") {
+      alert("Du skal udfylde mindst et af felterne i tidsregistrering");
       return false;
     }
 
@@ -369,7 +372,7 @@ $(document).ready(function () {
         $("#taskForm")[0].reset();
 
         // Hide the success message after 2 seconds
-        setTimeout(function() {
+        setTimeout(function () {
           $("#taskSubmissionMessage").fadeOut();
         }, 2000);
       },
@@ -398,4 +401,22 @@ $(document).ready(function () {
     // Toggle the visibility of visibility icons
     icons.toggleClass("object_hidden");
   });
+});
+
+// ##############################
+// BURGERMENU
+document.addEventListener("DOMContentLoaded", function () {
+  var burgerButton = document.getElementById("icon_large");
+  if (burgerButton) {
+    burgerButton.addEventListener("click", function () {
+      var mobileNav = document.getElementById("mobile-nav");
+      if (mobileNav) {
+        mobileNav.classList.toggle("hidden");
+      } else {
+        console.error("Mobile navigation element not found");
+      }
+    });
+  } else {
+    console.error("Burger menu button not found");
+  }
 });
