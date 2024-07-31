@@ -3,9 +3,7 @@
 #   Library imports
 import logging
 import os
-import git
 from bottle import default_app, route, get, request, error, run, template, static_file, TEMPLATE_PATH
-
 
 #   Local application imports
 from routers.messages import UPLOADS_FOLDER
@@ -13,11 +11,19 @@ from common.colored_logging import setup_logger
 import common.content as content
 import master
 
-
 ##############################
 #   INITIALIZE APP
 application = default_app()
 
+##############################
+#   CONFIGURE MAIL
+app_config = {
+    'MAIL_SERVER': 'smtp.example.com',
+    'MAIL_PORT': 587,
+    'MAIL_USE_TLS': True,
+    'MAIL_USERNAME': 'kontakt@unidstudio.dk',
+    'MAIL_PASSWORD': 'idkode2023'
+}
 
 ##############################
 #   COLORED LOGGING
@@ -29,7 +35,6 @@ except Exception as e:
     logger.error(f"Error importing logging: {e}")
 finally:
     logger.info("Logging import process completed.")
-
 
 ##############################
 #   ROUTERS
@@ -52,13 +57,12 @@ except Exception as e:
 finally:
     logger.info("Router import process completed.")
 
-
 ##############################
 #   ERROR HANDLING
 def handle_error(error_code, error):
     try:
         if error:
-            logger.error(f"Handled {error_code} succesfully with following error details: {error}")
+            logger.error(f"Handled {error_code} successfully with following error details: {error}")
             return template('error', 
                             title="Fejl", 
                             # A-Z
@@ -82,16 +86,13 @@ def handle_error(error_code, error):
 def error403(error):
     return handle_error(403, error)
 
-
 @error(404)
 def error404(error):
     return handle_error(404, error)
 
-
 @error(500)
 def error500(error):
     return handle_error(500, error)
-
 
 ##############################
 #   ICONS
@@ -105,7 +106,6 @@ except Exception as e:
 finally:
     logger.info("Icons path configuration completed.")
 
-
 ##############################
 #   STATIC
 def serve_static(filepath, root):
@@ -117,30 +117,25 @@ def serve_static(filepath, root):
     finally:
         logger.info(f"Static file request completed for {filepath}.")
 
-
 # CSS file
 @get("/app.css")
 def css_file_static():
     return serve_static('app.css', '.')
-
 
 # Assets folder
 @route('/assets/<filepath:path>')
 def assets_folder_static(filepath):
     return serve_static(filepath, './assets')
 
-
 # Static folder
 @route('/static/<filepath:path>')
 def static_folder(filepath):
     return serve_static(filepath, './static')
 
-
 # Uploads folder
 @get('/uploads/<filename:path>')
 def uploads_folder_static(filename):
     return serve_static(filename, UPLOADS_FOLDER)
-
 
 ##############################
 #   CONTENT (FROM CONTENT.PY)
@@ -156,14 +151,11 @@ except Exception as e:
 finally:
     logger.info("Content import process completed.")
 
-
 ##############################
 #   INDEX
 @get("/")
 def index():
-
     page_name = "index"
-
     try:
         # Securely retrieve user cookie
         user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
@@ -181,7 +173,7 @@ def index():
             user = username = None
             logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
 
-        logger.success(f"Succesfully showing template for {page_name}")
+        logger.success(f"Successfully showing template for {page_name}")
         return template(page_name, 
                         title="UNID Studio",
                         # A-Z 

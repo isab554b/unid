@@ -1,14 +1,19 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import template, get, request
+from bottle import template, get, request, post
 import logging
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email_validator import validate_email, EmailNotValidError
 
 #   Local application imports
 from common.colored_logging import setup_logger
 import common.content as content
 import master
+from app import app_config
 
 
 ##############################
@@ -84,3 +89,34 @@ def contact():
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
+
+@post('/send')
+def send_email():
+    name = request.forms.get('name')
+    email = request.forms.get('email')
+    message = request.forms.get('message')
+
+    # Valider e-mail
+    try:
+        validate_email(email)
+    except EmailNotValidError:
+        return template('error', message="Invalid email address.")
+
+    # Send e-mail
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = app_config['MAIL_USERNAME']
+        msg['To'] = 'kontakt@unidstudio.dk'
+        msg['Subject'] = 'New Contact Form Submission'
+        
+        body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+        msg.attach(MIMEText(body, 'plain'))
+
+        with smtplib.SMTP(app_config['MAIL_SERVER'], app_config['MAIL_PORT']) as server:
+            server.starttls()
+            server.login(app_config['MAIL_USERNAME'], app_config['MAIL_PASSWORD'])
+            server.sendmail(msg['From'], msg['To'], msg.as_string())
+
+        return template('success', message="Message sent successfully!")
+    except Exception as e:
+        return template('error', message=f"Failed to send message. Error: {str(e)}")
