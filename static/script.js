@@ -1,20 +1,4 @@
 // ##############################
-//      TABLE OF CONTENTS
-// PAGES
-// - profile.html
-// - signup.html
-// - login.html
-// - customer_messages.html
-// - customer_clipcards.html
-// - admin_messages.html
-// - admin_clipcards.html
-// COMPONENTS
-// ELEMENTS
-// SECTIONS
-// UTILITIES
-// - password_field.tpl
-
-// ##############################
 // PROFILE.HTML
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -420,3 +404,45 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Burger menu button not found");
   }
 });
+
+// ##############################
+// ADMIN SETTINGS - DELETE USER
+function deleteUser(button) {
+  // Retrieve the user ID from the button's data attribute
+  var userId = button.getAttribute("data-user-id");
+  console.log("Delete button clicked");
+  console.log("User ID:", userId);
+
+  // Send a DELETE request to the server to delete the user
+  fetch("/delete_user", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "user_id=" + userId,
+  })
+    .then((response) => {
+      console.log("Response status:", response.status);
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Response data:", data);
+      // If the user was successfully deleted, remove the user block from the DOM
+      if (data.info === "User deleted.") {
+        var userBlock = button.closest(".customer-block");
+        if (userBlock) {
+          userBlock.parentNode.removeChild(userBlock);
+          console.log("User deleted successfully.");
+        } else {
+          console.log("User block not found.");
+        }
+      } else {
+        // If an error occurred, display an alert with the error message
+        alert(data.info);
+        console.log("Error:", data.info);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}

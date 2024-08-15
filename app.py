@@ -51,6 +51,7 @@ try:
     import routers.services_and_prices
     import routers.signup
     import routers.blog
+    import routers.settings
     logger.success("Routers imported successfully.")
 except Exception as e:
     logger.error(f"Error importing routers: {e}")

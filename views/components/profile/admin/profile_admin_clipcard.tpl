@@ -2,11 +2,11 @@
   <div class="space-y-2">
     <p id="decorative_header">
       <!-- prettier-ignore -->
-      {{ profile_content["admin_specific_content"]["profile_admin_clipcard"]["decorative_header_text"] }}
+      {{profile_content["admin_specific_content"]["profile_admin_clipcard"]["decorative_header_text"]}}
     </p>
     <h2>
       <!-- prettier-ignore -->
-      {{ profile_content["admin_specific_content"]["profile_admin_clipcard"]["header_text"]}}
+      {{profile_content["admin_specific_content"]["profile_admin_clipcard"]["header_text"]}}
     </h2>
   </div>
   <div class="grid lg:grid-cols-2 gap-8">

@@ -84,6 +84,7 @@
                   id="file"
                   name="file"
                   accept=".png, .jpg, .jpeg"
+                  multiple
                 />
               </div>
             </div>

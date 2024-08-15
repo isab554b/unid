@@ -152,3 +152,6 @@ BEGIN
         remaining_time = remaining_time - NEW.time_spent
     WHERE clipcard_id = NEW.clipcard_id;
 END;
+
+
+

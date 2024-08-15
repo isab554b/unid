@@ -221,16 +221,14 @@ frontpage_content = {
         # Testiomonials
         "testimonials": [
             {
-                "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
-                "author_name": "Lorem ipsum",
-                "author_job_title": "Lorem ipsum",
-                "author_image": "user.svg",
+                "text": "Redesignet af vores website er moderne, brugervenligt og effektivt i at præsentere vores services på en engagerende måde. Det er tydeligt at se og mærke, at UNID Studio er dedikeret, til at levere en kvalitetsoplevelse for deres kunder, og jeg kan varmt anbefale deres services.",
+                "author_name": "Oliver Belmadani",
+                "author_job_title": "CEO, Affiliater ApS",
             },
             {
                 "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
                 "author_name": "Lorem ipsum",
                 "author_job_title": "Lorem ipsum",
-                "author_image": "user.svg",
             },
         ],
     }
@@ -406,13 +404,17 @@ profile_content = {
             "header_text": "Indsendte beskeder",
             "decorative_header_text": "Beskeder",
         },
+        "profile_admin_settings": {
+            "header_text": "Aktive brugere",
+            "decorative_header_text": "Indstillinger",
+        },
         # Menu
         "admin_profile_menu": [
             {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
             {"icon": "card.svg", "text": "Klippekort", "template": "profile_admin_clipcard"},
             {"icon": "stop_watch.svg", "text": "Timeregistrering", "template": "profile_admin_hour_registration"},
             {"icon": "letter.svg", "text": "Beskeder", "template": "profile_admin_messages"},
-            {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_settings"},
+            {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_admin_settings"},
         ],
     },
     # CUSTOMER SPECIFIC
