@@ -92,7 +92,13 @@ def login():
         logger.debug(f"Database connection opened for {function_name}")
 
         # Check if user exists in database
-        user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+        user = db.execute("""
+            SELECT * 
+            FROM users 
+            WHERE username = ? 
+            AND deleted_at IS NULL 
+            LIMIT 1
+        """, (username,)).fetchone()
         if not user:
             logger.error("User does not exist")
             return {"error": "Brugernavnet eksisterer ikke"}

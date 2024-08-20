@@ -3,6 +3,7 @@
 #   Library imports
 from bottle import get, request, response, template, delete, post, redirect
 import logging
+import time
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -40,7 +41,7 @@ finally:
 
 
 ##############################
-#   ADMIN CUSTOMERS GET
+#   ADMIN - GET CUSTOMERS 
 @get('/profile/profile_admin_settings')
 def admin_customers_get():
     page_name = "admin_customers_get"
@@ -112,20 +113,18 @@ def admin_customers_get():
 
 
 ##############################
-#   DELETE CUSTOMER
+#   ADMIN - DELETE CUSTOMER
 @delete('/delete_user')
 def delete_user():
     function_name = "delete_user"
 
     try:
-        # Retrieve user ID from the request body
         user_id = request.forms.get('user_id')
         if not user_id:
             logger.warning(f"User ID missing in {function_name}")
             response.status = 400
             return {"info": "User ID is missing."}
 
-        # Confirm current user is logged in
         current_user = get_current_user()
         if not current_user:
             logger.warning(f"User not logged in during {function_name}")
@@ -134,33 +133,30 @@ def delete_user():
 
         logger.info(f"Attempting to delete user with ID: {user_id}")
 
-        # Establish database connection
         db = master.db()
         cursor = db.cursor()
 
-        # Delete user from users table
+        # Update the deleted_at field in users table with UNIX timestamp
         cursor.execute("""
-            DELETE FROM users
+            UPDATE users
+            SET deleted_at = ?, updated_at = ?
             WHERE user_id = ?
-        """, (user_id,))
+        """, (int(time.time()), int(time.time()), user_id))
 
-        # Optionally delete corresponding customer if necessary
         cursor.execute("""
             DELETE FROM customers
             WHERE customer_id = ?
-        """, (user_id,))  # Assuming customer_id = user_id
+        """, (user_id,))
 
-        # Commit changes to the database
         db.commit()
 
-        # Check if the user was actually found and deleted
         if cursor.rowcount == 0:
             logger.error(f"User with ID {user_id} not found in {function_name}")
             response.status = 404
             return {"info": "User not found."}
 
-        logger.info(f"User with ID {user_id} deleted successfully")
-        return {"info": "User deleted."}
+        logger.info(f"User with ID {user_id} marked as deleted successfully")
+        return {"info": "User deleted."}  # Return the exact message expected by the frontend
 
     except Exception as e:
         if "db" in locals():
@@ -177,8 +173,9 @@ def delete_user():
         logger.info(f"Completed {function_name}")
 
 
+
 ##############################
-#   PROFILE GET
+#   CUSTOMER - GET PROFILE SETTINGS
 @get('/profile/profile_customer_settings')
 def profile_customer_settings():
     page_name = "profile_customer_settings"
@@ -260,7 +257,7 @@ def profile_customer_settings():
 
 
 ##############################
-#   UPDATE PROFILE
+#   CUSTOMER - UPDATE PROFILE
 @post('/update_profile')
 def update_profile():
     try:
@@ -301,10 +298,8 @@ def update_profile():
             db.close()
 
 
-
-
 ##############################
-#   DELETE PROFILE
+#   CUSTOMER - DELETE PROFILE
 @post('/delete_profile')
 def delete_profile():
     function_name = "delete_profile"
