@@ -404,11 +404,16 @@ profile_content = {
             "header_text": "Aktive brugere",
             "decorative_header_text": "Indstillinger",
         },
+        "profile_admin_subscriptions": {
+            "header_text": "Aktive abonnementer",
+            "decorative_header_text": "Abonnementer",
+        },
         # Menu
         "admin_profile_menu": [
             {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
             {"icon": "card.svg", "text": "Klippekort", "template": "profile_admin_clipcard"},
             {"icon": "stop_watch.svg", "text": "Timeregistrering", "template": "profile_admin_hour_registration"},
+            {"icon": "cart.svg", "text": "Abonnementer", "template": "profile_admin_subscriptions"},
             {"icon": "letter.svg", "text": "Beskeder", "template": "profile_admin_messages"},
             {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_admin_settings"},
         ],
@@ -418,7 +423,6 @@ profile_content = {
         "profile_customer_subscription": {
             "header_text": "Køb et abonnement",
             "decorative_header_text": "Abonnement",
-            "box_header_text": "Abonnement",
         },
         "profile_customer_clipcard": {
             "header_text": "Det, har du fået lavet",

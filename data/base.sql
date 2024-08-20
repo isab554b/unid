@@ -83,11 +83,13 @@ CREATE TABLE IF NOT EXISTS payments (
 	payment_id	        INTEGER NOT NULL UNIQUE,
 	user_id				INTEGER NOT NULL,
 	clipcard_id	        INTEGER NOT NULL UNIQUE,
+	subscription_id		INTEGER NOT NULL UNIQUE,
 	amount_paid	        INTEGER NOT NULL,
 	created_at	        TEXT NOT NULL,
 	PRIMARY KEY(payment_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(clipcard_id) REFERENCES clipcards(clipcard_id)
+	FOREIGN KEY(clipcard_id) REFERENCES clipcards(clipcard_id),
+	FOREIGN KEY(subscription_id) REFERENCES subscriptions(subscription_id)
 ) WITHOUT ROWID;
 
 

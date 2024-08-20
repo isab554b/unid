@@ -81,58 +81,5 @@
       {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["header_text"] }}
     </h2>
   </div>
-  <div class="grid lg:grid-cols-2 gap-8">
-    <!-- prettier-ignore -->
-    % if tasks:
-    % for task in tasks:
-    <div id="content_box_styling">
-      <div id="content_box_header_styling">
-        <p id="content_box_header_text">{{ task["task_title"] }}</p>
-      </div>
-      <div class="flex flex-col gap-8 p-6 text-unidPurple">
-        <!-- USER -->
-        <div class="space-y-2 text-sm">
-          <div class="space-y-1">
-            <p id="form_label">Opgave oplysninger</p>
-            <hr />
-          </div>
-          <div class="space-y-2">
-            <div class="flex gap-2">
-              <p class="font-semibold">Emne:</p>
-              <p>{{ task["task_title"] }}</p>
-            </div>
-            <div class="space-y-2">
-              <p class="font-semibold">Beskrivelse:</p>
-              <p>{{ task["task_description"] }}</p>
-            </div>
-            <div class="flex gap-2">
-              <p class="font-semibold">Tid brugt:</p>
-              <p>{{ task["formatted_time_spent"] }}</p>
-            </div>
-            <div class="flex gap-2">
-              <p class="font-semibold">Fuldført den:</p>
-              <p>{{ task["formatted_created_at"] }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- prettier-ignore -->
-    % end
-    % else:
-    <div class="space-y-1">
-      <p class="text-sm font-bold">
-        Hov, du har ikke fået lavet noget endnu...
-      </p>
-      <p class="text-sm">
-        Her vil du kunne få et overblik over hvilke opgaver, der er udført på
-        dit klippekort.
-      </p>
-      <p class="text-sm">
-        Klik på 'Beskeder' i menuen og skriv til os, hvad du vil have lavet!
-      </p>
-    </div>
-    % end
-  </div>
 </div>
 % end

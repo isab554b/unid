@@ -346,7 +346,9 @@ def admin_clipcards_get():
             return template(relative_path, 
                             # A-Z
                             active_clipcards=[], 
-                            active_customers=[]
+                            active_customers=[],
+                            global_content=global_content,
+                            profile_content=profile_content,
                             )
 
         # Format time in each clipcard
@@ -453,7 +455,9 @@ def admin_hour_registration_get():
             return template(relative_path, 
                             # A-Z
                             active_clipcards=[], 
-                            active_customers=[]
+                            active_customers=[],
+                            global_content=global_content,
+                            profile_content=profile_content,
                             )
 
         # List of dictionaries for each active customer and clipcard ID
