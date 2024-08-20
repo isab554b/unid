@@ -415,10 +415,10 @@ profile_content = {
     },
     # CUSTOMER SPECIFIC
     "customer_specific_content": {
-        "profile_customer_additional_purchase": {
-            "header_text": "Tilkøb",
-            "decorative_header_text": "Tilkøb",
-            "box_header_text": "Tilkøb",
+        "profile_customer_subscription": {
+            "header_text": "Køb et abonnement",
+            "decorative_header_text": "Abonnement",
+            "box_header_text": "Abonnement",
         },
         "profile_customer_clipcard": {
             "header_text": "Det, har du fået lavet",
@@ -443,7 +443,7 @@ profile_content = {
         "customer_profile_menu": [
             {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
             {"icon": "card.svg", "text": "Klippekort", "template": "profile_customer_clipcard"},
-            {"icon": "cart.svg", "text": "Abonnement", "template": "profile_customer_additional_purchase"},
+            {"icon": "cart.svg", "text": "Abonnement", "template": "profile_customer_subscription"},
             {"icon": "education.svg", "text": "Kurser", "template": "profile_customer_courses"},
             {"icon": "letter.svg", "text": "Beskeder", "template": "profile_customer_messages"},
             {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_customer_settings"},

@@ -1,30 +1,34 @@
-<!-- IF USER DOES NOT HAVE CLIPCARD -->
-% if current_user and not current_user.get('has_active_clipcard'):
+<!-- IF USER DOES NOT HAVE SUBSCRIPTION -->
+% if current_user and not current_user.get('has_active_subscription'):
 <div class="space-y-8">
   <div class="space-y-2">
-    <p id="decorative_header">KLIPPEKORT</p>
-    <h2>Køb et klippekort</h2>
+    <p id="decorative_header">
+      <!-- prettier-ignore -->
+      {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["decorative_header_text"] }}
+    </p>
+
+    <h2>
+      <!-- prettier-ignore -->
+      {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["header_text"] }}
+    </h2>
   </div>
-  <div class="grid lg:grid-cols-2 gap-8">
+  <div class="">
     <!-- prettier-ignore -->
-    % for clipcard_key, clipcard_value in services_and_prices_content['clipcard_section']['clipcards']['clipcard_default'].items():
+    % for subscription_key, subscription_value in services_and_prices_content['subscription_section']['subscriptions']['subscription_default'].items():
     <div>
       <div
         class="rounded-lg border-2 bg-unidYellow border-unidLightBlue flex flex-col"
       >
         <div class="flex flex-col lg:flex-row justify-between gap-6">
           <div class="text-unidPurple space-y-1 p-6">
-            <p class="text-sm tracking-widest title-font font-medium">
-              {{ clipcard_value["info"]["title"] }}
-            </p>
-            <h3>{{ clipcard_value["info"]["hours"] }}</h3>
+            <h3>{{ subscription_value["info"]["hours"] }}</h3>
           </div>
         </div>
         <div class="border-b border-unidLightBlue mx-6"></div>
         <div class="p-6 space-y-6">
           <div class="space-y-2">
             <!-- prettier-ignore -->
-            % for point in clipcard_value['selling_points']:
+            % for point in subscription_value['selling_points']:
             <div class="flex items-center gap-2 text-unidPurple">
               <div class="text-unidPurple w-5 h-5">
                 % include(global_content['ui_icons']['checkmark'])
@@ -39,7 +43,7 @@
               <p
                 class="text-unidPurple text-right text-2xl xl:text-3xl font-saira font-bold"
               >
-                {{ clipcard_value["info"]["price"] }}
+                {{ subscription_value["info"]["price"] }}
               </p>
               <div class="flex flex-col text-xs text-unidPurple">
                 <p>ekskl.</p>
@@ -52,10 +56,10 @@
             type="button"
             id="primary_button"
             class="buy-button"
-            data-clipcard-type="{{ clipcard_value["info"]["title"] }}"
-            data-clipcard-price="{{ clipcard_value["info"]["price"] }}"
+            data-clipcard-type=""
+            data-clipcard-price=""
           >
-            {{ clipcard_value["button_text"] }}
+            {{ subscription_value["button_text"] }}
           </button>
         </div>
       </div>
@@ -64,16 +68,17 @@
     % end
   </div>
 </div>
+<!-- IF USER HAVE SUBSCRIPTION -->
 % else:
 <div class="space-y-8">
   <div class="space-y-2">
     <p id="decorative_header">
       <!-- prettier-ignore -->
-      {{ profile_content["customer_specific_content"]["profile_customer_clipcard"]["decorative_header_text"] }}
+      {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["decorative_header_text"] }}
     </p>
     <h2>
       <!-- prettier-ignore -->
-      {{ profile_content["customer_specific_content"]["profile_customer_clipcard"]["header_text"] }}
+      {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["header_text"] }}
     </h2>
   </div>
   <div class="grid lg:grid-cols-2 gap-8">
