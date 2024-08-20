@@ -10,7 +10,9 @@
     </h2>
   </div>
   <div class="grid lg:grid-cols-2 gap-8">
-    % for subscription in active_subscriptions:
+    <!-- prettier-ignore -->
+    % if active_subscriptions:
+        % for subscription in active_subscriptions:
     <div id="clipcard_{{ clipcard['clipcard_id'] }}">
       <div id="content_box_styling">
         <div id="content_box_header_styling">
@@ -123,6 +125,10 @@
         </div>
       </div>
     </div>
+    <!-- prettier-ignore -->
+    % end 
+      % else:
+    <p class="text-sm">Ingen aktive abonnementer.</p>
     % end
   </div>
 </div>
