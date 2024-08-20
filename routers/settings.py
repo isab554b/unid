@@ -264,9 +264,10 @@ def profile_customer_settings():
 @post('/update_profile')
 def update_profile():
     try:
+        username = request.forms.get('username')
         email = request.forms.get('email')
         phone = request.forms.get('phone')
-        username = request.forms.get('username')
+        
         
         current_user = get_current_user()
         if not current_user:
@@ -280,9 +281,9 @@ def update_profile():
 
         cursor.execute("""
             UPDATE users
-            SET email = ?, phone = ?, username = ?
+            SET username = ?, email = ?, phone = ?
             WHERE user_id = ?
-        """, (email, phone, username, user_id))
+        """, (username, email, phone, user_id))
 
         db.commit()
 

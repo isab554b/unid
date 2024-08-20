@@ -34,8 +34,8 @@
                 <div class="flex gap-2 items-center">
                   <p id="form_label">Brugernavn:</p>
                   <input
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="username"
                     value="{{ user['username'] }}"
                     required
                   />
@@ -55,8 +55,8 @@
                   <div class="flex gap-2">
                     <p class="font-semibold">Email:</p>
                     <input
-                      type="text"
-                      name="username"
+                      type="email"
+                      name="email"
                       value="{{ user['email'] }}"
                       required
                     />
