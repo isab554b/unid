@@ -1,11 +1,8 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import post, get, request, response, template, delete
+from bottle import get, request, response, template, delete, post, redirect
 import logging
-import os
-import uuid
-import time
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -114,9 +111,6 @@ def admin_customers_get():
 
 
 
-
-
-
 ##############################
 #   DELETE CUSTOMER
 @delete('/delete_user')
@@ -181,5 +175,204 @@ def delete_user():
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {function_name}")
+
+
+##############################
+#   PROFILE GET
+@get('/profile/profile_customer_settings')
+def profile_customer_settings():
+    page_name = "profile_customer_settings"
+
+    try:
+        # Confirm current user is logged in
+        current_user = get_current_user()
+        if not current_user:
+            logger.warning(f"User not logged in during {page_name}")
+            response.status = 401
+            return {"info": "User not logged in."}
+
+        user_id = current_user['user_id']
+
+        # Establish database connection
+        db = master.db()
+        logger.debug(f"Database connection opened for {page_name}")
+
+        # Set up cursor and execute query to fetch the current user's details
+        cursor = db.cursor()
+        cursor.execute("""
+            SELECT
+                users.user_id,
+                users.first_name,
+                users.last_name,
+                users.email,
+                users.phone,
+                users.username,
+                CASE
+                    WHEN active_clipcards.user_id IS NOT NULL THEN active_clipcards.clipcard_type_title
+                    ELSE 'Intet klippekort eller abonnement.'
+                END AS clipcard_type
+            FROM users
+            LEFT JOIN (
+                SELECT DISTINCT user_id, clipcard_type_title
+                FROM active_clipcards
+            ) AS active_clipcards ON users.user_id = active_clipcards.user_id
+            WHERE users.user_id = ?
+        """, (user_id,))
+
+        # Retrieve the user's details
+        user = cursor.fetchone()
+
+        if not user:
+            logger.warning(f"User with ID {user_id} not found during {page_name}")
+            response.status = 404
+            return {"info": "User not found."}
+
+        logger.debug(f"User retrieved: {user}")
+
+        # Find the template and remove path and file extension
+        template_path = find_template('profile_customer_settings', template_dirs)
+        if template_path is None:
+            return "Template not found."
+        relative_path = template_path.replace('views/', '').replace('.tpl', '')
+
+        # Show template
+        logger.success(f"Successfully showing template for {page_name}")
+        return template(relative_path, 
+                        global_content=global_content, 
+                        user=user,
+                        profile_content=profile_content
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during {page_name}: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed {page_name}")
+
+
+
+##############################
+#   UPDATE PROFILE
+@post('/update_profile')
+def update_profile():
+    try:
+        email = request.forms.get('email')
+        phone = request.forms.get('phone')
+        username = request.forms.get('username')
+        
+        current_user = get_current_user()
+        if not current_user:
+            response.status = 401
+            return {"success": False, "error": "User not logged in."}
+
+        user_id = current_user['user_id']
+
+        db = master.db()
+        cursor = db.cursor()
+
+        cursor.execute("""
+            UPDATE users
+            SET email = ?, phone = ?, username = ?
+            WHERE user_id = ?
+        """, (email, phone, username, user_id))
+
+        db.commit()
+
+        response.status = 200
+        return {"info": "Profil opdateret!"}
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+        response.status = 500
+        return {"info": f"Fejl under opdatering af profil: {str(e)}"}
+
+    finally:
+        if "db" in locals():
+            db.close()
+
+
+
+
+##############################
+#   DELETE PROFILE
+@post('/delete_profile')
+def delete_profile():
+    function_name = "delete_profile"
+
+    try:
+        # Retrieve user ID from the request body
+        user_id = request.json.get('user_id')
+        if not user_id:
+            logger.warning(f"User ID missing in {function_name}")
+            response.status = 400
+            return {"info": "User ID is missing."}
+
+        # Confirm current user is logged in
+        current_user = get_current_user()
+        if not current_user:
+            logger.warning(f"User not logged in during {function_name}")
+            response.status = 401
+            return {"info": "User not logged in."}
+
+        if current_user['user_id'] != user_id:
+            logger.warning(f"User ID mismatch in {function_name}")
+            response.status = 403
+            return {"info": "You cannot delete another user's profile."}
+
+        logger.info(f"Attempting to delete profile with ID: {user_id}")
+
+        # Establish database connection
+        db = master.db()
+        cursor = db.cursor()
+
+        # Delete user from users table
+        cursor.execute("""
+            DELETE FROM users
+            WHERE user_id = ?
+        """, (user_id,))
+
+        # Optionally delete corresponding customer if necessary
+        cursor.execute("""
+            DELETE FROM customers
+            WHERE customer_id = ?
+        """, (user_id,))  # Assuming customer_id = user_id
+
+        # Commit changes to the database
+        db.commit()
+
+        # Check if the user was actually found and deleted
+        if cursor.rowcount == 0:
+            logger.error(f"User with ID {user_id} not found in {function_name}")
+            response.status = 404
+            return {"info": "Profile not found."}
+
+        logger.info(f"Profile with ID {user_id} deleted successfully")
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during {function_name}: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+
+    # Redirect to the homepage after successful deletion
+    redirect('/')
+
+
 
 

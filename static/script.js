@@ -446,3 +446,58 @@ function deleteUser(button) {
       console.error("Fetch error:", error);
     });
 }
+
+// ##############################
+// CUSTOMER SETTINGS - UPDATE PROFILE
+$(document).ready(function () {
+  $("body").on("click", "#updateProfileButton", function () {
+    var formData = new FormData($("#update_profile_form")[0]);
+
+    $.ajax({
+      url: "/update_profile",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log("Success response:", response);
+        $("#message").text("Profil opdateret!").show();
+
+        setTimeout(function () {
+          $("#message").fadeOut();
+        }, 2000);
+      },
+      error: function (xhr) {
+        console.error("Error response:", xhr);
+        var response = JSON.parse(xhr.responseText);
+        alert("Der opstod en fejl: " + response.info);
+      },
+    });
+  });
+});
+
+// ##############################
+// CUSTOMER SETTINGS - DELETE PROFILE
+$(document).ready(function () {
+  $("body").on("click", "#deleteProfileButton", function () {
+    var userId = $(this).data("user-id");
+
+    if (confirm("Er du sikker på, at du vil slette din profil?")) {
+      $.ajax({
+        url: "/delete_profile",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ user_id: userId }),
+        success: function () {
+          // Redirect to the homepage after successful deletion
+          window.location.href = "/";
+        },
+        error: function (xhr) {
+          // Handle the error here
+          var responseText = xhr.responseText;
+          alert("Der opstod en fejl: " + responseText);
+        },
+      });
+    }
+  });
+});

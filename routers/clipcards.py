@@ -11,12 +11,13 @@ import hashlib
 import base64
 from dotenv import load_dotenv
 
+
 #   Local application imports
 from common.colored_logging import setup_logger
-import common.content as content
 from common.get_current_user import *
 from common.find_template import *
 from common.time_formatting import *
+import common.content as content
 import master
 
 
@@ -35,12 +36,14 @@ finally:
 ##############################
 #   CONTENT VARIABLES
 try:
+    # Global
     global_content = content.global_content
+    # Content for this page
     services_and_prices_content = content.services_and_prices_content
     profile_content = content.profile_content
     logger.success("Content imported successfully.")
 except Exception as e:
-    logger.error("Error importing content: %s", e)
+    logger.error(f"Error importing content: {e}")
 finally:
     logger.info("Content import process completed.")
 

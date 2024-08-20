@@ -44,6 +44,7 @@ global_content = {
         "info": "info.svg",
         "lock": "lock.svg",
         "pen_line": "pen_line.svg",
+        "pen":"pen.svg",
         "phone": "phone.svg",
         "message": "letter.svg",
         "stop_watch": "stop_watch.svg",
@@ -377,11 +378,6 @@ portfolio_content = {
 #   PROFILE
 profile_content = {
     # GLOBAL
-    "profile_settings": {
-        "header_text": "Brugerindstillinger",
-        "decorative_header_text": "Indstillinger",
-        "box_header_text": "Indstillinger",
-    },
     "logout": {
         "header_text": "Log ud",
         "subheader_text": "Du er ved at logge ud, er du sikker?",
@@ -438,14 +434,19 @@ profile_content = {
             "decorative_header_text": "Beskeder",
             "box_header_text": "Send en besked",
         },
+
+        "profile_customer_settings": {
+            "header_text": "Brugerindstillinger",
+            "decorative_header_text": "Indstillinger",
+        },
         # Menu
         "customer_profile_menu": [
             {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
             {"icon": "card.svg", "text": "Klippekort", "template": "profile_customer_clipcard"},
-            {"icon": "cart.svg", "text": "Tilkøb", "template": "profile_customer_additional_purchase"},
+            {"icon": "cart.svg", "text": "Abonnement", "template": "profile_customer_additional_purchase"},
             {"icon": "education.svg", "text": "Kurser", "template": "profile_customer_courses"},
             {"icon": "letter.svg", "text": "Beskeder", "template": "profile_customer_messages"},
-            {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_settings"},
+            {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_customer_settings"},
         ],
     },
     # BUY CLIPCARD
