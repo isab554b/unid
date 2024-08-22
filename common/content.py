@@ -79,8 +79,8 @@ global_content = {
         "nav_bar": {
             "nav_items": [
                 {"text": "Services & Priser", "link": "/services_and_prices"},
-                {"text": "Om UNID Studio", "link": "/about_us"},
                 {"text": "Portfolio", "link": "/portfolio"},
+                {"text": "Om UNID Studio", "link": "/about_us"},
                 {"text": "Kontakt", "link": "/contact"},
                 {"text": "Blog", "link": "/blog"},
             ],
@@ -111,7 +111,7 @@ global_content = {
             "type": "text",
             "name": "username",
             "inputmode": "text",
-            "placeholder": "LoremIpsum",
+            "placeholder": "Loremipsum",
             "form_info": "",
         },
         # Password
@@ -171,7 +171,7 @@ global_content = {
             "type": "text",
             "name": "website_name",
             "inputmode": "text",
-            "placeholder": "Lorem-Ipsum.dk",
+            "placeholder": "Lorem-ipsum.dk",
             "form_info": "",
         },
         # Website url
@@ -216,8 +216,8 @@ frontpage_content = {
     # TESTIMONIAL SECTION
     "testimonials_section": {
         "header_text": "Det siger vores kunder",
-        "decorative_header_text": "Testimonials",
-        "subheader_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
+        "decorative_header_text": "Anmeldelser",
+        "subheader_text": "Er du nysgerrig på, hvad vores kunder har oplevet? Dyk ned i vores anmeldelser og få et ægte indblik i, hvordan vores services har gjort en forskel.",
         "testimonial_icon": "quote.svg",
         # Testiomonials
         "testimonials": [

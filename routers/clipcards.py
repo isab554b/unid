@@ -77,9 +77,9 @@ def load_profile_data():
 
         # Retrieve active clipcard ID for the current user
         payment_query = """
-            SELECT payments.clipcard_id
-            FROM payments
-            WHERE payments.user_id = ? AND payments.clipcard_id IN (SELECT clipcard_id FROM clipcards WHERE is_active = 1)
+            SELECT clipcards_payments.clipcard_id
+            FROM clipcards_payments
+            WHERE clipcards_payments.user_id = ? AND clipcards_payments.clipcard_id IN (SELECT clipcard_id FROM clipcards WHERE is_active = 1)
             LIMIT 1
         """
 
@@ -179,7 +179,7 @@ def clipcards():
 
             # Retrieve current user and fetch clipcard ID if available
             user_id = current_user['user_id']
-            clipcard_id = db.execute("SELECT clipcard_id FROM payments WHERE user_id = ? LIMIT 1", (user_id,)).fetchone()
+            clipcard_id = db.execute("SELECT clipcard_id FROM clipcards_payments WHERE user_id = ? LIMIT 1", (user_id,)).fetchone()
 
             # Default to no active clipcard
             current_user['has_active_clipcard'] = False
@@ -195,7 +195,7 @@ def clipcards():
                 FROM clipcards
                 WHERE clipcard_id IN (
                     SELECT clipcard_id
-                    FROM payments
+                    FROM clipcards_payments
                     WHERE user_id = ?)
                 AND is_active = 1
                 """
@@ -265,48 +265,6 @@ def generate_csrf_token(secret_key):
 
 
 ##############################
-#   BUY CLIPCARD
-@get('/buy_clipcard/<clipcard_type>/<clipcard_price>')
-def buy_clipcard(clipcard_type, clipcard_price):
-
-    page_name = "buy_clipcard"
-
-    try:
-        # Retrieve CSRF token from cookies. If not found, generate a new
-        csrf_token = request.get_cookie('csrf_token')
-        if not csrf_token:
-            csrf_token = generate_csrf_token(secret_key)
-            response.set_cookie('csrf_token', csrf_token, path='/', httponly=True)
-            logger.info(f"CSRF token generated and set: {csrf_token}")
-        else:
-            logger.info(f"Existing CSRF token found: {csrf_token}")
-
-        # Show template
-        logger.success(f"Successfully showing template for {page_name}")
-        return template('buy_clipcard.html',
-                        clipcard_price=clipcard_price,
-                        clipcard_type=clipcard_type,
-                        csrf_token=csrf_token,
-                        global_content=global_content,
-                        profile_content=profile_content,
-                        )
-
-    except Exception as e:
-        if "db" in locals():
-            db.rollback()
-            logger.info("Database transaction rolled back due to exception")
-        logger.error(f"Error during {page_name}: {e}")
-        response.status = 500
-        return {"error": "Internal Server Error"}
-
-    finally:
-        if "db" in locals():
-            db.close()
-            logger.info("Database connection closed")
-        logger.info(f"Completed {page_name}")
-
-
-##############################
 #   ADMIN CLIPCARDS
 @get('/profile/profile_admin_clipcard')
 def admin_clipcards_get():
@@ -332,8 +290,8 @@ def admin_clipcards_get():
                    users.user_id, users.first_name, users.last_name, users.username, users.email, users.phone,
                    customers.website_name, customers.website_url, card_types.clipcard_type_title
             FROM clipcards
-            JOIN payments ON clipcards.clipcard_id = payments.clipcard_id
-            JOIN users ON payments.user_id = users.user_id
+            JOIN clipcards_payments ON clipcards.clipcard_id = clipcards_payments.clipcard_id
+            JOIN users ON clipcards_payments.user_id = users.user_id
             JOIN customers ON users.user_id = customers.customer_id
             JOIN card_types ON clipcards.clipcard_type_id = card_types.clipcard_type_id
             WHERE clipcards.is_active = 1;
@@ -441,8 +399,8 @@ def admin_hour_registration_get():
                    users.user_id, users.first_name, users.last_name, users.username, users.email, users.phone,
                    customers.website_name, customers.website_url, card_types.clipcard_type_title
             FROM clipcards
-            JOIN payments ON clipcards.clipcard_id = payments.clipcard_id
-            JOIN users ON payments.user_id = users.user_id
+            JOIN clipcards_payments ON clipcards.clipcard_id = clipcards_payments.clipcard_id
+            JOIN users ON clipcards_payments.user_id = users.user_id
             JOIN customers ON users.user_id = customers.customer_id
             JOIN card_types ON clipcards.clipcard_type_id = card_types.clipcard_type_id
             WHERE clipcards.is_active = 1;
@@ -588,10 +546,10 @@ def submit_task():
 
         # Check for an active clipcard associated with the user
         result = cursor.execute("""
-            SELECT payments.clipcard_id
-            FROM payments
-            JOIN clipcards ON payments.clipcard_id = clipcards.clipcard_id
-            WHERE payments.user_id = ? AND clipcards.is_active = 1
+            SELECT clipcards_payments.clipcard_id
+            FROM clipcards_payments
+            JOIN clipcards ON clipcards_payments.clipcard_id = clipcards.clipcard_id
+            WHERE clipcards_payments.user_id = ? AND clipcards.is_active = 1
         """, (user_id,)).fetchone()
 
         if result is None:

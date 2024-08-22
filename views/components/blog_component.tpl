@@ -4,7 +4,7 @@
   <div>
     <!-- prettier-ignore -->
     <a href="{{ post['info']['link'] }}">
-      <div class="space-y-2"> 
+      <div class="space-y-3"> 
       <img src="/assets/images/blog/{{ post['info']['image'] }}" 
       alt="{{ post['info']['image_alt'] }}"
       class="object-cover w-full h-56 bg-center rounded-lg" />

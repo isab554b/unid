@@ -63,9 +63,9 @@ def load_profile_data():
 
         # Retrieve active clipcard ID for the current user
         payment_query = """
-            SELECT payments.clipcard_id
-            FROM payments
-            WHERE payments.user_id = ? AND payments.clipcard_id IN (SELECT clipcard_id FROM clipcards WHERE is_active = 1)
+            SELECT clipcards_payments.clipcard_id
+            FROM clipcards_payments
+            WHERE clipcards_payments.user_id = ? AND clipcards_payments.clipcard_id IN (SELECT clipcard_id FROM clipcards WHERE is_active = 1)
             LIMIT 1
         """
 
@@ -144,7 +144,7 @@ def profile():
         # Handle cases that require detailed user information
         if current_user:
             db = master.db()
-            clipcard_info = db.execute("SELECT clipcard_id FROM payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
+            clipcard_info = db.execute("SELECT clipcard_id FROM clipcards_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
             if clipcard_info and clipcard_info['clipcard_id']:
                 has_active_clipcard = db.execute("""
                     SELECT COUNT(*) AS active_clipcards
@@ -209,7 +209,7 @@ def profile_template(template_name):
         if template_name == "profile_overview":
             if current_user:
                 db = master.db()
-                clipcard_info = db.execute("SELECT clipcard_id FROM payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
+                clipcard_info = db.execute("SELECT clipcard_id FROM clipcards_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
                 if clipcard_info and clipcard_info['clipcard_id']:
                     has_active_clipcard = db.execute("""
                         SELECT COUNT(*) AS active_clipcards

@@ -1,3 +1,4 @@
+<script src="https://js.stripe.com/v3/"></script>
 <!-- IF USER DOES NOT HAVE CLIPCARD -->
 % if current_user and not current_user.get('has_active_clipcard'):
 <div class="space-y-8">
@@ -52,8 +53,9 @@
             type="button"
             id="primary_button"
             class="buy-button"
-            data-clipcard-type="{{ clipcard_value["info"]["title"] }}"
-            data-clipcard-price="{{ clipcard_value["info"]["price"] }}"
+            data-clipcard-type="{{ clipcard_value['info']['hours'] }}"
+            data-clipcard-price="{{ clipcard_value['info']['price'] }}"
+            onclick="handleBuyButtonClick(this)"
           >
             {{ clipcard_value["button_text"] }}
           </button>

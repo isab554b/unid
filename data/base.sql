@@ -79,16 +79,25 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 -- ##############################
 -- PAYMENTS
-CREATE TABLE IF NOT EXISTS payments (
+CREATE TABLE IF NOT EXISTS clipcards_payments (
 	payment_id	        INTEGER NOT NULL UNIQUE,
 	user_id				INTEGER NOT NULL,
 	clipcard_id	        INTEGER NOT NULL UNIQUE,
+	amount_paid	        INTEGER NOT NULL,
+	created_at	        TEXT NOT NULL,
+	PRIMARY KEY(payment_id),
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
+	FOREIGN KEY(clipcard_id) REFERENCES clipcards(clipcard_id)
+) WITHOUT ROWID;
+
+CREATE TABLE IF NOT EXISTS subscriptions_payments (
+	payment_id	        INTEGER NOT NULL UNIQUE,
+	user_id				INTEGER NOT NULL,
 	subscription_id		INTEGER NOT NULL UNIQUE,
 	amount_paid	        INTEGER NOT NULL,
 	created_at	        TEXT NOT NULL,
 	PRIMARY KEY(payment_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(clipcard_id) REFERENCES clipcards(clipcard_id),
 	FOREIGN KEY(subscription_id) REFERENCES subscriptions(subscription_id)
 ) WITHOUT ROWID;
 
@@ -144,7 +153,7 @@ SELECT cc.clipcard_id, cc.remaining_time, cc.time_used, cc.created_at,
        u.user_id, u.first_name, u.last_name, u.username, u.email, u.phone,
        cust.website_name, cust.website_url, ct.clipcard_type_title
 FROM clipcards cc
-JOIN payments p ON cc.clipcard_id = p.clipcard_id
+JOIN clipcards_payments p ON cc.clipcard_id = p.clipcard_id
 JOIN users u ON p.user_id = u.user_id
 JOIN customers cust ON u.user_id = cust.customer_id
 JOIN card_types ct ON cc.clipcard_type_id = ct.clipcard_type_id

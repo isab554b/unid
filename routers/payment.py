@@ -1,13 +1,12 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import post, request, template, response
+from bottle import post, request, template, response, get
 import uuid
 import time
 import logging
 import os
-import hmac
-import hashlib
+import stripe
 from dotenv import load_dotenv
 
 #   Local application imports
@@ -15,6 +14,11 @@ from common.colored_logging import setup_logger
 from common.get_current_user import get_current_user
 import common.content as content
 import master
+
+
+##############################
+#   LOAD ENVIRONMENT VARIABLES
+load_dotenv()
 
 
 ##############################
@@ -43,102 +47,104 @@ finally:
 
 
 ##############################
-#   VERIFY CSRF TOKEN
-load_dotenv()
-secret_key = os.getenv('SECRET_KEY')
+#   CLIPCARD CHECKOUT SESSION
+#   Set Stripe API key from environment variable
+stripe.api_key = os.getenv("STRIPE_API_KEY")
 
-def verify_csrf_token(secret_key, token):
+# Route to create a Stripe checkout session
+@post('/create_checkout_session')
+def create_checkout_session():
     try:
-        csrf_token, signature = token.split('.')
-        expected_signature = hmac.new(secret_key.encode(), csrf_token.encode(), hashlib.sha256).hexdigest()
-        return hmac.compare_digest(expected_signature, signature)
-    except ValueError:
-        return False
-    
+        # Retrieve data from the request
+        data = request.json
+        clipcard_type = data.get('clipcard_type')
+        clipcard_price_str = data.get('clipcard_price')
+
+        # Remove any non-numeric characters (e.g., ' DKK') to get the numeric value
+        clipcard_price = float(clipcard_price_str.replace(' DKK', '').replace('.', '').replace(',', '.'))
+
+        # Create Stripe checkout session
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'dkk',
+                    'product_data': {
+                        'name': clipcard_type,
+                    },
+                    'unit_amount': int(clipcard_price * 100),  # convert to øre
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url='http://127.0.0.1:2500/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://127.0.0.1:2500/cancel',
+            metadata={
+                'clipcard_type': clipcard_type,  # Save clipcard type in metadata
+            }
+        )
+
+        return {'id': session.id}
+    except Exception as e:
+        logger.error(f"Error creating Stripe checkout session: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
+
+
 
 ##############################
-#   PROCESS PAYMENT
-@post('/process_payment')
-def process_payment():
-
-    function_name = "process_payment"
-
+#   CLIPCARD CHECKOUT SESSION SUCCES
+@get('/success')
+def payment_success():
     try:
-        # Authenticate and identify the current user
-        current_user = get_current_user()
-        if not current_user:
-            logger.error("User information not found in session.")
-            raise Exception('User information not found in session.')
+        session_id = request.query.get('session_id')
+        session = stripe.checkout.Session.retrieve(session_id)
 
-        user_id = current_user['user_id']
-        if not user_id:
-            logger.error("User ID not found for the current session.")
-            raise Exception('User ID not found.')
-        
+        if session.payment_status == 'paid':
+            # Retrieve current user details
+            current_user = get_current_user()
+            user_id = current_user['user_id']
 
-        # Retrieve CSRF token from cookies and form
-        csrf_token_cookie = request.get_cookie('csrf_token')
-        csrf_token_form = request.forms.get('csrf_token')
-        logger.info(f"CSRF token from cookie: {csrf_token_cookie}, CSRF token from form: {csrf_token_form}")
+            # Retrieve payment details from the form
+            clipcard_price = session.amount_total / 100  # convert from øre to DKK
+            amount_paid = clipcard_price
+            payment_id = str(uuid.uuid4())
+            clipcard_id = str(uuid.uuid4())
+            created_at = int(time.time())
+            updated_at = int(time.time())
+            is_active = 1
+            clipcard_type_title = session.metadata['clipcard_type']
+            time_used = 0
 
-        # Verify CSRF token
-        if not (csrf_token_cookie and csrf_token_form and csrf_token_cookie == csrf_token_form and verify_csrf_token(secret_key, csrf_token_cookie)):
-            logger.error(f"CSRF token verification failed.")
-            response.status = 403
-            return template('error',
-                    title="Fejl 403: Forbidden",
-                    button_link="/",
-                    button_text="Tilbage til forsiden",
-                    error="CSRF-token verifikation mislykkedes.",
-                    error_message_text="Verifikation af CSRF-token mislykkedes. Prøv venligst igen. Hvis problemet fortsætter, kontakt os.",
-                    error_title_text="Fejl 403: Forbidden",
-                    header_text="Hov! Der skete en fejl",
-                    illustration="unid_universe.svg",
-                    illustration_alt="Fejl illustration"
-                    )
-        
+            # Establish database connection
+            db = master.db()
+            logger.debug(f"Database connection opened for payment success handling")
 
-        # Retrieve payment details from the form
-        clipcard_price = request.forms.get('clipcard_price')
-        amount_paid = clipcard_price
-        payment_id = str(uuid.uuid4())
-        clipcard_id = str(uuid.uuid4())
-        created_at = int(time.time())
-        updated_at = int(time.time())
-        is_active = 1
-        clipcard_type_title = request.forms.get('clipcard_type')
-        time_used = 0
+            # Retrieve clipcard type details from database
+            cursor = db.cursor()
+            cursor.execute("SELECT clipcard_type_id, clipcard_type_time FROM card_types WHERE clipcard_type_title = ?", (clipcard_type_title,))
+            row = cursor.fetchone()
 
-        # Establish database connection
-        db = master.db()
-        logger.debug(f"Database connection opened for {function_name}")
+            if not row:
+                logger.error("Clipcard type not found.")
+                raise Exception('Clipcard type not found')
 
-        # Retrieve clipcard type details from database
-        cursor = db.cursor()
-        cursor.execute("SELECT clipcard_type_id, clipcard_type_time FROM card_types WHERE clipcard_type_title = ?", (clipcard_type_title,))
-        row = cursor.fetchone()
+            clipcard_type_id = row['clipcard_type_id']
+            remaining_time = row['clipcard_type_time']
 
-        if not row:
-            logger.error("Clipcard type not found.")
-            raise Exception('Clipcard type not found')
+            # Insert payment and clipcard records into the database
+            cursor.execute("INSERT INTO clipcards_payments (payment_id, user_id, clipcard_id, amount_paid, created_at) VALUES (?, ?, ?, ?, ?)",
+                           (payment_id, user_id, clipcard_id, amount_paid, created_at))
+            cursor.execute("INSERT INTO clipcards (clipcard_id, clipcard_type_id, time_used, remaining_time, created_at, updated_at, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                           (clipcard_id, clipcard_type_id, time_used, remaining_time, created_at, updated_at, is_active))
 
-        clipcard_type_id = row['clipcard_type_id']
-        remaining_time = row['clipcard_type_time']
+            # Commit changes to the database
+            db.commit()
+            logger.success("Payment success handling completed successfully")
+            cursor.close()
 
-        # Insert payment and clipcard records into the database
-        cursor.execute("INSERT INTO payments (payment_id, user_id, clipcard_id, amount_paid, created_at) VALUES (?, ?, ?, ?, ?)",
-                       (payment_id, user_id, clipcard_id, amount_paid, created_at))
-        cursor.execute("INSERT INTO clipcards (clipcard_id, clipcard_type_id, time_used, remaining_time, created_at, updated_at, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                       (clipcard_id, clipcard_type_id, time_used, remaining_time, created_at, updated_at, is_active))
-
-        # Commit changes to the database
-        db.commit()
-        logger.success(f"{function_name} successful")
-        cursor.close()
-
-        # Show template
-        logger.success("Payment processed successfully, redirecting to confirmation.")
-        return template("confirmation",
+            # Redirect to a success page or return a success message
+            return template("confirmation",
                         title="Confirmation",
                         # A-Z
                         amount_paid=amount_paid,
@@ -153,11 +159,12 @@ def process_payment():
         if "db" in locals():
             db.rollback()
             logger.info("Database transaction rolled back due to exception")
-        logger.error(f"Error during {function_name}: {e}")
-        raise
+        logger.error(f"Error during payment success handling: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
 
     finally:
         if "db" in locals():
             db.close()
             logger.info("Database connection closed")
-        logger.info(f"Completed {function_name}")
+

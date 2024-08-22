@@ -225,29 +225,6 @@ $(document).ready(function () {
 });
 
 // ##############################
-// CUSTOMER_CLIPCARDS.HTML
-
-// Handles buying clipcards by customers.
-document.addEventListener("DOMContentLoaded", function () {
-  // Redirects the user to the appropriate URL to buy the clipcard
-  function buyClipcard(clipcardType, clipcardPrice) {
-    window.location.href =
-      "/buy_clipcard/" + clipcardType + "/" + clipcardPrice;
-  }
-
-  // Event listener for click events and checks if the clicked element has the right class
-  document.addEventListener("click", function (event) {
-    if (event.target && event.target.classList.contains("buy-button")) {
-      // Retrieves the clipcard type and price from the clicked button's data attributes
-      var clipcardType = event.target.getAttribute("data-clipcard-type");
-      var clipcardPrice = event.target.getAttribute("data-clipcard-price");
-      // Initiates the purchase process by calling the buyClipcard function
-      buyClipcard(clipcardType, clipcardPrice);
-    }
-  });
-});
-
-// ##############################
 // ADMIN_MESSAGES.HTML
 
 // Handles deleting messages from the admin interface.
@@ -501,3 +478,89 @@ $(document).ready(function () {
     }
   });
 });
+
+// ##############################
+// BUY CLIPCARD
+// Function to dynamically load Stripe.js
+let stripe;
+
+// Load Stripe.js dynamically
+function loadStripeScript(callback) {
+  if (typeof Stripe !== "undefined") {
+    // Stripe.js is already loaded, execute the callback
+    callback();
+    return;
+  }
+
+  // Create a script element
+  const script = document.createElement("script");
+  script.src = "https://js.stripe.com/v3/";
+  script.async = true;
+  script.onload = () => {
+    // Stripe.js has been loaded, execute the callback
+    callback();
+  };
+  script.onerror = (error) => {
+    console.error("Failed to load Stripe.js", error);
+  };
+
+  // Append the script to the document head
+  document.head.appendChild(script);
+}
+
+// Initialize Stripe after Stripe.js is loaded
+function initializeStripe() {
+  // Check if Stripe.js is loaded
+  if (typeof Stripe === "undefined") {
+    console.error("Stripe.js is not loaded");
+  } else {
+    console.log("Stripe.js is loaded");
+
+    // Initialize Stripe with your test publishable key
+    stripe = Stripe(
+      "pk_test_51OlrinIT5aFkJJVME1wzlmcAYt94JwO7fcCRo8WjTK9uJE9jFg03nwExjdvx7ck3OvY600CIc5XfxhXy2V9sSGs300zG3IPjzV"
+    );
+
+    // Add event listeners to buttons
+    document.querySelectorAll("[data-clipcard-type]").forEach((button) => {
+      button.addEventListener("click", () => handleBuyButtonClick(button));
+    });
+  }
+}
+
+// Function to handle buy button click
+async function handleBuyButtonClick(button) {
+  const clipcardType = button.getAttribute("data-clipcard-type");
+  const clipcardPrice = button.getAttribute("data-clipcard-price");
+
+  try {
+    const response = await fetch("/create_checkout_session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        clipcard_type: clipcardType,
+        clipcard_price: clipcardPrice,
+      }),
+    });
+
+    const session = await response.json();
+
+    if (!session.id) {
+      throw new Error("No session ID returned");
+    }
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// Load Stripe.js and initialize it
+loadStripeScript(initializeStripe);

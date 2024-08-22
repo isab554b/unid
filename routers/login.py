@@ -96,7 +96,7 @@ def login():
             SELECT * 
             FROM users 
             WHERE username = ? 
-            AND deleted_at IS NULL 
+            AND deleted_at IS ""
             LIMIT 1
         """, (username,)).fetchone()
         if not user:
