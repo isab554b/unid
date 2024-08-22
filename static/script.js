@@ -564,3 +564,42 @@ async function handleBuyButtonClick(button) {
 
 // Load Stripe.js and initialize it
 loadStripeScript(initializeStripe);
+
+// Function to handle subscription button click
+async function handleSubscriptionButtonClick(button) {
+  const subscriptionType = button.getAttribute("data-subscription-type");
+  const subscriptionPrice = button.getAttribute("data-subscription-price");
+
+  try {
+    const response = await fetch("/create_subscription_checkout_session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        subscription_type: subscriptionType,
+        subscription_price: subscriptionPrice,
+      }),
+    });
+
+    const session = await response.json();
+
+    if (!session.id) {
+      throw new Error("No session ID returned");
+    }
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// Add event listeners to subscription buttons
+document.querySelectorAll(".buy-button").forEach((button) => {
+  button.addEventListener("click", () => handleSubscriptionButtonClick(button));
+});

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Betalingsbekræftelse</title>
+  </head>
+  <body
+    class="h-screen w-screen flex justify-center bg-unidYellow bg-wave bg-cover"
+  >
+    <div
+      class="width_small flex flex-col space-y-10 lg:space-y-12 justify-center mx-auto"
+    >
+      <div class="space-y-8">
+        <div class="space-y-2">
+          <p id="decorative_header">
+            {{ profile_content["confirmation"]["decorative_header_text"] }}
+          </p>
+          <h2>{{ profile_content["confirmation"]["header_text"] }}</h2>
+        </div>
+        <div>
+          <div id="content_box_styling">
+            <div id="content_box_header_styling">
+              <p id="content_box_header_text">Tak for dit køb!</p>
+            </div>
+            <div class="flex flex-col gap-10 p-6 text-unidPurple">
+              <div class="flex flex-col gap-2 text-sm">
+                <div class="space-y-1">
+                  <p id="form_label">Oplysninger om dit køb</p>
+                  <hr />
+                </div>
+                <div class="space-y-2">
+                  <div
+                    class="space-y-0.5 md:space-y-0 md:flex justify-between items-center"
+                  >
+                    <p class="font-semibold">Ordrenummer:</p>
+                    <p>{{payment_id}}</p>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <p class="font-semibold">Betalt beløb:</p>
+                    <p>{{amount_paid}} DKK</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center text-unidLightBlue text-sm">
+                <p>Du kan nu se dit abonnement på din profilside!</p>
+              </div>
+              <div class="mx-auto w-fit">
+                <a href="profile">
+                  <button id="primary_button">Gå til din profil</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

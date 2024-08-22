@@ -56,8 +56,9 @@
             type="button"
             id="primary_button"
             class="buy-button"
-            data-clipcard-type=""
-            data-clipcard-price=""
+            data-subscription-type="{{ subscription_value['info']['hours'] }}"
+            data-subscription-price="{{ subscription_value['info']['price'] }}"
+            onclick="handleSubscriptionButtonClick(this)"
           >
             {{ subscription_value["button_text"] }}
           </button>

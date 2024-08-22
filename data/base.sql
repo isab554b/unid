@@ -54,6 +54,7 @@ INSERT INTO card_types (clipcard_type_id, clipcard_type_title, clipcard_type_tim
 -- SUBSCRIPTIONS
 CREATE TABLE IF NOT EXISTS subscriptions (
 	subscription_id	    INTEGER NOT NULL UNIQUE,
+	subscription_price	INTEGER NOT NULL,
 	created_at	        TEXT NOT NULL,
 	deleted_at			TEXT,
 	is_active			INTEGER NOT NULL CHECK (is_active IN (0, 1)),
