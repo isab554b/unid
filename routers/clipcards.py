@@ -252,17 +252,6 @@ def clipcards():
         logger.info(f"Completed {page_name}")
 
 
-##############################
-#   GENERATE CSRF TOKEN
-load_dotenv()
-secret_key = os.getenv('SECRET_KEY')
-
-def generate_csrf_token(secret_key):
-    csrf_token = base64.urlsafe_b64encode(os.urandom(32)).decode('utf-8')
-    signature = hmac.new(secret_key.encode(), csrf_token.encode(), hashlib.sha256).hexdigest()
-    signed_token = f"{csrf_token}.{signature}"
-    return signed_token
-
 
 ##############################
 #   ADMIN CLIPCARDS

@@ -4,23 +4,43 @@
   >
     <!-- prettier-ignore -->
     % if "user_role_id" in user:
-      % if user["user_role_id"] == 1:
+    <!-- prettier-ignore -->
+    % if user["user_role_id"] == 1:
     <p id="content_box_header_text">
       Velkommen, {{ first_name }} {{ last_name }}!
     </p>
-    % if current_user and not current_user.get('has_active_clipcard'):
+    <!-- prettier-ignore -->
+    % if current_user:
+    <!-- prettier-ignore -->
+    % if current_user.get('has_active_clipcard') and current_user.get('has_active_subscription'):
     <div class="flex gap-1 text-sm">
-      <p>Du har ikke noget klippekort endnu</p>
+      <p>Du har et aktivt</p>
+      <p class="font-bold">klippekort</p>
+      <p>og et</p>
+      <p class="font-bold">abonnement</p>
     </div>
+    <!-- prettier-ignore -->
+    % elif current_user.get('has_active_clipcard'):
+    <div class="flex gap-1 text-sm">
+      <p>Du har et aktivt</p>
+      <p class="font-bold">klippekort</p>
+    </div>
+    <!-- prettier-ignore -->
+    % elif current_user.get('has_active_subscription'):
+    <div class="flex gap-1 text-sm">
+      <p>Du har et aktivt</p>
+      <p class="font-bold">abonnement</p>
+    </div>
+    <!-- prettier-ignore -->
     % else:
     <div class="flex gap-1 text-sm">
-      <p>Du har</p>
-      <p class="font-bold">1 aktivt</p>
-      <p>klippekort</p>
+      <p>Du har ikke noget klippekort eller abonnement endnu</p>
     </div>
     <!-- prettier-ignore -->
     % end
-      % elif user["user_role_id"] == 2:
+        % end
+    <!-- prettier-ignore -->
+    % elif user["user_role_id"] == 2:
     <p id="content_box_header_text">
       Velkommen, {{ first_name }} {{ last_name }}!
     </p>
@@ -28,13 +48,14 @@
       <p>Du er logget ind som</p>
       <p class="font-bold">admin</p>
     </div>
+    % end
     <!-- prettier-ignore -->
     % end
-    % end
   </div>
+
   <!-- prettier-ignore -->
   % if user["user_role_id"] == 1: 
-  % if current_user and not current_user.get('has_active_clipcard') and "user_role_id" in user:
+    % if current_user and not current_user.get('has_active_clipcard') and "user_role_id" in user:
   <div class="space-y-8">
     <div>
       <div id="content_box_styling">
@@ -64,7 +85,7 @@
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- prettier-ignore -->
     % include('components/profile/profile_box', box_icon=global_content['ui_icons']['hourglass'], box_title='Tid tilbage', box_content_big=remaining_hours, box_content_medium='timer', box_content_small=remaining_minutes, box_content_xsmall='minutter')
-    % include('components/profile/profile_box', box_icon=global_content['ui_icons']['stop_watch'], box_title='Tid brugt', box_content_big=time_used_hours, box_content_medium='timer', box_content_small=time_used_minutes, box_content_xsmall='minutter')
+      % include('components/profile/profile_box', box_icon=global_content['ui_icons']['stop_watch'], box_title='Tid brugt', box_content_big=time_used_hours, box_content_medium='timer', box_content_small=time_used_minutes, box_content_xsmall='minutter')
   </div>
   <!-- prettier-ignore -->
   % end
@@ -74,9 +95,9 @@
     <!-- prettier-ignore -->
     % if "user_role_id" in user: 
       % if  user["user_role_id"] == 2: 
-      % include('components/profile/profile_box', box_icon=global_content['ui_icons']['folder_open'], box_title='Åbne klippekort', box_content_big=active_clipcards_count, box_content_medium='klippekort', box_content_small='', box_content_xsmall='')
-      % include('components/profile/profile_box', box_icon=global_content['ui_icons']['folder_closed'], box_title='Lukkede klippekort', box_content_big=inactive_clipcards_count, box_content_medium='klippekort', box_content_small='', box_content_xsmall='') 
-    % end 
-  % end
+        % include('components/profile/profile_box', box_icon=global_content['ui_icons']['folder_open'], box_title='Åbne klippekort', box_content_big=active_clipcards_count, box_content_medium='klippekort', box_content_small='', box_content_xsmall='')
+        % include('components/profile/profile_box', box_icon=global_content['ui_icons']['folder_closed'], box_title='Lukkede klippekort', box_content_big=inactive_clipcards_count, box_content_medium='klippekort', box_content_small='', box_content_xsmall='') 
+      % end 
+    % end
   </div>
 </div>

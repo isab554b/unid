@@ -269,8 +269,9 @@ function deleteMessage(button) {
 }
 
 // ##############################
-// ADMIN_CLIPCARDS.HTML
+// ADMIN CLIPCARDS AND SUBSCRIPTIONS
 
+// ADMIN DELETE CLIPCARDS
 // Handles deleting clipcards from the admin interface.
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-button")) {
@@ -300,6 +301,41 @@ function deleteClipcard(clipcardId) {
     .catch((error) => {
       console.error("Fejl:", error);
       alert("Der opstod en fejl ved sletning af klippekortet.");
+    });
+}
+
+// ADMIN DELETE SUBSCRIPTIONS
+// Handles deleting subscriptions from the admin interface.
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-subscription-button")) {
+    // Retrieve the subscription ID
+    var subscriptionId = event.target.getAttribute("data-subscription-id");
+    deleteSubscription(subscriptionId);
+  }
+});
+
+// Send a DELETE request to the server to delete the subscription
+function deleteSubscription(subscriptionId) {
+  fetch("/delete_subscription/" + subscriptionId, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Find the subscription element in the DOM and remove it
+        var subscriptionElement = document.getElementById(
+          "subscription_" + subscriptionId
+        );
+        if (subscriptionElement) {
+          subscriptionElement.remove();
+        }
+      } else {
+        // If the request fails, throw an error
+        throw new Error("Kunne ikke slette abonnementet.");
+      }
+    })
+    .catch((error) => {
+      console.error("Fejl:", error);
+      alert("Der opstod en fejl ved sletning af abonnementet.");
     });
 }
 

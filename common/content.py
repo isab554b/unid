@@ -28,6 +28,7 @@ global_content = {
         "admin": "admin.svg",
         "burger": "burger.svg",
         "card": "card.svg",
+        "cart": "cart.svg",
         "checkmark": "checkmark.svg",
         "checkmark_full": "checkmark_full.svg",
         "discount": "discount.svg",
