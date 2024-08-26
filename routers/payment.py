@@ -93,65 +93,6 @@ def create_checkout_session():
 
 
 ##############################
-#   SUBSCRIPTION CHECKOUT SESSION
-# Function to extract price from a string
-def extract_price(price_str):
-    # Regex to match the numeric part before any non-numeric characters
-    match = re.match(r'(\d+)', price_str)
-    if match:
-        return float(match.group(1))
-    else:
-        raise ValueError("Price format is incorrect")
-    
-#   Set Stripe API key from environment variable
-stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
-
-@post('/create_subscription_checkout_session')
-def create_subscription_checkout_session():
-    try:
-        # Retrieve data from the request
-        data = request.json
-        subscription_type = data.get('subscription_type')
-        subscription_price_str = data.get('subscription_price')
-
-        # Extract the numeric price
-        subscription_price = extract_price(subscription_price_str)
-
-        # Create a product in Stripe if it doesn't already exist
-        product = stripe.Product.create(name=subscription_type)
-
-        # Create a price object in Stripe for the subscription
-        price = stripe.Price.create(
-            unit_amount=int(subscription_price * 100),  # convert to øre
-            currency='dkk',
-            recurring={'interval': 'month'},
-            product=product.id,
-        )
-
-        # Create Stripe checkout session for subscription
-        session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price': price.id,
-                'quantity': 1,
-            }],
-            mode='subscription',
-            success_url='http://127.0.0.1:2500/subscription_success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://127.0.0.1:2500/cancel',
-            metadata={
-                'subscription_type': subscription_type,
-            }
-        )
-
-        return {'id': session.id}
-    except Exception as e:
-        logger.error(f"Error creating Stripe checkout session: {e}")
-        response.status = 500
-        return {"error": "Internal Server Error"}
-
-
-
-##############################
 #   CLIPCARD CHECKOUT SESSION SUCCES
 @get('/success')
 def payment_success():
@@ -228,39 +169,111 @@ def payment_success():
             logger.info("Database connection closed")
 
 ##############################
-#   CLIPCARD & SUBSCRIPTION CHECKOUT SESSION SUCCES
+#   SUBSCRIPTION CHECKOUT SESSION
+# Function to extract price from a string
+def extract_price(price_str):
+    # Regex to match the numeric part before any non-numeric characters
+    match = re.match(r'(\d+)', price_str)
+    if match:
+        return float(match.group(1))
+    else:
+        raise ValueError("Price format is incorrect")
+    
+#   Set Stripe API key from environment variable
+stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
+
+@post('/create_subscription_checkout_session')
+def create_subscription_checkout_session():
+    try:
+        # Retrieve data from the request
+        data = request.json
+        subscription_type = data.get('subscription_type')
+        subscription_price_str = data.get('subscription_price')
+
+        # Extract the numeric price
+        subscription_price = extract_price(subscription_price_str)
+
+        # Create a product in Stripe if it doesn't already exist
+        product = stripe.Product.create(name=subscription_type)
+
+        # Create a price object in Stripe for the subscription
+        price = stripe.Price.create(
+            unit_amount=int(subscription_price * 100),  # convert to øre
+            currency='dkk',
+            recurring={'interval': 'month'},
+            product=product.id,
+        )
+
+        # Create Stripe checkout session for subscription
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price': price.id,
+                'quantity': 1,
+            }],
+            mode='subscription',
+            success_url='http://127.0.0.1:2500/subscription_success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://127.0.0.1:2500/cancel',
+            metadata={
+                'subscription_type': subscription_type,
+            }
+        )
+
+        return {'id': session.id}
+    except Exception as e:
+        logger.error(f"Error creating Stripe checkout session: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
+
+##############################
+#   SUBSCRIPTION CHECKOUT SESSION SUCCES
 @get('/subscription_success')
 def subscription_success():
     try:
         session_id = request.query.get('session_id')
+        
+        # Retrieve the Stripe session using the session_id
         session = stripe.checkout.Session.retrieve(session_id)
-
+        
+        # Check if the payment status is 'paid'
         if session.payment_status == 'paid':
             current_user = get_current_user()
             user_id = current_user['user_id']
+            
+            # Get subscription ID from the session (if available)
+            subscription_id = session.get('subscription')
+            
+            if not subscription_id:
+                raise ValueError("No subscription ID found in the session.")
 
+            # Calculate subscription price and other details
             subscription_price = session.amount_total / 100  # convert from øre to DKK
             amount_paid = subscription_price
             payment_id = str(uuid.uuid4())
-            subscription_id = str(uuid.uuid4())
             created_at = int(time.time())
             is_active = 1
-
-            # Add binding period logic here
-            binding_period_months = 3
-            binding_period_end = created_at + (binding_period_months * 30 * 24 * 60 * 60)
-
+            
+            # Connect to the database
             db = master.db()
             cursor = db.cursor()
+            
+            # Insert payment details
+            cursor.execute("""
+                INSERT INTO subscriptions_payments (payment_id, user_id, subscription_id, amount_paid, created_at)
+                VALUES (?, ?, ?, ?, ?)
+            """, (payment_id, user_id, subscription_id, amount_paid, created_at))
+            
+            # Insert subscription details
+            cursor.execute("""
+                INSERT INTO subscriptions (subscription_id, subscription_price, created_at, is_active)
+                VALUES (?, ?, ?, ?)
+            """, (subscription_id, amount_paid, created_at, is_active))
 
-            cursor.execute("INSERT INTO subscriptions_payments (payment_id, user_id, subscription_id, amount_paid, created_at) VALUES (?, ?, ?, ?, ?)",
-                           (payment_id, user_id, subscription_id, amount_paid, created_at))
-            cursor.execute("INSERT INTO subscriptions (subscription_id, subscription_price, created_at, is_active, binding_period_end) VALUES (?, ?, ?, ?, ?)",
-                           (subscription_id, amount_paid, created_at, is_active, binding_period_end))
-
+            # Commit changes
             db.commit()
             cursor.close()
-
+            
+            # Return confirmation template
             return template("subscription_confirmation",
                             title="Confirmation",
                             amount_paid=amount_paid,
@@ -269,17 +282,16 @@ def subscription_success():
                             payment_id=payment_id,
                             profile_content=profile_content,
                             )
-
     except Exception as e:
         if "db" in locals():
             db.rollback()
         logger.error(f"Error during payment success handling: {e}")
         response.status = 500
         return {"error": "Internal Server Error"}
-
     finally:
         if "db" in locals():
             db.close()
+
 
 
 

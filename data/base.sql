@@ -54,12 +54,11 @@ INSERT INTO card_types (clipcard_type_id, clipcard_type_title, clipcard_type_tim
 -- SUBSCRIPTIONS
 DROP TABLE IF EXISTS subscriptions;
 CREATE TABLE IF NOT EXISTS subscriptions (
-	subscription_id	    INTEGER NOT NULL UNIQUE,
-	subscription_price	INTEGER NOT NULL,
-	created_at	        TEXT NOT NULL,
-	deleted_at			TEXT,
-	is_active			INTEGER NOT NULL CHECK (is_active IN (0, 1)),
-	binding_period_end	INTEGER NOT NULL,
+	subscription_id	    	INTEGER NOT NULL UNIQUE,
+	subscription_price		INTEGER NOT NULL,
+	created_at	        	TEXT NOT NULL,
+	deleted_at				TEXT,
+	is_active				INTEGER NOT NULL CHECK (is_active IN (0, 1)),
 	PRIMARY KEY(subscription_id)
 ) WITHOUT ROWID;
 

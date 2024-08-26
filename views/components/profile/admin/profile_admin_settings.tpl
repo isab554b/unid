@@ -41,6 +41,7 @@
                     <p id="form_label">Køb:</p>
                     <p class="text-base font-medium">
                       {{ customer["clipcard_type"] }}
+                      {{ customer["subscription"] }}
                     </p>
                   </div>
                   <p class="font-medium">

@@ -69,7 +69,7 @@
     % end
   </div>
 </div>
-<!-- IF USER HAVE SUBSCRIPTION -->
+<!-- IF USER HAS SUBSCRIPTION -->
 % else:
 <div class="space-y-8">
   <div class="space-y-2">
@@ -119,7 +119,29 @@
           </div>
         </div>
       </div>
+      <!-- prettier-ignore -->
+      % if can_cancel:
+      <div class="flex w-full">
+        <div class="justify-start flex items-center text-red-600">
+          <button
+            id="cancel-subscription-button"
+            type="button"
+            class="items-center flex gap-1.5 text-sm font-semibold"
+          >
+            <div id="icon_small">
+              % include(global_content['ui_icons']['trashcan'])
+            </div>
+            Opsig abonnement
+          </button>
+        </div>
+      </div>
+      % else:
+      <p class="text-unidPurple text-sm">
+        Du kan først opsige dit abonnement efter 1 time.
+      </p>
+      % end
     </div>
+    % end
   </div>
 </div>
 % end

@@ -639,3 +639,35 @@ async function handleSubscriptionButtonClick(button) {
 document.querySelectorAll(".buy-button").forEach((button) => {
   button.addEventListener("click", () => handleSubscriptionButtonClick(button));
 });
+
+// ##############################
+// CANCEL SUBSCRIPTION
+$(document).ready(function () {
+  console.log("DOM fully loaded and parsed.");
+
+  $("#cancel-subscription-button").click(function () {
+    console.log("Cancel button clicked.");
+
+    $.ajax({
+      url: "/cancel_subscription",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        // Tilføj eventuelt nødvendig data her
+      }),
+      success: function (response) {
+        console.log("Server response:", response);
+        if (response.status === "success") {
+          alert("Abonnementet er opsagt.");
+          location.reload();
+        } else {
+          alert("Der skete en fejl: " + response.message);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+        console.error("Response text:", xhr.responseText);
+      },
+    });
+  });
+});

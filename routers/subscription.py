@@ -1,9 +1,10 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import get, template, delete
+from bottle import get, template, delete, post
 import time
 import logging
+import stripe
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -135,7 +136,7 @@ def admin_subscriptions_get():
         logger.info(f"Completed {page_name}")
 
 ##############################
-#   DELETE SUBSCRIPTION
+#   ADMIN DELETE SUBSCRIPTION
 @delete('/delete_subscription/<subscription_id>')
 def delete_subscription(subscription_id):
 
@@ -188,3 +189,55 @@ def delete_subscription(subscription_id):
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {function_name}")
+
+
+##############################
+#  CUSTOMER CANCEL SUBSCRIPTION
+@post('/cancel_subscription')
+def cancel_subscription():
+    try:
+        # Læs JSON-data fra anmodningen
+        data = request.json
+
+        # Eksempel på forventede data (tilpas efter behov)
+        subscription_id = data.get('subscription_id')
+        
+        if not subscription_id:
+            response.status = 400
+            return {"status": "error", "message": "No subscription ID provided"}
+
+        # Fortsæt med at opsige abonnementet
+        user = get_current_user()
+        if not user:
+            response.status = 400
+            return {"status": "error", "message": "No user found"}
+
+        # Fortsæt med at opsige abonnementet hos Stripe
+        stripe.Subscription.delete(subscription_id)
+
+        # Opdater din database
+        db = master.db()
+        cursor = db.cursor()
+
+        cursor.execute("""
+            UPDATE subscription 
+            SET is_active = 0, deleted_at = ? 
+            WHERE subscription_id = ?
+        """, (datetime.datetime.now(), subscription_id))
+
+        db.commit()
+        cursor.close()
+
+        return {"status": "success", "message": "Subscription canceled successfully"}
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+        print(f"Error: {e}")
+        response.status = 500
+        return {"status": "error", "message": f"Internal server error: {str(e)}"}
+    finally:
+        if "db" in locals():
+            db.close()
+
+
+

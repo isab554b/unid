@@ -3,6 +3,8 @@
 #   Library imports
 from bottle import get, template, route, HTTPResponse
 import logging
+from datetime import datetime
+import time
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -156,14 +158,27 @@ def profile():
         # Handle cases that require detailed user information
         if current_user:
             db = master.db()
-            subscription_info = db.execute("SELECT subscription_id FROM subscriptions_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
-            if subscription_info and subscription_info['subscription_id']:
-                has_active_subscription = db.execute("""
-                    SELECT COUNT(*) AS active_subscriptions
-                    FROM subscriptions
-                    WHERE subscription_id = ? AND is_active = 1
-                """, (subscription_info['subscription_id'],)).fetchone()['active_subscriptions'] > 0
-                current_user['has_active_subscription'] = has_active_subscription
+            subscription_info = db.execute("""
+                SELECT s.subscription_id, s.created_at
+                FROM subscriptions s
+                JOIN subscriptions_payments sp ON s.subscription_id = sp.subscription_id
+                WHERE sp.user_id = ? AND s.is_active = 1
+                LIMIT 1
+            """, (current_user['user_id'],)).fetchone()
+
+            if subscription_info:
+                subscription_start_time = int(subscription_info['created_at'])  # Assume created_at is in epox timestamp format
+                current_time = time.time()  # Current time in epox timestamp
+
+                # Calculate time difference
+                time_difference = current_time - subscription_start_time
+                # Check if it's been more than 1 hour (3600 seconds)
+                can_cancel = time_difference > 60
+
+                current_user['has_active_subscription'] = True
+            else:
+                can_cancel = False
+                current_user['has_active_subscription'] = False
 
 
         # Show template
@@ -185,6 +200,7 @@ def profile():
                         time_used_minutes=data['time_used_minutes'],
                         user=data['user'],
                         username=data['username'],
+                        can_cancel=can_cancel
                         )
 
     except Exception as e:
@@ -233,14 +249,27 @@ def profile_template(template_name):
         # Handle cases that require detailed user information
         if current_user:
             db = master.db()
-            subscription_info = db.execute("SELECT subscription_id FROM subscriptions_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
-            if subscription_info and subscription_info['subscription_id']:
-                has_active_subscription = db.execute("""
-                    SELECT COUNT(*) AS active_subscriptions
-                    FROM subscriptions
-                    WHERE subscription_id = ? AND is_active = 1
-                """, (subscription_info['subscription_id'],)).fetchone()['active_subscriptions'] > 0
-                current_user['has_active_subscription'] = has_active_subscription
+            subscription_info = db.execute("""
+                SELECT s.subscription_id, s.created_at
+                FROM subscriptions s
+                JOIN subscriptions_payments sp ON s.subscription_id = sp.subscription_id
+                WHERE sp.user_id = ? AND s.is_active = 1
+                LIMIT 1
+            """, (current_user['user_id'],)).fetchone()
+
+            if subscription_info:
+                subscription_start_time = int(subscription_info['created_at'])  # Assume created_at is in epox timestamp format
+                current_time = time.time()  # Current time in epox timestamp
+
+                # Calculate time difference
+                time_difference = current_time - subscription_start_time
+                # Check if it's been more than 1 hour (3600 seconds)
+                can_cancel = time_difference > 60
+
+                current_user['has_active_subscription'] = True
+            else:
+                can_cancel = False
+                current_user['has_active_subscription'] = False
 
             # Adjust relative path for rendering
             relative_path = template_path.replace('views/', '').replace('.tpl', '')
@@ -260,12 +289,13 @@ def profile_template(template_name):
                             time_used_minutes=data['time_used_minutes'],
                             user=data['user'],
                             username=data['username'],
-                            )    
+                            can_cancel=can_cancel
+                            )
             
         # General template rendering for other templates
         else:
             relative_path = template_path.replace('views/', '').replace('.tpl', '')
-            logger.success(f"Succesfully showing template for {function_name}")
+            logger.success(f"Successfully showing template for {function_name}")
             return template(relative_path,
                             title="Din profil",
                             # A-Z
@@ -283,6 +313,7 @@ def profile_template(template_name):
                             services_and_prices_content=services_and_prices_content,
                             user=data['user'],
                             username=data['username'],
+                            can_cancel=can_cancel
                             )
 
     except Exception as e:
