@@ -135,7 +135,7 @@ def admin_subscriptions_get():
         logger.info(f"Completed {page_name}")
 
 ##############################
-#   DELETE SUBSCRIPTION
+#  ADMIN DELETE SUBSCRIPTION
 @delete('/delete_subscription/<subscription_id>')
 def delete_subscription(subscription_id):
 
