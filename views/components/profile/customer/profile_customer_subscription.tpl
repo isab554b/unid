@@ -77,10 +77,49 @@
       <!-- prettier-ignore -->
       {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["decorative_header_text"] }}
     </p>
-    <h2>
-      <!-- prettier-ignore -->
-      {{ profile_content["customer_specific_content"]["profile_customer_subscription"]["header_text"] }}
-    </h2>
+    <h2>Dit abonnement</h2>
+  </div>
+  <div id="content_box_styling">
+    <div id="content_box_header_styling">
+      <p id="content_box_header_text">Abonnement</p>
+    </div>
+    <div class="flex flex-col gap-8 p-6 text-unidPurple">
+      <!-- USER -->
+      <div class="space-y-2 text-sm">
+        <div class="space-y-1">
+          <p id="form_label">Dit abonnement indeholder:</p>
+          <hr />
+        </div>
+        <div class="space-y-2">
+          <div class="flex gap-2">
+            <div class="text-unidPurple w-5 h-5">
+              % include(global_content['ui_icons']['checkmark'])
+            </div>
+            <p>Kontrol af ydeevne og hastighed for hjemmesiden</p>
+          </div>
+          <div class="flex gap-2">
+            <div class="text-unidPurple w-5 h-5">
+              % include(global_content['ui_icons']['checkmark'])
+            </div>
+            <p>Opdatering af tema og plugins</p>
+          </div>
+          <div class="flex gap-2">
+            <div class="text-unidPurple w-5 h-5">
+              % include(global_content['ui_icons']['checkmark'])
+            </div>
+            <p>Overvågning af website med Google Search Console</p>
+          </div>
+          <div class="flex gap-2">
+            <div class="text-unidPurple w-5 h-5">
+              % include(global_content['ui_icons']['checkmark'])
+            </div>
+            <p>
+              30 minutters sparring / vores ekspertise til udbedring af fejl
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 % end

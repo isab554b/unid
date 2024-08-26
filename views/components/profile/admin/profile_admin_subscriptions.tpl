@@ -13,17 +13,17 @@
     <!-- prettier-ignore -->
     % if active_subscriptions:
         % for subscription in active_subscriptions:
-    <div id="clipcard_{{ clipcard['clipcard_id'] }}">
+    <div id="subscription_{{ subscription['subscription_id'] }}">
       <div id="content_box_styling">
         <div id="content_box_header_styling">
           <div
             class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
           >
             <div id="icon_medium" class="fill-unidPurple">
-              % include(global_content['ui_icons']['card'])
+              % include(global_content['ui_icons']['cart'])
             </div>
             <p id="content_box_header_text">
-              {{ clipcard["first_name"] }} {{ clipcard["last_name"] }}
+              {{ subscription["first_name"] }} {{ subscription["last_name"] }}
             </p>
           </div>
         </div>
@@ -37,19 +37,22 @@
             <div class="space-y-2">
               <div class="flex gap-2">
                 <p class="font-semibold">Navn:</p>
-                <p>{{ clipcard["first_name"] }} {{ clipcard["last_name"] }}</p>
+                <p>
+                  {{ subscription["first_name"] }}
+                  {{ subscription["last_name"] }}
+                </p>
               </div>
               <div class="flex gap-2">
                 <p class="font-semibold">Brugernavn:</p>
-                <p>{{ clipcard["username"] }}</p>
+                <p>{{ subscription["username"] }}</p>
               </div>
               <div class="flex gap-2">
                 <p class="font-semibold">Telefon:</p>
-                <p>{{ clipcard["phone"] }}</p>
+                <p>{{ subscription["phone"] }}</p>
               </div>
               <div class="flex gap-2">
                 <p class="font-semibold">Email:</p>
-                <p>{{ clipcard["email"] }}</p>
+                <p>{{ subscription["email"] }}</p>
               </div>
             </div>
           </div>
@@ -62,49 +65,28 @@
             <div class="space-y-2">
               <div class="flex gap-2">
                 <p class="font-semibold">Navn:</p>
-                <p>{{ clipcard["website_name"] }}</p>
+                <p>{{ subscription["website_name"] }}</p>
               </div>
               <div class="flex gap-2">
                 <p class="font-semibold">URL:</p>
-                <p>{{ clipcard["website_url"] }}</p>
+                <p>{{ subscription["website_url"] }}</p>
               </div>
             </div>
           </div>
           <!-- CLIPCARD -->
           <div class="space-y-2 text-sm">
             <div class="space-y-1">
-              <p id="form_label">Klippekortoplysninger</p>
+              <p id="form_label">Abonnementsoplysninger</p>
               <hr />
             </div>
             <div class="space-y-2">
               <div class="gap-2">
-                <p class="font-semibold">Klippekort ID:</p>
-                <p>{{ clipcard["clipcard_id"] }}</p>
-              </div>
-              <div class="flex gap-2">
-                <p class="font-semibold">Klippekorttype:</p>
-                <p>{{ clipcard["clipcard_type_title"] }}</p>
+                <p class="font-semibold">Abonnement ID:</p>
+                <p>{{ subscription["subscription_id"] }}</p>
               </div>
               <div class="flex gap-2">
                 <p class="font-semibold">Købt den:</p>
-                <p>{{ clipcard["formatted_created_at"] }}</p>
-              </div>
-            </div>
-          </div>
-          <!-- TIME -->
-          <div class="space-y-2 text-sm">
-            <div class="space-y-1">
-              <p id="form_label">Timeoverblik</p>
-              <hr />
-            </div>
-            <div class="space-y-2">
-              <div class="flex gap-2">
-                <p class="font-semibold">Tid brugt:</p>
-                <p>{{ clipcard["time_used_text"] }}</p>
-              </div>
-              <div class="flex gap-2">
-                <p class="font-semibold">Tid tilbage:</p>
-                <p>{{ clipcard["remaining_time_text"] }}</p>
+                <p>{{ subscription["formatted_created_at"] }}</p>
               </div>
             </div>
           </div>
@@ -112,8 +94,8 @@
             <div class="justify-end flex items-center">
               <button
                 type="button"
-                class="delete-button items-center flex gap-1.5 text-sm font-semibold"
-                data-clipcard-id="{{ clipcard['clipcard_id'] }}"
+                class="delete-subscription-button items-center flex gap-1.5 text-sm font-semibold"
+                data-subscription-id="{{ subscription['subscription_id'] }}"
               >
                 <div id="icon_small">
                   % include(global_content['ui_icons']['trashcan'])

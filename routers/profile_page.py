@@ -153,6 +153,18 @@ def profile():
                 """, (clipcard_info['clipcard_id'],)).fetchone()['active_clipcards'] > 0
                 current_user['has_active_clipcard'] = has_active_clipcard
 
+        # Handle cases that require detailed user information
+        if current_user:
+            db = master.db()
+            subscription_info = db.execute("SELECT subscription_id FROM subscriptions_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
+            if subscription_info and subscription_info['subscription_id']:
+                has_active_subscription = db.execute("""
+                    SELECT COUNT(*) AS active_subscriptions
+                    FROM subscriptions
+                    WHERE subscription_id = ? AND is_active = 1
+                """, (subscription_info['subscription_id'],)).fetchone()['active_subscriptions'] > 0
+                current_user['has_active_subscription'] = has_active_subscription
+
 
         # Show template
         logger.success(f"Succesfully showing template for {page_name}")
@@ -217,6 +229,18 @@ def profile_template(template_name):
                         WHERE clipcard_id = ? AND is_active = 1
                     """, (clipcard_info['clipcard_id'],)).fetchone()['active_clipcards'] > 0
                     current_user['has_active_clipcard'] = has_active_clipcard
+        
+        # Handle cases that require detailed user information
+        if current_user:
+            db = master.db()
+            subscription_info = db.execute("SELECT subscription_id FROM subscriptions_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
+            if subscription_info and subscription_info['subscription_id']:
+                has_active_subscription = db.execute("""
+                    SELECT COUNT(*) AS active_subscriptions
+                    FROM subscriptions
+                    WHERE subscription_id = ? AND is_active = 1
+                """, (subscription_info['subscription_id'],)).fetchone()['active_subscriptions'] > 0
+                current_user['has_active_subscription'] = has_active_subscription
 
             # Adjust relative path for rendering
             relative_path = template_path.replace('views/', '').replace('.tpl', '')

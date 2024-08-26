@@ -1,7 +1,8 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import get, template, HTTPResponse
+from bottle import get, template, delete
+import time
 import logging
 
 #   Local application imports
@@ -64,15 +65,15 @@ def admin_subscriptions_get():
             return "Template not found."
         relative_path = template_path.replace('views/', '').replace('.tpl', '')  # Normalize the template path
 
-        # Retrieve information about active clipcards
+        # Retrieve information about active subscriptions
         cursor = db.cursor()
         cursor.execute("""
             SELECT subscriptions.subscription_id, subscriptions.created_at,
                    users.user_id, users.first_name, users.last_name, users.username, users.email, users.phone,
                    customers.website_name, customers.website_url
             FROM subscriptions
-            JOIN payments ON subscriptions.subscription_id = payments.subscription_id
-            JOIN users ON payments.user_id = users.user_id
+            JOIN subscriptions_payments ON subscriptions.subscription_id = subscriptions_payments.subscription_id
+            JOIN users ON subscriptions_payments.user_id = users.user_id
             JOIN customers ON users.user_id = customers.customer_id
             WHERE subscriptions.is_active = 1;
         """)
@@ -93,8 +94,10 @@ def admin_subscriptions_get():
         active_customers = []
         for subscription in active_subscriptions:
             try:
-                
-                # Collect user information conneced with clipcard
+                # Convert time used and remaining time (from minutes to hours and minutes)
+                subscription['formatted_created_at'] = format_created_at(subscription['created_at'])
+
+                # Collect user information conneced with subscription
                 active_customers.append({
                     'user_id': subscription['user_id'],
                     'first_name': subscription['first_name'],
@@ -130,3 +133,58 @@ def admin_subscriptions_get():
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {page_name}")
+
+##############################
+#   DELETE SUBSCRIPTION
+@delete('/delete_subscription/<subscription_id>')
+def delete_subscription(subscription_id):
+
+    function_name = "delete_subscription"
+
+    try:
+        # Establish database connection
+        db = master.db()
+        logger.debug(f"Database connection opened for {function_name}")
+
+        cursor = db.cursor()
+
+        # Check if the subscription exists
+        cursor.execute("SELECT * FROM subscriptions WHERE subscription_id = ?", (subscription_id,))
+        existing_subscription = cursor.fetchone()
+
+        # Error if no subscription
+        if existing_subscription is None:
+            logger.error(f"No subscription found with ID: {subscription_id}")
+            return {"info": f"The subscription with id {subscription_id} does not exist."}
+
+        # Info if already has been deleted
+        if existing_subscription["is_active"] == "0":
+            logger.info(f"Subscription {subscription_id} has already been deleted.")
+            return {"info": f"The subscription with id {subscription_id} has already been deleted."}
+
+        # Update clipcard as deleted
+        deleted_at = int(time.time())
+        cursor.execute("""
+            UPDATE subscriptions
+            SET deleted_at = ?, is_active = 0
+            WHERE subscription_id = ?
+        """, (deleted_at, subscription_id))
+
+        # Commit changes to the database
+        db.commit()
+        logger.success(f"{function_name} successful, clipcard {subscription_id} deleted successfully")
+        return {"message": f"{function_name} successful"}
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during {function_name}: {e}")
+        response.status = 500
+        return {"error": "Internal Server Error"}
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed {function_name}")
