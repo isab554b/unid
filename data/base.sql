@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS subscriptions (
 	created_at	        TEXT NOT NULL,
 	deleted_at			TEXT,
 	is_active			INTEGER NOT NULL CHECK (is_active IN (0, 1)),
+	binding_period_end	INTEGER NOT NULL,
 	PRIMARY KEY(subscription_id)
 ) WITHOUT ROWID;
 

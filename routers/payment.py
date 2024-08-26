@@ -117,24 +117,29 @@ def create_subscription_checkout_session():
         # Extract the numeric price
         subscription_price = extract_price(subscription_price_str)
 
-        # Create Stripe checkout session
+        # Create a product in Stripe if it doesn't already exist
+        product = stripe.Product.create(name=subscription_type)
+
+        # Create a price object in Stripe for the subscription
+        price = stripe.Price.create(
+            unit_amount=int(subscription_price * 100),  # convert to øre
+            currency='dkk',
+            recurring={'interval': 'month'},
+            product=product.id,
+        )
+
+        # Create Stripe checkout session for subscription
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[{
-                'price_data': {
-                    'currency': 'dkk',
-                    'product_data': {
-                        'name': subscription_type,
-                    },
-                    'unit_amount': int(subscription_price * 100),  # convert to øre
-                },
+                'price': price.id,
                 'quantity': 1,
             }],
-            mode='payment',
+            mode='subscription',
             success_url='http://127.0.0.1:2500/subscription_success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url='http://127.0.0.1:2500/cancel',
             metadata={
-                'subscription_type': subscription_type,  # Save subscription type in metadata
+                'subscription_type': subscription_type,
             }
         )
 
@@ -143,6 +148,7 @@ def create_subscription_checkout_session():
         logger.error(f"Error creating Stripe checkout session: {e}")
         response.status = 500
         return {"error": "Internal Server Error"}
+
 
 
 ##############################
@@ -230,11 +236,9 @@ def subscription_success():
         session = stripe.checkout.Session.retrieve(session_id)
 
         if session.payment_status == 'paid':
-            # Retrieve current user details
             current_user = get_current_user()
             user_id = current_user['user_id']
 
-            # Retrieve payment details from the form
             subscription_price = session.amount_total / 100  # convert from øre to DKK
             amount_paid = subscription_price
             payment_id = str(uuid.uuid4())
@@ -242,40 +246,33 @@ def subscription_success():
             created_at = int(time.time())
             is_active = 1
 
-            # Establish database connection
-            db = master.db()
-            logger.debug(f"Database connection opened for payment success handling")
+            # Add binding period logic here
+            binding_period_months = 3
+            binding_period_end = created_at + (binding_period_months * 30 * 24 * 60 * 60)
 
-            # Retrieve clipcard type details from database
+            db = master.db()
             cursor = db.cursor()
 
-
-            # Insert payment and clipcard records into the database
             cursor.execute("INSERT INTO subscriptions_payments (payment_id, user_id, subscription_id, amount_paid, created_at) VALUES (?, ?, ?, ?, ?)",
                            (payment_id, user_id, subscription_id, amount_paid, created_at))
-            cursor.execute("INSERT INTO subscriptions (subscription_id, subscription_price, created_at, is_active) VALUES (?, ?, ?, ?)",
-                           (subscription_id, amount_paid, created_at, is_active))
+            cursor.execute("INSERT INTO subscriptions (subscription_id, subscription_price, created_at, is_active, binding_period_end) VALUES (?, ?, ?, ?, ?)",
+                           (subscription_id, amount_paid, created_at, is_active, binding_period_end))
 
-            # Commit changes to the database
             db.commit()
-            logger.success("Payment success handling completed successfully")
             cursor.close()
 
-            # Redirect to a success page or return a success message
             return template("subscription_confirmation",
-                        title="Confirmation",
-                        # A-Z
-                        amount_paid=amount_paid,
-                        created_at=created_at,
-                        global_content=global_content,
-                        payment_id=payment_id,
-                        profile_content=profile_content,
-                        )
+                            title="Confirmation",
+                            amount_paid=amount_paid,
+                            created_at=created_at,
+                            global_content=global_content,
+                            payment_id=payment_id,
+                            profile_content=profile_content,
+                            )
 
     except Exception as e:
         if "db" in locals():
             db.rollback()
-            logger.info("Database transaction rolled back due to exception")
         logger.error(f"Error during payment success handling: {e}")
         response.status = 500
         return {"error": "Internal Server Error"}
@@ -283,6 +280,6 @@ def subscription_success():
     finally:
         if "db" in locals():
             db.close()
-            logger.info("Database connection closed")
+
 
 

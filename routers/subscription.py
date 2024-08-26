@@ -135,11 +135,7 @@ def admin_subscriptions_get():
         logger.info(f"Completed {page_name}")
 
 ##############################
-<<<<<<< HEAD
-#  ADMIN DELETE SUBSCRIPTION
-=======
 #   DELETE SUBSCRIPTION
->>>>>>> 7f84c61a368c38fd61c3933dd24cae7831b98b17
 @delete('/delete_subscription/<subscription_id>')
 def delete_subscription(subscription_id):
 
@@ -191,8 +187,4 @@ def delete_subscription(subscription_id):
         if "db" in locals():
             db.close()
             logger.info("Database connection closed")
-<<<<<<< HEAD
         logger.info(f"Completed {function_name}")
-=======
-        logger.info(f"Completed {function_name}")
->>>>>>> 7f84c61a368c38fd61c3933dd24cae7831b98b17
