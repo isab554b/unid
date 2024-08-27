@@ -1,7 +1,7 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import get, template, delete, post
+from bottle import get, template, delete, jsonify
 import time
 import logging
 import stripe
@@ -191,53 +191,75 @@ def delete_subscription(subscription_id):
         logger.info(f"Completed {function_name}")
 
 
+
 ##############################
 #  CUSTOMER CANCEL SUBSCRIPTION
-@post('/cancel_subscription')
-def cancel_subscription():
+stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
+
+@delete('/cancel_subscription/<subscription_id>')
+def cancel_subscription(subscription_id):
+
+    function_name = "cancel_subscription"
+    logger.debug(f"Function {function_name} called with subscription_id: {subscription_id}")
+
     try:
-        # Læs JSON-data fra anmodningen
-        data = request.json
-
-        # Eksempel på forventede data (tilpas efter behov)
-        subscription_id = data.get('subscription_id')
-        
-        if not subscription_id:
-            response.status = 400
-            return {"status": "error", "message": "No subscription ID provided"}
-
-        # Fortsæt med at opsige abonnementet
-        user = get_current_user()
-        if not user:
-            response.status = 400
-            return {"status": "error", "message": "No user found"}
-
-        # Fortsæt med at opsige abonnementet hos Stripe
-        stripe.Subscription.delete(subscription_id)
-
-        # Opdater din database
+        # Etabler databaseforbindelse
         db = master.db()
+        logger.debug(f"Database connection opened for {function_name}")
+
         cursor = db.cursor()
 
+        # Tjek om abonnementet eksisterer
+        cursor.execute("SELECT * FROM subscriptions WHERE subscription_id = ?", (subscription_id,))
+        existing_subscription = cursor.fetchone()
+        logger.debug(f"Database query result: {existing_subscription}")
+
+        # Fejl hvis abonnementet ikke findes
+        if existing_subscription is None:
+            logger.error(f"No subscription found with ID: {subscription_id}")
+            return {"info": f"The subscription with id {subscription_id} does not exist."}, 404
+
+        # Info hvis allerede er annulleret
+        if existing_subscription["is_active"] == "0":
+            logger.info(f"Subscription {subscription_id} has already been canceled.")
+            return {"info": f"The subscription with id {subscription_id} has already been canceled."}
+
+        # Annuller abonnementet på Stripe
+        stripe_subscription_id = existing_subscription["stripe_subscription_id"]  # Antag at du har gemt Stripe ID'et i databasen
+        logger.debug(f"Stripe subscription ID: {stripe_subscription_id}")
+
+        try:
+            stripe.Subscription.cancel(stripe_subscription_id)
+            logger.info(f"Stripe subscription {stripe_subscription_id} canceled successfully.")
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error while canceling subscription {stripe_subscription_id}: {e}")
+            return {"error": "Failed to cancel subscription on Stripe."}, 500
+
+        # Opdater abonnementet som annulleret i din database
+        deleted_at = int(time.time())
         cursor.execute("""
-            UPDATE subscription 
-            SET is_active = 0, deleted_at = ? 
+            UPDATE subscriptions
+            SET deleted_at = ?, is_active = 0
             WHERE subscription_id = ?
-        """, (datetime.datetime.now(), subscription_id))
+        """, (deleted_at, subscription_id))
+        logger.debug("Database update executed for canceling subscription.")
 
+        # Commit ændringer til databasen
         db.commit()
-        cursor.close()
+        logger.info(f"{function_name} successful, subscription {subscription_id} canceled successfully")
+        return {"message": f"{function_name} successful"}
 
-        return {"status": "success", "message": "Subscription canceled successfully"}
     except Exception as e:
         if "db" in locals():
             db.rollback()
-        print(f"Error: {e}")
-        response.status = 500
-        return {"status": "error", "message": f"Internal server error: {str(e)}"}
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during {function_name}: {e}")
+        return {"error": "Internal Server Error"}, 500
+
     finally:
         if "db" in locals():
             db.close()
-
+            logger.info("Database connection closed")
+        logger.info(f"Completed {function_name}")
 
 

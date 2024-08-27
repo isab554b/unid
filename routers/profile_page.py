@@ -175,6 +175,8 @@ def profile():
                 # Check if it's been more than 1 hour (3600 seconds)
                 can_cancel = time_difference > 60
 
+                # Include subscription_id in current_user
+                current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:
                 can_cancel = False
@@ -266,6 +268,8 @@ def profile_template(template_name):
                 # Check if it's been more than 1 hour (3600 seconds)
                 can_cancel = time_difference > 60
 
+                # Include subscription_id in current_user
+                current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:
                 can_cancel = False

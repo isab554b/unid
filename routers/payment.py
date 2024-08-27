@@ -64,6 +64,9 @@ def create_checkout_session():
         # Remove any non-numeric characters (e.g., ' DKK') to get the numeric value
         clipcard_price = float(clipcard_price_str.replace(' DKK', '').replace('.', '').replace(',', '.'))
 
+        # Add 25% VAT
+        clipcard_price_with_vat = clipcard_price * 1.25
+
         # Create Stripe checkout session
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -73,13 +76,13 @@ def create_checkout_session():
                     'product_data': {
                         'name': clipcard_type,
                     },
-                    'unit_amount': int(clipcard_price * 100),  # convert to øre
+                    'unit_amount': int(clipcard_price_with_vat * 100),  # convert to øre
                 },
                 'quantity': 1,
             }],
             mode='payment',
             success_url='http://127.0.0.1:2500/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://127.0.0.1:2500/cancel',
+            cancel_url='http://127.0.0.1:2500/',
             metadata={
                 'clipcard_type': clipcard_type,  # Save clipcard type in metadata
             }
@@ -90,6 +93,7 @@ def create_checkout_session():
         logger.error(f"Error creating Stripe checkout session: {e}")
         response.status = 500
         return {"error": "Internal Server Error"}
+
 
 
 ##############################
@@ -193,12 +197,15 @@ def create_subscription_checkout_session():
         # Extract the numeric price
         subscription_price = extract_price(subscription_price_str)
 
+        # Add 25% VAT
+        subscription_price_with_vat = subscription_price * 1.25
+
         # Create a product in Stripe if it doesn't already exist
         product = stripe.Product.create(name=subscription_type)
 
         # Create a price object in Stripe for the subscription
         price = stripe.Price.create(
-            unit_amount=int(subscription_price * 100),  # convert to øre
+            unit_amount=int(subscription_price_with_vat * 100),  # convert to øre
             currency='dkk',
             recurring={'interval': 'month'},
             product=product.id,
@@ -213,7 +220,7 @@ def create_subscription_checkout_session():
             }],
             mode='subscription',
             success_url='http://127.0.0.1:2500/subscription_success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://127.0.0.1:2500/cancel',
+            cancel_url='http://127.0.0.1:2500/',
             metadata={
                 'subscription_type': subscription_type,
             }

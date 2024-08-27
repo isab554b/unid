@@ -121,12 +121,13 @@
       </div>
       <!-- prettier-ignore -->
       % if can_cancel:
-      <div class="flex w-full">
-        <div class="justify-start flex items-center text-red-600">
+      <div class="flex w-full justify-end">
+        <div class="flex items-center text-red-600">
           <button
             id="cancel-subscription-button"
             type="button"
             class="items-center flex gap-1.5 text-sm font-semibold"
+            data-subscription-id="{{ current_user['subscription_id'] }}"
           >
             <div id="icon_small">
               % include(global_content['ui_icons']['trashcan'])

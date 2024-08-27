@@ -642,32 +642,61 @@ document.querySelectorAll(".buy-button").forEach((button) => {
 
 // ##############################
 // CANCEL SUBSCRIPTION
-$(document).ready(function () {
-  console.log("DOM fully loaded and parsed.");
-
-  $("#cancel-subscription-button").click(function () {
-    console.log("Cancel button clicked.");
-
-    $.ajax({
-      url: "/cancel_subscription",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({
-        // Tilføj eventuelt nødvendig data her
-      }),
-      success: function (response) {
-        console.log("Server response:", response);
-        if (response.status === "success") {
-          alert("Abonnementet er opsagt.");
-          location.reload();
-        } else {
-          alert("Der skete en fejl: " + response.message);
-        }
-      },
-      error: function (xhr, status, error) {
-        console.error("Error:", error);
-        console.error("Response text:", xhr.responseText);
-      },
-    });
-  });
+document.addEventListener("click", function (event) {
+  const button = event.target.closest("#cancel-subscription-button");
+  if (button) {
+    console.log("Button clicked:", button); // Log knappen, der blev klikket
+    handleSubscriptionButtonClick(button);
+  }
 });
+
+function handleSubscriptionButtonClick(button) {
+  // Hent subscription_id fra data-attributten
+  const subscriptionId = button.getAttribute("data-subscription-id");
+
+  if (!subscriptionId) {
+    console.error("Subscription ID not found.");
+    alert("Subscription ID not found.");
+    return;
+  }
+
+  console.log("Subscription ID retrieved:", subscriptionId); // Log subscription ID
+
+  // Bekræft før du sletter abonnementet
+  if (!confirm("Er du sikker på, at du vil opsige abonnementet?")) {
+    console.log("User canceled the deletion.");
+    return;
+  }
+
+  console.log("User confirmed the deletion."); // Log bekræftelse
+
+  // Send DELETE-anmodning til backend
+  fetch(`/cancel_subscription/${subscriptionId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      console.log("Fetch response status:", response.status); // Log statuskoden
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Server response:", data); // Log server respons for debugging
+      if (data.error) {
+        console.error("Server error message:", data.error); // Log serverfejl
+        alert(`Error: ${data.error}`);
+      } else {
+        alert(data.message);
+        button.style.display = "none"; // Skjul knappen efter vellykket opsigelse
+        console.log("Button hidden after successful cancellation."); // Log skjult knap
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error); // Log fetch-fejl
+      alert("An error occurred while canceling the subscription.");
+    });
+}
