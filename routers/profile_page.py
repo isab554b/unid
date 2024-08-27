@@ -274,6 +274,52 @@ def profile_template(template_name):
             else:
                 can_cancel = False
                 current_user['has_active_subscription'] = False
+            
+            
+        # Retrieve information about active subscriptions
+        cursor = db.cursor()
+        cursor.execute("""
+            SELECT subscriptions.subscription_id, subscriptions.created_at,
+                   users.user_id, users.first_name, users.last_name, users.username, users.email, users.phone,
+                   customers.website_name, customers.website_url
+            FROM subscriptions
+            JOIN subscriptions_payments ON subscriptions.subscription_id = subscriptions_payments.subscription_id
+            JOIN users ON subscriptions_payments.user_id = users.user_id
+            JOIN customers ON users.user_id = customers.customer_id
+            WHERE subscriptions.is_active = 1;
+        """)
+        active_subscriptions = cursor.fetchall()
+        cursor.close()
+
+        if not active_subscriptions:
+            logger.info("No active subscriptions found.")
+            return template(relative_path, 
+                            # A-Z
+                            active_subscriptions=[], 
+                            active_customers=[],
+                            global_content=global_content,
+                            profile_content=profile_content,
+                            )
+
+       
+        active_customers = []
+        for subscription in active_subscriptions:
+            try:
+                # Convert time used and remaining time (from minutes to hours and minutes)
+                subscription['formatted_created_at'] = format_created_at(subscription['created_at'])
+
+                # Collect user information conneced with subscription
+                active_customers.append({
+                    'user_id': subscription['user_id'],
+                    'first_name': subscription['first_name'],
+                    'last_name': subscription['last_name'],
+                    'subscription_id': subscription['subscription_id']
+                })
+
+                logger.success(f"Processed subscription {subscription['subscription_id']} for user {subscription['user_id']}")
+
+            except Exception as e:
+                logger.error(f"Error processing subscription {subscription['subscription_id']}: {e}")
 
             # Adjust relative path for rendering
             relative_path = template_path.replace('views/', '').replace('.tpl', '')
@@ -289,11 +335,12 @@ def profile_template(template_name):
                             remaining_hours=data['remaining_hours'],
                             remaining_minutes=data['remaining_minutes'],
                             services_and_prices_content=services_and_prices_content,
-                            time_used_hours=data['time_used_hours'],
+                            time_used_hours=data['time_used_hours'], 
                             time_used_minutes=data['time_used_minutes'],
                             user=data['user'],
                             username=data['username'],
-                            can_cancel=can_cancel
+                            can_cancel=can_cancel,
+                            active_subscriptions=active_subscriptions,
                             )
             
         # General template rendering for other templates
@@ -317,7 +364,8 @@ def profile_template(template_name):
                             services_and_prices_content=services_and_prices_content,
                             user=data['user'],
                             username=data['username'],
-                            can_cancel=can_cancel
+                            can_cancel=can_cancel,
+                            active_subscriptions=active_subscriptions,
                             )
 
     except Exception as e:

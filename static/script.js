@@ -226,7 +226,6 @@ $(document).ready(function () {
 
 // ##############################
 // ADMIN_MESSAGES.HTML
-
 // Handles deleting messages from the admin interface.
 function deleteMessage(button) {
   // Retrieve the message ID from the button's data attribute
@@ -269,8 +268,6 @@ function deleteMessage(button) {
 }
 
 // ##############################
-// ADMIN CLIPCARDS AND SUBSCRIPTIONS
-
 // ADMIN DELETE CLIPCARDS
 // Handles deleting clipcards from the admin interface.
 document.addEventListener("click", function (event) {
@@ -304,22 +301,28 @@ function deleteClipcard(clipcardId) {
     });
 }
 
+// ##############################
 // ADMIN DELETE SUBSCRIPTIONS
 // Handles deleting subscriptions from the admin interface.
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-subscription-button")) {
     // Retrieve the subscription ID
     var subscriptionId = event.target.getAttribute("data-subscription-id");
+    console.log("Subscription ID to delete:", subscriptionId); // Log subscription ID
     deleteSubscription(subscriptionId);
   }
 });
 
 // Send a DELETE request to the server to delete the subscription
 function deleteSubscription(subscriptionId) {
-  fetch("/delete_subscription/" + subscriptionId, {
+  const url = "/delete_subscription/" + subscriptionId;
+  console.log("Sending DELETE request to:", url); // Log the URL being called
+
+  fetch(url, {
     method: "DELETE",
   })
     .then((response) => {
+      console.log("Server response status:", response.status); // Log the response status
       if (response.ok) {
         // Find the subscription element in the DOM and remove it
         var subscriptionElement = document.getElementById(
@@ -327,18 +330,25 @@ function deleteSubscription(subscriptionId) {
         );
         if (subscriptionElement) {
           subscriptionElement.remove();
+          console.log("Subscription element removed from the DOM."); // Log successful removal
         }
       } else {
         // If the request fails, throw an error
+        console.error(
+          "Failed to delete subscription. Server returned:",
+          response.statusText
+        ); // Log the server's error message
         throw new Error("Kunne ikke slette abonnementet.");
       }
     })
     .catch((error) => {
-      console.error("Fejl:", error);
+      console.error("Fejl:", error); // Log the caught error
       alert("Der opstod en fejl ved sletning af abonnementet.");
     });
 }
 
+// ##############################
+// TASKS
 // Handles form submission for tasks
 $(document).ready(function () {
   $("body").on("click", "#submitTaskButton", function () {
