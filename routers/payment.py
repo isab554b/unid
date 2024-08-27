@@ -177,13 +177,13 @@ def payment_success():
 # Function to extract price from a string
 def extract_price(price_str):
     # Regex to match the numeric part before any non-numeric characters
-    match = re.match(r'(\d+)', price_str)
+    match = re.match(r'(\d+(\.\d+)?)', price_str)
     if match:
         return float(match.group(1))
     else:
         raise ValueError("Price format is incorrect")
-    
-#   Set Stripe API key from environment variable
+
+# Set Stripe API key from environment variable
 stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
 
 @post('/create_subscription_checkout_session')
@@ -197,8 +197,9 @@ def create_subscription_checkout_session():
         # Extract the numeric price
         subscription_price = extract_price(subscription_price_str)
 
-        # Add 25% VAT
-        subscription_price_with_vat = subscription_price * 1.25
+        # Calculate the price including VAT (25%)
+        vat_rate = 0.25
+        subscription_price_with_vat = subscription_price * (1 + vat_rate)
 
         # Create a product in Stripe if it doesn't already exist
         product = stripe.Product.create(name=subscription_type)

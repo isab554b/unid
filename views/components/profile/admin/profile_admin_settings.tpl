@@ -38,20 +38,24 @@
                   class="lg:flex space-y-1 lg:space-y-0 justify-between items-center"
                 >
                   <div class="flex gap-2 items-center">
-                    <p id="form_label">Køb:</p>
+                    <p id="form_label">Klippekort:</p>
                     <p class="text-base font-medium">
                       {{ customer["clipcard_type"] }}
-                      {{ customer["subscription"] }}
                     </p>
                   </div>
                   <p class="font-medium">
-                    {{ customer["website_name"] }}:
-                    {{ customer["website_url"] }}
+                    {{ customer["subscription_status"] }}
                   </p>
                 </div>
                 <hr />
               </div>
               <div class="space-y-2">
+                <div class="flex gap-2">
+                  <p class="font-semibold">Website:</p>
+                  <p>
+                    {{ customer["website_url"] }}
+                  </p>
+                </div>
                 <div class="flex gap-2">
                   <p class="font-semibold">Email:</p>
                   <p>{{ customer["email"] }}</p>

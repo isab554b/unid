@@ -64,22 +64,31 @@ def admin_customers_get():
                 users.email,
                 users.phone,
                 users.is_active,
-                CASE
-                    WHEN active_clipcards.user_id IS NOT NULL THEN active_clipcards.clipcard_type_title
-                    ELSE 'Intet klippekort eller abonnement.'
-                END AS clipcard_type
+                COALESCE(active_clipcards.clipcard_type_title, 'Intet klippekort') AS clipcard_type,
+                COALESCE(active_subscriptions.subscription_price, 'Intet abonnement') AS subscription_price
             FROM customers
             JOIN users ON customers.customer_id = users.user_id
             LEFT JOIN (
                 SELECT DISTINCT user_id, clipcard_type_title
                 FROM active_clipcards
             ) AS active_clipcards ON users.user_id = active_clipcards.user_id
+            LEFT JOIN (
+                SELECT DISTINCT user_id, subscription_price
+                FROM active_subscriptions
+            ) AS active_subscriptions ON users.user_id = active_subscriptions.user_id
             WHERE users.is_active = 1
         """)
 
         # Retrieve all customers from the query
         customers = cursor.fetchall()
         
+        # Prepare descriptive text for subscription in Python code
+        for customer in customers:
+            if customer["subscription_price"] != 'Intet abonnement':
+                customer["subscription_status"] = "Aktivt abonnement"
+            else:
+                customer["subscription_status"] = 'Intet abonnement'
+
         logger.debug(f"Customers retrieved: {customers}")
 
         # Find the template and remove path and file extension
@@ -109,6 +118,8 @@ def admin_customers_get():
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {page_name}")
+
+
 
 
 

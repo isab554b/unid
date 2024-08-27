@@ -161,21 +161,26 @@ JOIN customers cust ON u.user_id = cust.customer_id
 JOIN card_types ct ON cc.clipcard_type_id = ct.clipcard_type_id
 WHERE cc.is_active = 1;
 
--- HOW TO USE THE VIEW IN THE CODE
-SELECT * FROM active_clipcards;
 
+DROP VIEW IF EXISTS active_subscriptions;
+CREATE VIEW active_subscriptions AS
+SELECT s.subscription_id,
+       s.subscription_price,
+       s.created_at AS subscription_created_at,
+       s.deleted_at AS subscription_deleted_at,
+       sp.amount_paid,
+       sp.created_at AS payment_created_at,
+       u.user_id,
+       u.first_name,
+       u.last_name,
+       u.email,
+       u.phone,
+       u.username
+FROM subscriptions s
+JOIN subscriptions_payments sp ON s.subscription_id = sp.subscription_id
+JOIN users u ON sp.user_id = u.user_id
+WHERE s.is_active = 1;
 
--- ##############################
--- TRIGGERS
-CREATE TRIGGER update_clipcard_data
-AFTER INSERT ON tasks
-FOR EACH ROW
-BEGIN
-    UPDATE clipcards
-    SET time_used = time_used + NEW.time_spent,
-        remaining_time = remaining_time - NEW.time_spent
-    WHERE clipcard_id = NEW.clipcard_id;
-END;
 
 
 

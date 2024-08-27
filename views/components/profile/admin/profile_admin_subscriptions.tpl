@@ -12,7 +12,7 @@
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- prettier-ignore -->
     % if active_subscriptions:
-        % for subscription in active_subscriptions:
+    % for subscription in active_subscriptions:
     <div id="subscription_{{ subscription['subscription_id'] }}">
       <div id="content_box_styling">
         <div id="content_box_header_styling">

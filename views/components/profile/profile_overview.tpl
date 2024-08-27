@@ -10,7 +10,7 @@
       Velkommen, {{ first_name }} {{ last_name }}!
     </p>
     <!-- prettier-ignore -->
-    % if current_user:
+
     <!-- prettier-ignore -->
     % if current_user.get('has_active_clipcard') and current_user.get('has_active_subscription'):
     <div class="flex gap-1 text-sm">
@@ -38,7 +38,7 @@
     </div>
     <!-- prettier-ignore -->
     % end
-        % end
+
     <!-- prettier-ignore -->
     % elif user["user_role_id"] == 2:
     <p id="content_box_header_text">
