@@ -16,18 +16,94 @@
         {{ contact_content["contact_form_section"]["subheader_text"] }}
       </p>
     </div>
-    <form action="/send" method="post" class="space-y-4">
-      <!-- prettier-ignore -->
-      % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['full_name']['label_for'], form_label=global_content['form_inputs']['full_name']['text'], form_svg='user_circle', type=global_content['form_inputs']['full_name']['type'], name=global_content['form_inputs']['full_name']['name'], inputmode=global_content['form_inputs']['full_name']['inputmode'], placeholder=global_content['form_inputs']['full_name']['placeholder'], form_info=global_content['form_inputs']['full_name']['form_info'])
-      % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['email']['label_for'], form_label=global_content['form_inputs']['email']['text'], form_svg='email', type=global_content['form_inputs']['email']['type'], name=global_content['form_inputs']['email']['name'], inputmode=global_content['form_inputs']['email']['inputmode'], placeholder=global_content['form_inputs']['email']['placeholder'], form_info=global_content['form_inputs']['email']['form_info'])
-      <div>
-        <!-- prettier-ignore -->
-        % include('utilities/input_fields/message_input_field')
-      </div>
-      <div class="mx-auto w-full md:w-fit lg:w-full xl:w-fit pt-6">
-        <!-- prettier-ignore -->
-        % include('utilities/buttons/primary_button', link='/', type='submit', button_text=contact_content["contact_form_section"]["button_text"])
-      </div>
+    <form id="mailForm" action="/send-email" method="post" class="space-y-4">
+      <label for="full_name" class="space-y-1.5 block">
+        <div class="flex space-between justify-between">
+          <p id="form_label">Navn</p>
+        </div>
+        <div class="relative w-full">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+          >
+            <div id="icon_small" class="fill-white text-white w-5 h-5">
+              % include(global_content['ui_icons']['user_circle'])
+            </div>
+          </div>
+          <div
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+          >
+            <div id="icon_small" class="fill-white text-white w-5 h-5">
+              % include(global_content['ui_icons']['user_circle'])
+            </div>
+          </div>
+          <input
+            id="form_input"
+            type="text"
+            name="full_name"
+            placeholder="Lorem Ipsum"
+            required
+          />
+        </div>
+      </label>
+      <label for="email" class="space-y-1.5 block">
+        <div class="flex space-between justify-between">
+          <p id="form_label">Email</p>
+        </div>
+        <div class="relative w-full">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+          >
+            <div id="icon_small" class="fill-white text-white w-5 h-5">
+              % include(global_content['ui_icons']['email'])
+            </div>
+          </div>
+          <div
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+          >
+            <div id="icon_small" class="fill-white text-white w-5 h-5">
+              % include(global_content['ui_icons']['email'])
+            </div>
+          </div>
+          <input
+            id="form_input"
+            type="email"
+            name="email"
+            placeholder="loremipsum@mail.dk"
+            required
+          />
+        </div>
+      </label>
+      <label for="message" class="space-y-1.5 block">
+        <div class="flex space-between justify-between">
+          <p id="form_label">Besked</p>
+        </div>
+        <div class="relative w-full overflow-auto">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue h-full rounded-bl-md rounded-tl-md"
+          >
+            <div id="icon_small" class="fill-white text-white w-5 h-5">
+              % include(global_content['ui_icons']['message'])
+            </div>
+          </div>
+          <textarea
+            id="form_input"
+            class="-mb-1.5"
+            type="message"
+            name="message"
+            inputmode="text"
+            placeholder="Lorem ipsum dolor sit amet..."
+            required
+          ></textarea>
+        </div>
+      </label>
+      <button type="submit" id="primary_button" class="contact-submit-button">
+        Send besked
+      </button>
     </form>
+    <p
+      id="contactMessageSent"
+      style="display: none"
+      class="text-unidPurple text-sm"
+    ></p>
   </div>
 </div>

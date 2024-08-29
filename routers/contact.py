@@ -1,19 +1,20 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import template, get, request, post
+from bottle import template, get, request, post, redirect
 import logging
 import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email_validator import validate_email, EmailNotValidError
+
+
 
 #   Local application imports
 from common.colored_logging import setup_logger
 import common.content as content
 import master
-from app import app_config
+from dotenv import load_dotenv
 
 
 ##############################
@@ -90,33 +91,45 @@ def contact():
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
 
-@post('/send')
-def send_email():
-    name = request.forms.get('name')
+
+def send_email(subject, body, to_email):
+    load_dotenv()
+    from_email = os.getenv('EMAIL')
+    from_password = os.getenv('EMAIL_PASSWORD')
+
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.simply.com', 587)  # Erstat med SMTP-serveradresse og port for SimplyMail
+        server.starttls()  # Start TLS for sikkerhed
+        server.login(from_email, from_password)
+        server.sendmail(from_email, to_email, msg.as_string())
+        server.quit()
+        print("Email sent successfully")
+    except Exception as e:
+        print(f"Error: {e}")
+
+@post('/send-email')
+def send_email_handler():
+
+    function_name = "send_email_handler"
+
+    full_name = request.forms.get('full_name')
     email = request.forms.get('email')
     message = request.forms.get('message')
 
-    # Valider e-mail
-    try:
-        validate_email(email)
-    except EmailNotValidError:
-        return template('error', message="Invalid email address.")
+    subject = f"Kontakformular: {full_name}"
+    body = f"Navn: {full_name}\nEmail: {email}\n\nBesked:\n{message}"
 
-    # Send e-mail
-    try:
-        msg = MIMEMultipart()
-        msg['From'] = app_config['MAIL_USERNAME']
-        msg['To'] = 'kontakt@unidstudio.dk'
-        msg['Subject'] = 'New Contact Form Submission'
-        
-        body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
-        msg.attach(MIMEText(body, 'plain'))
+    send_email(subject, body, 'kontakt@unidstudio.dk')
 
-        with smtplib.SMTP(app_config['MAIL_SERVER'], app_config['MAIL_PORT']) as server:
-            server.starttls()
-            server.login(app_config['MAIL_USERNAME'], app_config['MAIL_PASSWORD'])
-            server.sendmail(msg['From'], msg['To'], msg.as_string())
+    logger.success(f"{function_name} successful")
+    return {"info": "Beskeden er blevet sendt!"}
 
-        return template('success', message="Message sent successfully!")
-    except Exception as e:
-        return template('error', message=f"Failed to send message. Error: {str(e)}")
+
+

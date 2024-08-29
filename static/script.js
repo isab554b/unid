@@ -196,7 +196,7 @@ $(document).ready(function () {
     // Retrieves form data from the contact form
     var formData = new FormData($("#contactForm")[0]);
 
-    // Sends an AJAX request to the server to send the messag
+    // Sends an AJAX request to the server to send the message
     $.ajax({
       url: "/send_message",
       type: "POST",
@@ -303,7 +303,6 @@ function deleteClipcard(clipcardId) {
 
 // ##############################
 // ADMIN DELETE SUBSCRIPTIONS
-// Handles deleting subscriptions from the admin interface.
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-subscription-button")) {
     // Retrieve the subscription ID
@@ -319,10 +318,13 @@ function deleteSubscription(subscriptionId) {
   console.log("Sending DELETE request to:", url); // Log the URL being called
 
   fetch(url, {
-    method: "DELETE",
+    method: "DELETE", // Ensure method is DELETE
   })
     .then((response) => {
       console.log("Server response status:", response.status); // Log the response status
+      if (response.status === 404) {
+        throw new Error("Endpoint not found. Check server configuration.");
+      }
       if (response.ok) {
         // Find the subscription element in the DOM and remove it
         var subscriptionElement = document.getElementById(
@@ -526,7 +528,7 @@ $(document).ready(function () {
 });
 
 // ##############################
-// BUY CLIPCARD
+// BUY CLIPCARD & SUBSCRIPTION
 // Function to dynamically load Stripe.js
 let stripe;
 
@@ -648,4 +650,34 @@ async function handleSubscriptionButtonClick(button) {
 // Add event listeners to subscription buttons
 document.querySelectorAll(".buy-button").forEach((button) => {
   button.addEventListener("click", () => handleSubscriptionButtonClick(button));
+});
+
+// ##############################
+// CONTACT FORMULAR
+$("#mailForm").submit(function (event) {
+  event.preventDefault();
+
+  var formData = new FormData(this);
+
+  $.ajax({
+    url: "/send-email",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("Success response:", response);
+      $("#contactMessageSent").text(response.info).show();
+      $("#mailForm")[0].reset();
+
+      setTimeout(function () {
+        $("#contactMessageSent").fadeOut();
+      }, 2000);
+    },
+    error: function (xhr) {
+      console.error("Error response:", xhr);
+      var response = JSON.parse(xhr.responseText);
+      alert("Der opstod en fejl: " + response.info);
+    },
+  });
 });
