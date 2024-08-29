@@ -653,7 +653,7 @@ document.querySelectorAll(".buy-button").forEach((button) => {
 });
 
 // ##############################
-// CONTACT FORMULAR
+// CONTACT FORMULAR - SEND MAILS
 $("#mailForm").submit(function (event) {
   event.preventDefault();
 
@@ -673,6 +673,36 @@ $("#mailForm").submit(function (event) {
       setTimeout(function () {
         $("#contactMessageSent").fadeOut();
       }, 2000);
+    },
+    error: function (xhr) {
+      console.error("Error response:", xhr);
+      var response = JSON.parse(xhr.responseText);
+      alert("Der opstod en fejl: " + response.info);
+    },
+  });
+});
+
+// ##############################
+// CONTACT FORMULAR - CANCEL SUBSCRIPTION MAILS
+$(document).on("submit", "#cancelForm", function (event) {
+  event.preventDefault();
+
+  var formData = new FormData(this);
+
+  $.ajax({
+    url: "/cancel-subscription",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("Success response:", response);
+      $("#cancelMessageSent").text(response.info).show();
+      $("#cancelForm")[0].reset();
+
+      setTimeout(function () {
+        $("#cancelMessageSent").fadeOut();
+      }, 6000);
     },
     error: function (xhr) {
       console.error("Error response:", xhr);

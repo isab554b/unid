@@ -1,7 +1,7 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import template, get, request, post, redirect
+from bottle import template, get, request, post
 import logging
 import os
 import smtplib
@@ -91,7 +91,8 @@ def contact():
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
 
-
+##############################
+#   CONTACT FORMULAR - SEND EMAIL
 def send_email(subject, body, to_email):
     load_dotenv()
     from_email = os.getenv('EMAIL')
@@ -123,7 +124,7 @@ def send_email_handler():
     email = request.forms.get('email')
     message = request.forms.get('message')
 
-    subject = f"Kontakformular: {full_name}"
+    subject = f"Kontakformular - {full_name}"
     body = f"Navn: {full_name}\nEmail: {email}\n\nBesked:\n{message}"
 
     send_email(subject, body, 'kontakt@unidstudio.dk')

@@ -167,15 +167,12 @@ def profile():
             """, (current_user['user_id'],)).fetchone()
 
             if subscription_info:
-                subscription_start_time = int(subscription_info['created_at'])  # Assume created_at is in epox timestamp format
-                current_time = time.time()  # Current time in epox timestamp
+                subscription_start_time = int(subscription_info['created_at'])  
+                current_time = time.time() 
 
-                # Calculate time difference
                 time_difference = current_time - subscription_start_time
-                # Check if it's been more than 1 hour (3600 seconds)
-                can_cancel = time_difference > 60
+                can_cancel = time_difference > 60 #7889472
 
-                # Include subscription_id in current_user
                 current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:
@@ -260,15 +257,12 @@ def profile_template(template_name):
             """, (current_user['user_id'],)).fetchone()
 
             if subscription_info:
-                subscription_start_time = int(subscription_info['created_at'])  # Assume created_at is in epox timestamp format
-                current_time = time.time()  # Current time in epox timestamp
+                subscription_start_time = int(subscription_info['created_at'])  
+                current_time = time.time() 
 
-                # Calculate time difference
                 time_difference = current_time - subscription_start_time
-                # Check if it's been more than 1 hour (3600 seconds)
-                can_cancel = time_difference > 60
+                can_cancel = time_difference > 60 #7889472
 
-                # Include subscription_id in current_user
                 current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:

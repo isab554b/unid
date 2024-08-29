@@ -5,6 +5,9 @@ from bottle import get, template, post, delete
 import time
 import logging
 import re
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -13,6 +16,7 @@ from common.find_template import *
 from common.time_formatting import *
 import common.content as content
 import master
+from dotenv import load_dotenv
 
 
 ##############################
@@ -198,4 +202,47 @@ def delete_subscription(subscription_id):
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {function_name}")
+
+
+##############################
+#   CONTACT FORMULAR - CANCEL SUBSCRIPTION
+def send_cancel_email(subject, body, to_email):
+    load_dotenv()
+    from_email = os.getenv('EMAIL')
+    from_password = os.getenv('EMAIL_PASSWORD')
+
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.simply.com', 587)  
+        server.starttls()  
+        server.login(from_email, from_password)
+        server.sendmail(from_email, to_email, msg.as_string())
+        server.quit()
+        print("Email sent successfully")
+    except Exception as e:
+        print(f"Error: {e}")
+
+@post('/cancel-subscription')
+def send_cancel_email_handler():
+
+    function_name = "send_cancel_email_handler"
+
+    full_name = request.forms.get('full_name')
+    email = request.forms.get('email')
+    message = request.forms.get('message')
+
+    subject = f"Opsigelse af abonnement - {full_name}"
+    body = f"Navn: {full_name}\nEmail: {email}\n\nÅrsag til opsigelse:\n{message}"
+
+    send_cancel_email(subject, body, 'kontakt@unidstudio.dk')
+
+    logger.success(f"{function_name} successful")
+    return {"info": "Vi har modtaget din opsigelse. Vi sletter dit abonnement hurtigst muligt!"}
+
 
