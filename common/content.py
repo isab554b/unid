@@ -430,11 +430,6 @@ profile_content = {
             "header_text": "Det, har du fået lavet",
             "decorative_header_text": "Timeregistrering",
         },
-        "profile_customer_courses": {
-            "header_text": "Kurser",
-            "decorative_header_text": "Kurser",
-            "box_header_text": "Kurser",
-        },
         "profile_customer_messages": {
             "header_text": "Skriv til os her",
             "decorative_header_text": "Beskeder",
@@ -450,7 +445,6 @@ profile_content = {
             {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
             {"icon": "card.svg", "text": "Klippekort", "template": "profile_customer_clipcard"},
             {"icon": "cart.svg", "text": "Abonnement", "template": "profile_customer_subscription"},
-            {"icon": "education.svg", "text": "Kurser", "template": "profile_customer_courses"},
             {"icon": "letter.svg", "text": "Beskeder", "template": "profile_customer_messages"},
             {"icon": "settings.svg", "text": "Indstillinger", "template": "profile_customer_settings"},
         ],
