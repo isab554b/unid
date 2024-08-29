@@ -25,6 +25,7 @@ global_content = {
     },
     # ICONS
     "ui_icons": {
+        "arrow": "arrow.svg",
         "admin": "admin.svg",
         "burger": "burger.svg",
         "card": "card.svg",
