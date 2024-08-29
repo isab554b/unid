@@ -56,14 +56,25 @@
     % include('components/header_component')
     <section class="bg-unidBeige">
       <div class="width_standard padding_y_standard space_y_standard mx-auto">
-        <div class="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-1/2">
-          <div class="pb-6 mb-6 space-y-4">
-            <h2
-              class="mb-3"
-              title="Rise of Tailwind - A Utility First CSS Framework"
+        <div
+          class="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-10/12 space-y-8"
+        >
+          <div class="flex text-center">
+            <div class="w-5 h-5">
+              % include(global_content['ui_icons']['arrow'])
+            </div>
+            <a
+              href="/blog"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
             >
-              Lorem ipsum dolor sit amet
-            </h2>
+              Tilbage til blog
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+              ></span>
+            </a>
+          </div>
+          <div class="pb-6 mb-6 space-y-4">
+            <h2 class="mb-3">Lorem ipsum dolor sit amet</h2>
             <p class="font-medium">26. juli 2024 • Isabella Nielsen</p>
             <div class="border-b border-unidLightBlue"></div>
 
@@ -128,7 +139,7 @@
 
             <img
               src="/assets/images/blog/placeholder.jpg"
-              class="object-cover w-full h-64 bg-center rounded-lg"
+              class="w-full h-80 object-cover rounded-lg"
               alt="Placeholderbillede"
             />
 

@@ -750,30 +750,7 @@ blog_content = {
 
                     },
                 },
-                "post_b": {
-                    "info": {
-                        "title": "Lorem Ipsum",
-                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
-                        "author": "Isabella Nielsen",
-                        "date": "26. juli 2024",
-                        "link": "/",
-                        "image": "placeholder.jpg",
-                        "image_alt": "Placeholder billede",
-
-                    },
-                },
-                "post_c": {
-                    "info": {
-                        "title": "Lorem Ipsum",
-                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
-                        "author": "Isabella Nielsen",
-                        "date": "26. juli 2024",
-                        "link": "/",
-                        "image": "placeholder.jpg",
-                        "image_alt": "Placeholder billede",
-
-                    },
-                },
+               
                
             },
         }
