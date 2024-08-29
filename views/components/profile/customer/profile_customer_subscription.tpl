@@ -121,15 +121,21 @@
       </div>
       <!-- prettier-ignore -->
       % if can_cancel:
-      <p class="text-unidPurple text-sm">
-        Ønsker du at opsige dit abonnement, bedes du udfylde nedenstående
-        formular.
-      </p>
-      <p class="text-unidPurple text-sm">
-        Opsigelse af abonnementet skal ske inden månedens udgang. Hvis du
-        opsiger midt i måneden, vil du ikke få refunderet betalingen for den
-        resterende del af måneden.
-      </p>
+      <div class="space-y-1">
+        <p id="form_label">Opsig abonnement</p>
+        <hr />
+        <div class="space-y-1">
+          <p class="text-unidPurple text-sm">
+            Ønsker du at opsige dit abonnement, bedes du udfylde nedenstående
+            formular.
+          </p>
+          <p class="text-unidPurple text-sm">
+            Opsigelse af abonnementet skal ske inden månedens udgang. Hvis du
+            opsiger midt i måneden, vil du ikke få refunderet betalingen for den
+            resterende del af måneden.
+          </p>
+        </div>
+      </div>
       <form
         id="cancelForm"
         action="/cancel-subscription"
@@ -138,9 +144,9 @@
       >
         <label for="full_name" class="space-y-1.5 block">
           <div class="flex space-between justify-between">
-            <p id="form_label">Navn</p>
+            <p id="form_label" class="text-sm">Navn</p>
           </div>
-          <div class="relative w-full">
+          <div class="relative w-full text-sm">
             <div
               class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
             >
@@ -166,9 +172,9 @@
         </label>
         <label for="email" class="space-y-1.5 block">
           <div class="flex space-between justify-between">
-            <p id="form_label">Email</p>
+            <p id="form_label" class="text-sm">Email</p>
           </div>
-          <div class="relative w-full">
+          <div class="relative w-full text-sm">
             <div
               class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
             >
@@ -194,9 +200,9 @@
         </label>
         <label for="message" class="space-y-1.5 block">
           <div class="flex space-between justify-between">
-            <p id="form_label">Årsag til opsigelse</p>
+            <p id="form_label" class="text-sm">Årsag til opsigelse</p>
           </div>
-          <div class="relative w-full overflow-auto">
+          <div class="relative w-full overflow-auto text-sm">
             <div
               class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue h-full rounded-bl-md rounded-tl-md"
             >
@@ -206,7 +212,7 @@
             </div>
             <textarea
               id="form_input"
-              class="-mb-1.5"
+              class="-mb-1"
               type="message"
               name="message"
               inputmode="text"
@@ -215,6 +221,7 @@
             ></textarea>
           </div>
         </label>
+
         <button type="submit" id="primary_button" class="cancel-submit-button">
           Opsig abonnement
         </button>
