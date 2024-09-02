@@ -4,16 +4,6 @@
 >
   <div class="width_big py-8 mx-auto flex items-center justify-between">
     <div class="flex">
-      % if user:
-      <a href="/">
-        <!-- prettier-ignore -->
-        <img
-          class="w-28"
-          src="/assets/logos/{{ global_content['logos']['unid']['secondary_logo'] }}"
-          alt="{{ global_content['logos']['unid']['logo_alt'] }}"
-        />
-      </a>
-      % else:
       <a href="/">
         <!-- prettier-ignore -->
         <img
@@ -22,7 +12,6 @@
           alt="{{ global_content['logos']['unid']['logo_alt'] }}"
         />
       </a>
-      % end
     </div>
     <nav class="hidden lg:flex gap-4 xl:gap-8 items-center justify-center">
       % include('elements/nav_items_element')

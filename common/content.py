@@ -19,7 +19,6 @@ global_content = {
     "logos": {
         "unid": {
             "primary_logo": "primary_logo.svg",
-            "secondary_logo": "primary_logo.svg",
             "logo_alt": "UNID Studio's logo",
         },
     },
@@ -99,9 +98,8 @@ global_content = {
     # FOOTER
     "footer": {
         "footer_info": [
-            "UNID Studio © 2023",
-            "All rights reserved",
-            "CVR nr. 43924451",
+            "UNID Studio © 2023 • All rights reserved  • CVR nr. 43924451",
+            
         ],
     },
     # FORMS
