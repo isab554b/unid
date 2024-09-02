@@ -12,10 +12,7 @@
   <div class="grid gap-8">
     <div class="customer-block">
       <div id="content_box_styling">
-        <div
-          id="content_box_header_styling"
-          class="space-y-1 lg:space-y-0 lg:flex justify-between"
-        >
+        <div id="content_box_header_styling" class="">
           <div
             class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
           >
@@ -30,37 +27,54 @@
         <div class="flex flex-col p-6 text-unidPurple">
           <form id="update_profile_form">
             <div class="space-y-8 text-sm">
-              <div class="space-y-2 text-sm">
-                <div class="flex gap-2 items-center">
-                  <p id="form_label">Brugernavn:</p>
-                  <input
-                    type="text"
-                    name="username"
-                    value="{{ user['username'] }}"
-                    required
-                  />
+              <div class="space-y-4 text-sm">
+                <div>
+                  <label for="brugernavn" class="space-y-2">
+                    <div class="flex space-between justify-between text-sm">
+                      <p id="form_label" class="text-sm">Brugernavn</p>
+                    </div>
+                    <div class="w-full text-sm">
+                      <input
+                        id="second_form_input"
+                        type="text"
+                        name="username"
+                        value="{{ user['username'] }}"
+                        required
+                      />
+                    </div>
+                  </label>
                 </div>
-                <hr />
-                <div class="flex gap-2 items-center">
-                  <p class="font-semibold">Telefon:</p>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value="{{ user['phone'] }}"
-                    required
-                  />
+                <div>
+                  <label for="telefon" class="space-y-2">
+                    <div class="flex space-between justify-between text-sm">
+                      <p id="form_label" class="text-sm">Telefon</p>
+                    </div>
+                    <div class="w-full text-sm">
+                      <input
+                        id="second_form_input"
+                        type="tel"
+                        name="phone"
+                        value="{{ user['phone'] }}"
+                        required
+                      />
+                    </div>
+                  </label>
                 </div>
-
-                <div class="space-y-2">
-                  <div class="flex gap-2">
-                    <p class="font-semibold">Email:</p>
-                    <input
-                      type="email"
-                      name="email"
-                      value="{{ user['email'] }}"
-                      required
-                    />
-                  </div>
+                <div>
+                  <label for="email" class="space-y-2">
+                    <div class="flex space-between justify-between text-sm">
+                      <p id="form_label" class="text-sm">Email</p>
+                    </div>
+                    <div class="w-full text-sm">
+                      <input
+                        id="second_form_input"
+                        type="email"
+                        name="email"
+                        value="{{ user['email'] }}"
+                        required
+                      />
+                    </div>
+                  </label>
                 </div>
               </div>
               <div class="w-full flex justify-between">
@@ -92,7 +106,9 @@
               </div>
             </div>
           </form>
-          <div id="message" class="text-unidPurple text-sm"></div>
+          <div class="text-unidPurple mx-auto flex-col space-y-4 text-sm">
+            <p id="message"></p>
+          </div>
         </div>
       </div>
     </div>

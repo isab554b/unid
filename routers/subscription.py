@@ -246,3 +246,6 @@ def send_cancel_email_handler():
     return {"info": "Vi har modtaget din opsigelse. Vi sletter dit abonnement hurtigst muligt!"}
 
 
+
+
+

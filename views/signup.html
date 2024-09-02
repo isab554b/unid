@@ -110,7 +110,7 @@
                 <!-- prettier-ignore -->
                 % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['website_url']['label_for'], form_label=global_content['form_inputs']['website_url']['text'], form_svg='www', type=global_content['form_inputs']['website_url']['type'], name=global_content['form_inputs']['website_url']['name'], inputmode=global_content['form_inputs']['website_url']['inputmode'], placeholder=global_content['form_inputs']['website_url']['placeholder'], form_info=global_content['form_inputs']['website_url']['form_info'])
               </div>
-            </form>
+           
           </div>
           <div
             class="flex pt-2 text-sm gap-4 text-unidLightBlue border-t border-unidLightBlue"
@@ -119,6 +119,7 @@
               <input
                 type="checkbox"
                 id="form_checkbox"
+                name="terms_accepted"
                 class="w-4 h-4"
                 required
               />
@@ -126,7 +127,7 @@
             <div class="flex gap-1.5">
               <p>Jeg accepterer</p>
               <a
-                href="#"
+                href="/terms"
                 class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
               >
                 vilkår & betingelser
@@ -136,6 +137,8 @@
               </a>
             </div>
           </div>
+           </form>
+
           <!-- ERROR MESSAGE -->
           <div
             id="form_input_error_message"

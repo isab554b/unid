@@ -7,6 +7,7 @@ import time
 import uuid
 import bcrypt
 import logging
+import os
 
 #   Local application imports
 from common.colored_logging import setup_logger
@@ -63,6 +64,7 @@ def signup():
         phone_error = validation.validate_phone()
         username_error = validation.validate_username()
         password_error = validation.validate_password()
+        terms_accepted = request.forms.get('terms_accepted')
 
         # Return error messages for invalid inputs
         if email_error:
@@ -77,6 +79,11 @@ def signup():
         if password_error:
             logger.error(password_error)
             return {"error": password_error}
+        
+        # Check if terms_accepted is present and is 'true'
+        if terms_accepted != 'true':
+            logger.error("Terms and conditions not accepted")
+            return {"error": "Du skal acceptere vilkår og betingelser for at kunne oprette en bruger."}
 
         # Retrieve form data
         email = request.forms.get("email")
@@ -88,7 +95,8 @@ def signup():
         website_name = request.forms.get("website_name", "")
         website_url = request.forms.get("website_url", "")
 
-        # Check if email, phone, and username already exists in db (prevent dublicates)
+
+        # Check if email, phone, and username already exist in db (prevent duplicates)
         existing_user_email = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
         existing_user_phone = db.execute("SELECT * FROM users WHERE phone = ?", (phone,)).fetchone()
         existing_user_username = db.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchone()
@@ -110,7 +118,7 @@ def signup():
         updated_at = int(time.time())
         deleted_at = ""
 
-        # Check if email is staff emails (determines user roles)
+        # Check if email is staff email (determines user roles)
         staff_emails = ["kontakt@unidstudio.dk", "denise@unidstudio.dk", "isabella@unidstudio.dk"]
         if email in staff_emails:
             user_role_id = "2"
@@ -164,6 +172,7 @@ def signup():
         logger.info(f"Completed {function_name}")
 
 
+
 ##############################
 #   SIGNUP - GET
 @get("/signup")
@@ -186,4 +195,52 @@ def signup_get():
         raise
 
     finally:
+        logger.info(f"Completed request for /{page_name}")
+
+
+##############################
+#   TERMS - GET
+@get("/terms")
+def terms_get():
+
+    page_name = "terms"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Vilkår & betingelser",
+                        # A-Z
+                        global_content=global_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")

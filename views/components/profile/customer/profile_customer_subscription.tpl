@@ -81,7 +81,17 @@
   </div>
   <div id="content_box_styling">
     <div id="content_box_header_styling">
-      <p id="content_box_header_text">Abonnement</p>
+      <div
+        class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
+      >
+        <div id="icon_medium" class="fill-unidPurple">
+          % include(global_content['ui_icons']['cart'])
+        </div>
+        <p id="content_box_header_text">
+          <!-- prettier-ignore -->
+          Abonnement
+        </p>
+      </div>
     </div>
     <div class="flex flex-col gap-8 p-6 text-unidPurple">
       <!-- USER -->
@@ -198,6 +208,7 @@
             />
           </div>
         </label>
+
         <label for="message" class="space-y-1.5 block">
           <div class="flex space-between justify-between">
             <p id="form_label" class="text-sm">Årsag til opsigelse</p>

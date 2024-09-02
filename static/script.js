@@ -84,11 +84,16 @@ async function signUp() {
   ).value;
   const website_url = document.querySelector("input[name='website_url']").value;
 
+  // Check if the terms checkbox is checked
+  const termsAccepted = document.querySelector(
+    "input[name='terms_accepted']"
+  ).checked;
+
   console.log("this is the username", username);
+  console.log("Terms accepted value:", termsAccepted);
 
   // Create a FormData object to store form data and append user input values to the FormData object
   const formData = new FormData();
-
   formData.append("first_name", first_name);
   formData.append("last_name", last_name);
   formData.append("email", email);
@@ -97,9 +102,11 @@ async function signUp() {
   formData.append("password", password);
   formData.append("website_name", website_name);
   formData.append("website_url", website_url);
+  formData.append("terms_accepted", termsAccepted); // Append terms_accepted
 
-  for (const value of formData.values()) {
-    console.log(value);
+  // Log form data values for debugging
+  for (const [key, value] of formData.entries()) {
+    console.log(key, value);
   }
 
   try {
