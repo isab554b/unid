@@ -150,7 +150,7 @@ def delete_user():
         # Update the deleted_at field in users table with UNIX timestamp
         cursor.execute("""
             UPDATE users
-            SET deleted_at = ?, updated_at = ?
+            SET deleted_at = ?, updated_at = ?, is_active = 0
             WHERE user_id = ?
         """, (int(time.time()), int(time.time()), user_id))
 

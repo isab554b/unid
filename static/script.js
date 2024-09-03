@@ -440,43 +440,54 @@ document.addEventListener("DOMContentLoaded", function () {
 // ##############################
 // ADMIN SETTINGS - DELETE USER
 function deleteUser(button) {
-  // Retrieve the user ID from the button's data attribute
-  var userId = button.getAttribute("data-user-id");
-  console.log("Delete button clicked");
-  console.log("User ID:", userId);
+  // Vis en bekræftelsesdialog
+  var confirmDelete = confirm(
+    "Er du sikker på, at du vil slette denne bruger?"
+  );
 
-  // Send a DELETE request to the server to delete the user
-  fetch("/delete_user", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: "user_id=" + userId,
-  })
-    .then((response) => {
-      console.log("Response status:", response.status);
-      return response.json();
+  // Hvis brugeren bekræfter, fortsæt med sletningen
+  if (confirmDelete) {
+    // Retrieve the user ID from the button's data attribute
+    var userId = button.getAttribute("data-user-id");
+    console.log("Delete button clicked");
+    console.log("User ID:", userId);
+
+    // Send a DELETE request to the server to delete the user
+    fetch("/delete_user", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: "user_id=" + userId,
     })
-    .then((data) => {
-      console.log("Response data:", data);
-      // If the user was successfully deleted, remove the user block from the DOM
-      if (data.info === "User deleted.") {
-        var userBlock = button.closest(".customer-block");
-        if (userBlock) {
-          userBlock.parentNode.removeChild(userBlock);
-          console.log("User deleted successfully.");
+      .then((response) => {
+        console.log("Response status:", response.status);
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Response data:", data);
+        // If the user was successfully deleted, remove the user block from the DOM
+        if (data.info === "User deleted.") {
+          var userBlock = button.closest(".customer-block");
+          if (userBlock) {
+            userBlock.parentNode.removeChild(userBlock);
+            console.log("User deleted successfully.");
+          } else {
+            console.log("User block not found.");
+          }
         } else {
-          console.log("User block not found.");
+          // If an error occurred, display an alert with the error message
+          alert(data.info);
+          console.log("Error:", data.info);
         }
-      } else {
-        // If an error occurred, display an alert with the error message
-        alert(data.info);
-        console.log("Error:", data.info);
-      }
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  } else {
+    // Hvis brugeren annullerer, gør intet
+    console.log("Sletning annulleret af brugeren.");
+  }
 }
 
 // ##############################
