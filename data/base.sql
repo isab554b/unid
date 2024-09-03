@@ -16,9 +16,13 @@ CREATE TABLE IF NOT EXISTS users (
 	created_at	        	TEXT NOT NULL,
 	updated_at	        	TEXT,
 	deleted_at	        	TEXT,
+	reset_token				TEXT,
+	reset_token_expiry		TEXT,
 	PRIMARY KEY(user_id),
 	FOREIGN KEY(user_role_id) REFERENCES user_roles(user_role_id)
 ) WITHOUT ROWID;
+
+
 
 
 -- ##############################
@@ -180,7 +184,6 @@ FROM subscriptions s
 JOIN subscriptions_payments sp ON s.subscription_id = sp.subscription_id
 JOIN users u ON sp.user_id = u.user_id
 WHERE s.is_active = 1;
-
 
 
 

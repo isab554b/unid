@@ -88,9 +88,21 @@
             <!-- PASSWORD -->
             <!-- prettier-ignore -->
             % include('utilities/input_fields/password_input_field')
+            <div class="flex text-sm gap-2 pt-2 text-unidPurple">
+              <p>Har du glemt adgangskode?</p>
+              <a
+                href="/reset_password"
+                class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+              >
+                Nulstil kode
+                <span
+                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                ></span>
+              </a>
+            </div>
           </div>
         </form>
-        <div class="space-y-6">
+        <div class="space-y-4">
           <!-- ERROR MESSAGE -->
           <div
             id="form_input_error_message"
@@ -105,7 +117,7 @@
               <p id="error_message"></p>
             </div>
           </div>
-          <div class="w-full pt-4 items-center mx-auto flex justify-center">
+          <div class="w-full items-center mx-auto flex justify-center">
             <!-- prettier-ignore -->
             % include('utilities/buttons/primary_button', link='login(event)', type='submit', button_text=login_content['button_text'])
           </div>

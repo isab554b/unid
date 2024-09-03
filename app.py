@@ -53,6 +53,7 @@ try:
     import routers.blog
     import routers.settings
     import routers.subscription
+    import routers.reset
     logger.success("Routers imported successfully.")
 except Exception as e:
     logger.error(f"Error importing routers: {e}")
