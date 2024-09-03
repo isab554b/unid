@@ -214,17 +214,20 @@ def profile():
 #   PROFILE TEMPLATE
 @route('/profile/<template_name>')
 def profile_template(template_name):
-
     function_name = "profile_template"
+  
 
     try:
-        # Check if response is HTTP response
+        logger.info("Starting profile_template function")
+        
+        # Load profile data
         data = load_profile_data()
         if isinstance(data, HTTPResponse):
             return data
 
         # Retrieve current user details
-        current_user = get_current_user()
+        current_user = get_current_user() 
+        logger.info(f"Current user loaded: {current_user}")
 
         # Determine and load template
         template_path = find_template(template_name, template_dirs)
@@ -232,11 +235,21 @@ def profile_template(template_name):
             logger.error(f"Template '{template_name}' not found.")
             return "Template not found."
 
+        # Initialize relative_path early to avoid undefined variable error
+        relative_path = template_path.replace('views/', '').replace('.tpl', '')
+        logger.info(f"Template path determined: {relative_path}")
+
         # Handle cases for 'profile_overview' that require detailed user information
         if template_name == "profile_overview":
-            if current_user:
+            if not current_user:
+                logger.error("current_user is not available when required")
+            else:
                 db = master.db()
-                clipcard_info = db.execute("SELECT clipcard_id FROM clipcards_payments WHERE user_id = ? LIMIT 1", (current_user['user_id'],)).fetchone()
+                clipcard_info = db.execute(
+                    "SELECT clipcard_id FROM clipcards_payments WHERE user_id = ? LIMIT 1", 
+                    (current_user.get('user_id'),)
+                ).fetchone()
+
                 if clipcard_info and clipcard_info['clipcard_id']:
                     has_active_clipcard = db.execute("""
                         SELECT COUNT(*) AS active_clipcards
@@ -244,9 +257,13 @@ def profile_template(template_name):
                         WHERE clipcard_id = ? AND is_active = 1
                     """, (clipcard_info['clipcard_id'],)).fetchone()['active_clipcards'] > 0
                     current_user['has_active_clipcard'] = has_active_clipcard
-        
+                logger.info(f"Clipcard information updated: {current_user}")
+
         # Handle cases that require detailed user information
-        if current_user:
+        can_cancel = False 
+        if not current_user:
+            logger.error("current_user is not available before subscription check")
+        else:
             db = master.db()
             subscription_info = db.execute("""
                 SELECT s.subscription_id, s.created_at
@@ -254,22 +271,19 @@ def profile_template(template_name):
                 JOIN subscriptions_payments sp ON s.subscription_id = sp.subscription_id
                 WHERE sp.user_id = ? AND s.is_active = 1
                 LIMIT 1
-            """, (current_user['user_id'],)).fetchone()
+            """, (current_user.get('user_id'),)).fetchone()
 
             if subscription_info:
-                subscription_start_time = int(subscription_info['created_at'])  
-                current_time = time.time() 
-
+                subscription_start_time = int(subscription_info['created_at'])
+                current_time = time.time()
                 time_difference = current_time - subscription_start_time
-                can_cancel = time_difference > 60 #7889472
-
+                can_cancel = time_difference > 60  # Time period for cancellation
                 current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:
-                can_cancel = False
                 current_user['has_active_subscription'] = False
-            
-            
+            logger.info(f"Subscription information updated: {current_user}")
+
         # Retrieve information about active subscriptions
         cursor = db.cursor()
         cursor.execute("""
@@ -284,83 +298,40 @@ def profile_template(template_name):
         """)
         active_subscriptions = cursor.fetchall()
         cursor.close()
+        logger.info(f"Active subscriptions retrieved: {len(active_subscriptions)} found")
 
-        if not active_subscriptions:
-            logger.info("No active subscriptions found.")
-            return template(relative_path, 
-                            # A-Z
-                            active_subscriptions=[], 
-                            active_customers=[],
-                            global_content=global_content,
-                            profile_content=profile_content,
-                            )
-
-       
         active_customers = []
         for subscription in active_subscriptions:
             try:
-                # Convert time used and remaining time (from minutes to hours and minutes)
                 subscription['formatted_created_at'] = format_created_at(subscription['created_at'])
-
-                # Collect user information conneced with subscription
                 active_customers.append({
                     'user_id': subscription['user_id'],
                     'first_name': subscription['first_name'],
                     'last_name': subscription['last_name'],
                     'subscription_id': subscription['subscription_id']
                 })
-
                 logger.success(f"Processed subscription {subscription['subscription_id']} for user {subscription['user_id']}")
-
             except Exception as e:
                 logger.error(f"Error processing subscription {subscription['subscription_id']}: {e}")
 
-            # Adjust relative path for rendering
-            relative_path = template_path.replace('views/', '').replace('.tpl', '')
-            return template(relative_path,
-                            # A-Z
-                            active_clipcards_count=data['active_clipcards_count'],
-                            current_user=current_user,
-                            first_name=data['first_name'],
-                            global_content=global_content,
-                            inactive_clipcards_count=data['inactive_clipcards_count'],
-                            last_name=data['last_name'],
-                            profile_content=profile_content,
-                            remaining_hours=data['remaining_hours'],
-                            remaining_minutes=data['remaining_minutes'],
-                            services_and_prices_content=services_and_prices_content,
-                            time_used_hours=data['time_used_hours'], 
-                            time_used_minutes=data['time_used_minutes'],
-                            user=data['user'],
-                            username=data['username'],
-                            can_cancel=can_cancel,
-                            active_subscriptions=active_subscriptions,
-                            )
-            
-        # General template rendering for other templates
-        else:
-            relative_path = template_path.replace('views/', '').replace('.tpl', '')
-            logger.success(f"Successfully showing template for {function_name}")
-            return template(relative_path,
-                            title="Din profil",
-                            # A-Z
-                            admin_messages_get=messages.admin_messages_get,
-                            current_user=current_user,
-                            delete_message=messages.delete_message,
-                            first_name=data['first_name'],
-                            get_current_user=messages.get_current_user,
-                            global_content=global_content,
-                            last_name=data['last_name'],
-                            messages_get=messages.messages_get,
-                            profile_content=profile_content,
-                            save_file=messages.save_file,
-                            send_message=messages.send_message,
-                            services_and_prices_content=services_and_prices_content,
-                            user=data['user'],
-                            username=data['username'],
-                            can_cancel=can_cancel,
-                            active_subscriptions=active_subscriptions,
-                            )
+        logger.info(f"Rendering template with current_user: {current_user}")
+        return template(relative_path,
+                        active_clipcards_count=data.get('active_clipcards_count', 0),
+                        current_user=current_user, 
+                        first_name=data.get('first_name', ''),
+                        global_content=global_content,
+                        inactive_clipcards_count=data.get('inactive_clipcards_count', 0),
+                        last_name=data.get('last_name', ''),
+                        profile_content=profile_content,
+                        remaining_hours=data.get('remaining_hours', 0),
+                        remaining_minutes=data.get('remaining_minutes', 0),
+                        services_and_prices_content=services_and_prices_content,
+                        time_used_hours=data.get('time_used_hours', 0),
+                        time_used_minutes=data.get('time_used_minutes', 0),
+                        user=data.get('user', {}),
+                        username=data.get('username', ''),
+                        can_cancel=can_cancel,
+                        active_subscriptions=active_subscriptions)
 
     except Exception as e:
         if "db" in locals():
@@ -375,3 +346,9 @@ def profile_template(template_name):
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed {function_name}")
+
+
+
+
+
+
