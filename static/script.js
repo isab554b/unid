@@ -281,7 +281,17 @@ document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-button")) {
     // Retrieve the clipcard ID from the data-clipcard-id attribute of the clicked button
     var clipcardId = event.target.getAttribute("data-clipcard-id");
-    deleteClipcard(clipcardId);
+
+    // Show a confirmation dialog before deleting
+    var confirmDelete = confirm(
+      "Er du sikker på, at du vil slette dette klippekort?"
+    );
+
+    if (confirmDelete) {
+      deleteClipcard(clipcardId);
+    } else {
+      console.log("Sletning annulleret af brugeren.");
+    }
   }
 });
 
@@ -296,6 +306,9 @@ function deleteClipcard(clipcardId) {
         var clipcardElement = document.getElementById("clipcard_" + clipcardId);
         if (clipcardElement) {
           clipcardElement.remove();
+          console.log("Klippekort slettet.");
+        } else {
+          console.log("Klippekort element ikke fundet.");
         }
       } else {
         // If the request fails, throw an error
@@ -312,10 +325,24 @@ function deleteClipcard(clipcardId) {
 // ADMIN DELETE SUBSCRIPTIONS
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-subscription-button")) {
-    // Retrieve the subscription ID
+    // Retrieve the subscription ID from the data-subscription-id attribute
     var subscriptionId = event.target.getAttribute("data-subscription-id");
-    console.log("Subscription ID to delete:", subscriptionId); // Log subscription ID
-    deleteSubscription(subscriptionId);
+
+    // Show a confirmation dialog before deleting
+    var confirmDelete = confirm(
+      "Er du sikker på, at du vil slette dette abonnement?"
+    );
+
+    // Debugging: Log the confirmation result
+    console.log("Confirm Delete:", confirmDelete);
+
+    if (confirmDelete) {
+      // Proceed with deletion if confirmed
+      deleteSubscription(subscriptionId);
+    } else {
+      // Log message if deletion is canceled
+      console.log("Sletning annulleret af brugeren.");
+    }
   }
 });
 
@@ -340,6 +367,8 @@ function deleteSubscription(subscriptionId) {
         if (subscriptionElement) {
           subscriptionElement.remove();
           console.log("Subscription element removed from the DOM."); // Log successful removal
+        } else {
+          console.log("Subscription element not found in the DOM."); // Log if element is not found
         }
       } else {
         // If the request fails, throw an error
@@ -525,6 +554,7 @@ $(document).ready(function () {
   $("body").on("click", "#deleteProfileButton", function () {
     var userId = $(this).data("user-id");
 
+    // Vis en bekræftelsesdialog, før du fortsætter
     if (confirm("Er du sikker på, at du vil slette din profil?")) {
       $.ajax({
         url: "/delete_profile",
@@ -541,6 +571,9 @@ $(document).ready(function () {
           alert("Der opstod en fejl: " + responseText);
         },
       });
+    } else {
+      // Log message if deletion is canceled
+      console.log("Sletning annulleret af brugeren.");
     }
   });
 });
