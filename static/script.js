@@ -762,3 +762,83 @@ $(document).on("submit", "#cancelForm", function (event) {
     },
   });
 });
+
+// ##############################
+// RESET AND UPDATE CODE RESPONSE
+document.addEventListener("DOMContentLoaded", function () {
+  // Kode til formularen på /request_reset_password
+  const resetForm = document.getElementById("resetForm");
+  if (resetForm) {
+    resetForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Forhindrer standardformularindsendelse
+      console.log("Reset form submission intercepted");
+
+      // Hent email input
+      const email = document.querySelector('input[name="email"]').value;
+
+      // Sender AJAX-request med fetch API
+      fetch("/request_reset_password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "email=" + encodeURIComponent(email),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            // Hvis forespørgslen lykkes
+            document.getElementById("resetCodeSent").style.display = "block";
+            document.getElementById("resetCodeError").style.display = "none";
+          } else if (data.error) {
+            // Hvis serveren returnerer en fejl
+            document.getElementById("resetCodeError").style.display = "block";
+            document.getElementById("resetCodeSent").style.display = "none";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          document.getElementById("resetCodeError").style.display = "block";
+          document.getElementById("resetCodeSent").style.display = "none";
+        });
+    });
+  }
+
+  // Kode til formularen på /reset_password
+  const passwordForm = document.getElementById("resetPasswordForm");
+  if (passwordForm) {
+    const passwordUpdateSuccess = document.getElementById(
+      "passwordUpdateSuccess"
+    );
+    const passwordUpdateError = document.getElementById("passwordUpdateError");
+
+    passwordForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const formData = new FormData(passwordForm);
+
+      fetch("/reset-password", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            passwordUpdateSuccess.textContent = data.message;
+            passwordUpdateSuccess.style.display = "block";
+            passwordUpdateError.style.display = "none";
+          } else if (data.error) {
+            passwordUpdateError.textContent = data.error;
+            passwordUpdateError.style.display = "block";
+            passwordUpdateSuccess.style.display = "none";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          passwordUpdateError.textContent =
+            "Der opstod en fejl. Prøv venligst igen.";
+          passwordUpdateError.style.display = "block";
+          passwordUpdateSuccess.style.display = "none";
+        });
+    });
+  }
+});
