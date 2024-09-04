@@ -1,9 +1,8 @@
 ##############################
 #   IMPORTS
 #   Library imports
-from bottle import template, get, post, request, redirect, abort, response
+from bottle import template, get, post, request, response
 import os
-import sqlite3
 import bcrypt
 import uuid
 import logging
@@ -45,11 +44,12 @@ except Exception as e:
 finally:
     logger.info("Content import process completed.")
 
+
 ##############################
-#   RESET PASSWORD - GET TEMPLATE
-@get("/reset_password")
-def reset_password():
-    page_name = "reset_password"
+#   RESET USERNAME - GET TEMPLATE
+@get("/reset_username")
+def reset_username():
+    page_name = "reset_username"
 
     try:
         # Securely retrieve user cookie
@@ -66,17 +66,13 @@ def reset_password():
             user = username = None
             logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
 
-        # Generate a token for password reset (if needed)
-        token = request.query.get('token', None)  # Get token from query parameters if available
-
         # Show template
         logger.success(f"Successfully showing template for {page_name}")
         return template(page_name,
-                        title="UNID Studio - Nulstil adgangskode",
+                        title="Anmod om Nulstilling af Brugernavn",
                         global_content=global_content,
                         user=user,
-                        username=username,
-                        token=token)
+                        username=username)
 
     except Exception as e:
         if "db" in locals():
@@ -91,11 +87,9 @@ def reset_password():
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
 
-
-##############################
-#   REQUEST RESET PASSWORD - SEND EMAIL TO USER
-@post("/request_reset_password")
-def request_reset_password():
+#   REQUEST RESET USERNAME - SEND EMAIL TO USER
+@post("/request_reset_username")
+def request_reset_username():
     try:
         email = request.forms.get('email')
 
@@ -119,17 +113,17 @@ def request_reset_password():
         """, (token, expiry_time, email))
         db.commit()
 
-        # Send reset password email with the token
-        send_password_reset_email(email, token)
+        # Send reset username email with the token
+        send_reset_username_email(email, token)
 
         logger.success("Reset link sent to email")
-        return {"message": "En e-mail til nulstilling af adgangskode er sendt"}
-
+        return {"message": "Et nulstillingslink er blevet sendt til din email!"}
+ 
     except Exception as e:
         if "db" in locals():
             db.rollback()
             logger.info("Database transaction rolled back due to exception")
-        logger.error(f"Error during request for /request_reset_password: {e}")
+        logger.error(f"Error during request for /request_reset_username: {e}")
         response.status = 500
         return {"error": "Der opstod en fejl"}
 
@@ -140,10 +134,10 @@ def request_reset_password():
 
 
 ##############################
-#   GET UPDATE PASSWORD FORMULAR
-@get("/get_reset_password")
-def get_reset_password():
-    page_name = "new_password"
+#   GET UPDATE USERNAME FORMULAR
+@get("/get_reset_username")
+def get_reset_username():
+    page_name = "new_username"
 
     try:
         # Securely retrieve user cookie
@@ -169,8 +163,8 @@ def get_reset_password():
 
         # Show template
         logger.success(f"Successfully showing template for {page_name}")
-        return template('new_password',
-                        title="UNID Studio - Ny adgangskode",
+        return template('new_username',
+                        title="UNID Studio - Nyt Brugernavn",
                         global_content=global_content,
                         user=user,
                         username=username,
@@ -189,19 +183,18 @@ def get_reset_password():
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
 
-
 ##############################
-#   UPDATES PASSWORD
-@post("/reset-password")
-def reset_password_post():
+#   UPDATES USERNAME
+@post("/update_username")
+def update_username_post():
     try:
         token = request.forms.get('token')
-        new_password = request.forms.get('new_password')
+        new_username = request.forms.get('new_username')
 
-        if not token or not new_password:
-            logger.warning("Token og ny adgangskode er påkrævet")
+        if not token or not new_username:
+            logger.warning("Token og nyt brugernavn er påkrævet")
             response.status = 400
-            return {"error": "Token og ny adgangskode er påkrævet"}
+            return {"error": "Token og nyt brugernavn er påkrævet"}
 
         db = master.db()
         cursor = db.cursor()
@@ -219,25 +212,22 @@ def reset_password_post():
             response.status = 400
             return {"error": "Ugyldigt eller udløbet token"}
 
-        # Hash the new password
-        hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
-
-        # Update the user's password and clear the reset token
+        # Update the user's username and clear the reset token
         cursor.execute("""
             UPDATE users 
-            SET password = ?, reset_token = NULL, reset_token_expiry = NULL 
+            SET username = ?, reset_token = NULL, reset_token_expiry = NULL 
             WHERE reset_token = ?
-        """, (hashed_password, token))
+        """, (new_username, token))
         db.commit()
 
-        logger.success("Adgangskoden er blevet opdateret")
-        return {"message": "Din adgangskode er blevet opdateret!"}
+        logger.success("Brugernavnet er blevet opdateret")
+        return {"message": "Dit brugernavn er blevet opdateret!"}
 
     except Exception as e:
         if "db" in locals():
             db.rollback()
             logger.info("Database transaction rolled back due to exception")
-        logger.error(f"Error during request for /reset-password: {e}")
+        logger.error(f"Error during request for /update_username: {e}")
         response.status = 500
         return {"error": "Der opstod en fejl. Prøv igen."}
 
@@ -247,24 +237,25 @@ def reset_password_post():
             logger.info("Database connection closed")
 
 
-##############################
-#   EMAIL SENDING FUNCTION
-def send_password_reset_email(email, token):
+
+
+
+def send_reset_username_email(email, token):
     smtp_server = 'smtp.simply.com'
     smtp_port = 587
     smtp_user = os.getenv('EMAIL')
     smtp_password = os.getenv('EMAIL_PASSWORD')
     from_email = 'kontakt@unidstudio.dk'
-    reset_link = urljoin('http://127.0.0.1:2500/', f"/get_reset_password?token={token}")
+    reset_link = urljoin('http://127.0.0.1:2500/', f"/get_reset_username?token={token}")
 
-    subject = "Nulstil din adgangskode"
+    subject = "Nulstil dit brugernavn"
     body = f"""
     Hej,
 
-    Klik på følgende link for at nulstille din adgangskode:
+    Klik på følgende link for at nulstille dit brugernavn:
     {reset_link}
 
-    Hvis du ikke har anmodet om at nulstille din adgangskode, kan du ignorere denne e-mail.
+    Hvis du ikke har anmodet om at nulstille dit brugernavn, kan du ignorere denne e-mail.
 
     Med venlig hilsen,
     UNID Studio
@@ -281,4 +272,6 @@ def send_password_reset_email(email, token):
             server.login(smtp_user, smtp_password)
             server.sendmail(from_email, email, msg.as_string())
     except Exception as e:
-        logger.error(f"Failed to send password reset email: {e}")
+        logger.error(f"Failed to send username reset email: {e}")
+
+

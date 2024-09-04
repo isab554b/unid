@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Nulstil brugernavn</title>
+  </head>
+  <body>
+    % include('components/header_component')
+    <section class="bg-unidBeige">
+      <div class="width_small padding_y_standard space_y_standard mx-auto">
+        <div class="flex justify-center">
+          <div
+            class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
+          >
+            <h1>Nulstil brugernavn</h1>
+          </div>
+        </div>
+
+        <div id="content_box_styling">
+          <div class="flex flex-col gap-10 p-6 text-unidPurple">
+            <div class="flex flex-col gap-2 text-sm">
+              <form id="resetUsernameForm" method="post" class="space-y-4">
+                <input type="hidden" name="token" value="{{ token }}" />
+                <label for="new_username" class="space-y-1.5 block">
+                  <div class="flex space-between justify-between">
+                    <p id="form_label" class="text-sm">Nyt brugernavn</p>
+                  </div>
+                  <div class="relative w-full text-sm">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+                    >
+                      <div
+                        id="icon_small"
+                        class="fill-white text-white w-5 h-5"
+                      >
+                        % include(global_content['ui_icons']['user'])
+                      </div>
+                    </div>
+                    <input
+                      id="form_input"
+                      type="text"
+                      name="new_username"
+                      required
+                    />
+                  </div>
+                </label>
+
+                <button type="submit" id="primary_button">
+                  Opdater brugernavn
+                </button>
+              </form>
+              <div class="flex justify-center">
+                <p
+                  id="usernameUpdateSuccess"
+                  style="display: none"
+                  class="text-unidPurple text-sm pt-2"
+                ></p>
+                <p
+                  id="usernameUpdateError"
+                  style="display: none"
+                  class="text-sm text-unidPurple pt-2"
+                ></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    % include('components/footer_component')
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

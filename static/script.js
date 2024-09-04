@@ -764,7 +764,7 @@ $(document).on("submit", "#cancelForm", function (event) {
 });
 
 // ##############################
-// RESET AND UPDATE CODE RESPONSE
+// RESET AND UPDATE PASSWORD RESPONSE
 document.addEventListener("DOMContentLoaded", function () {
   // Kode til formularen på /request_reset_password
   const resetForm = document.getElementById("resetForm");
@@ -838,6 +838,98 @@ document.addEventListener("DOMContentLoaded", function () {
             "Der opstod en fejl. Prøv venligst igen.";
           passwordUpdateError.style.display = "block";
           passwordUpdateSuccess.style.display = "none";
+        });
+    });
+  }
+});
+
+// ##############################
+// RESET AND UPDATE USERNAME RESPONSE
+document.addEventListener("DOMContentLoaded", function () {
+  // Håndtering af formularen for at anmode om nulstilling af brugernavn
+  const requestUsernameResetForm = document.getElementById(
+    "requestUsernameResetForm"
+  );
+  if (requestUsernameResetForm) {
+    const usernameResetSuccess = document.getElementById(
+      "usernameResetSuccess"
+    );
+    const usernameResetError = document.getElementById("usernameResetError");
+
+    requestUsernameResetForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Forhindrer standardformularindsendelse
+
+      // Hent data fra formularen
+      const formData = new FormData(requestUsernameResetForm);
+
+      // Send AJAX-request med fetch API
+      fetch("/request_reset_username", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            // Hvis forespørgslen lykkes
+            usernameResetSuccess.textContent = data.message;
+            usernameResetSuccess.style.display = "block";
+            usernameResetError.style.display = "none";
+          } else if (data.error) {
+            // Hvis serveren returnerer en fejl
+            usernameResetError.textContent = data.error;
+            usernameResetError.style.display = "block";
+            usernameResetSuccess.style.display = "none";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          usernameResetError.textContent =
+            "Der opstod en fejl. Prøv venligst igen.";
+          usernameResetError.style.display = "block";
+          usernameResetSuccess.style.display = "none";
+        });
+    });
+  }
+
+  // Håndtering af formularen for at opdatere brugernavn
+  const resetUsernameForm = document.getElementById("resetUsernameForm");
+  if (resetUsernameForm) {
+    const usernameUpdateSuccess = document.getElementById(
+      "usernameUpdateSuccess"
+    );
+    const usernameUpdateError = document.getElementById("usernameUpdateError");
+
+    resetUsernameForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Forhindrer standardformularindsendelse
+
+      // Hent data fra formularen
+      const formData = new FormData(resetUsernameForm);
+
+      // Send AJAX-request med fetch API
+      fetch("/update_username", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            // Hvis forespørgslen lykkes
+            usernameUpdateSuccess.textContent = data.message;
+            usernameUpdateSuccess.style.display = "block";
+            usernameUpdateError.style.display = "none";
+          } else if (data.error) {
+            // Hvis serveren returnerer en fejl
+            usernameUpdateError.textContent = data.error;
+            usernameUpdateError.style.display = "block";
+            usernameUpdateSuccess.style.display = "none";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          usernameUpdateError.textContent =
+            "Der opstod en fejl. Prøv venligst igen.";
+          usernameUpdateError.style.display = "block";
+          usernameUpdateSuccess.style.display = "none";
         });
     });
   }
