@@ -244,7 +244,7 @@
       ></p>
       % else:
       <p class="text-unidPurple text-sm">
-        Du kan først opsige dit abonnement efter 3 måneder.
+        Du kan først opsige dit abonnement efter 3 måneder fra købsdatoen.
       </p>
       % end
     </div>

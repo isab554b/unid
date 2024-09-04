@@ -240,7 +240,7 @@ frontpage_content = {
 #   ABOUT_US
 about_us_content = {
     "header_text": "Om UNID Studio",
-    "subheader_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
+    "subheader_text": "Hos UNID Studio er vi et lille, men dynamisk team med store idéer. Vi kombinerer vores omfattende erfaring inden for grafisk design og webudvikling, til at skabe skræddersyede løsninger, der matcher dine unikke behov. ",
     # HIGHLIGHTS SECTION
     "highlights_section": {
         "header_text": "Lille studio - med store idéer",
@@ -464,7 +464,7 @@ profile_content = {
 #   SERVICES_AND_PRICES
 services_and_prices_content = {
     "header_text": "Services og priser",
-    "subheader_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
+    "subheader_text": "Vi tilbyder en bred vifte af professionelle løsninger, der er skræddersyet til dine behov. Hos os finder du en gennemsigtig prissætning, så du altid ved, hvad du får for pengene. Kontakt os i dag for at få et uforpligtende tilbud.",
     # SERVICES SECTION
     "services_section": {
         "header_text": "Det kan vi hjælpe dig med",
@@ -676,9 +676,12 @@ services_and_prices_content = {
                         "price": "7.000 DKK",
                     },
                     "selling_points": [
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
+                        {"text": "Adgang til vores ekspertise"},
+                        {"text": "Vælg frit hvad timerne bruges på"},
+                        {"text": "Nemt anmode om opgaveønsker"},
+                        {"text": "Overblik over udførte opgaver"},
+                        {"text": "Overblik over tidsforbrug"},
+                        
                     ]
                 },
                 "clipcard_b": {
@@ -689,9 +692,11 @@ services_and_prices_content = {
                         "price": "14.000 DKK",
                     },
                     "selling_points": [
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
+                        {"text": "Adgang til vores ekspertise"},
+                        {"text": "Vælg frit hvad timerne bruges på"},
+                        {"text": "Nemt anmode om opgaveønsker"},
+                        {"text": "Overblik over udførte opgaver"},
+                        {"text": "Overblik over tidsforbrug"},
                     ]
                 },
                 "clipcard_c": {
@@ -702,9 +707,11 @@ services_and_prices_content = {
                         "price": "19.500 DKK",
                     },
                     "selling_points": [
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
-                        {"text": "Lorem Ipsum"},
+                        {"text": "Adgang til vores ekspertise"},
+                        {"text": "Vælg frit hvad timerne bruges på"},
+                        {"text": "Nemt anmode om opgaveønsker"},
+                        {"text": "Overblik over udførte opgaver"},
+                        {"text": "Overblik over tidsforbrug"},
                     ]
                 },
             },
