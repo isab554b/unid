@@ -739,13 +739,25 @@ blog_content = {
             "post_default": {
                 "post_a": {
                     "info": {
-                        "title": "Lorem Ipsum",
-                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac interdum dui. Aliquam arcu purus, ullamcorper vitae lacus sit amet, hendrerit cursus mi. Phasellus augue nulla, condimentum quis dictum ac, fermentum non felis... ",
-                        "author": "Isabella Nielsen",
-                        "date": "26. juli 2024",
-                        "link": "/post",
-                        "image": "placeholder.jpg",
-                        "image_alt": "Placeholder billede",
+                        "title": "Hastighedsoptimering på hjemmesider er en nødvendighed!",
+                        "description": "Hastighedsoptimering er en vigtig faktor, der påvirker brugeroplevelsen, SEO, konverteringsrater og dit brand som helhed. En hurtig hjemmeside holder brugerne engagerede, forbedrer søgemaskine rangeringer...",
+                        "author": "Denise Hansen",
+                        "date": "5. september 2024",
+                        "link": "/hastighedsoptimering",
+                        "image": "hastighedsoptimering.webp",
+                        "image_alt": "Grafik af hastighedsoptimering på hjemmeside.",
+
+                    },
+                },
+                "post_b": {
+                    "info": {
+                        "title": "Hastighedsoptimer din WordPress-hjemmeside",
+                        "description": "Er du træt af, at din WordPress-hjemmeside loader langsomt? En langsom hjemmeside kan koste dig dyrebare besøgende og skade din søgemaskinerangering. Heldigvis er der en række ting, du kan gøre for at optimere din hjemmesides hastighed...",
+                        "author": "Denise Hansen",
+                        "date": "5. september 2024",
+                        "link": "/wp_hastighedsoptimering",
+                        "image": "wp_hastighedsoptimering.webp",
+                        "image_alt": "Grafik af hastighedsoptimering på WordPress side.",
 
                     },
                 },

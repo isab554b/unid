@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+    <section class="bg-unidBeige">
+      <div class="width_standard padding_y_standard space_y_standard mx-auto">
+        <div
+          class="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-10/12 space-y-8"
+        >
+          <div class="flex text-center">
+            <div class="w-5 h-5">
+              % include(global_content['ui_icons']['arrow'])
+            </div>
+            <a
+              href="/blog"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+            >
+              Tilbage til blog
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+              ></span>
+            </a>
+          </div>
+          <div class="pb-6 mb-6 space-y-4">
+            <h2 class="mb-3">Hastighedsoptimer din WordPress-hjemmeside</h2>
+            <p class="font-medium">5. september 2024 • Denise Hansen</p>
+            <div class="border-b border-unidLightBlue"></div>
+
+            <div class="flex items-center space-x-2">
+              <p class="">Del blogindlæg:</p>
+              <a
+                href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M13.397,20.997v-8.196h2.765l0.411-3.209h-3.176V7.548c0-0.926,0.258-1.56,1.587-1.56h1.684V3.127	C15.849,3.039,15.025,2.997,14.201,3c-2.444,0-4.122,1.492-4.122,4.231v2.355H7.332v3.209h2.753v8.202H13.397z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://twitter.com/intent/tweet?url=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809	c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793	c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05	c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032	c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028	c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22	c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <circle cx="4.983" cy="5.009" r="2.188" />
+                  <path
+                    d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zM3.095 8.855H6.87V20.994H3.095z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <img
+              src="/assets/images/blog/wp_hastighedsoptimering.webp"
+              class="w-full object-cover rounded-lg"
+              alt="Grafik af hastighedsoptimering på hjemmeside."
+            />
+
+            <div class="space-y-6" style="hyphens: auto">
+              <p>
+                Er du træt af, at din WordPress-hjemmeside loader langsomt? En
+                langsom hjemmeside kan koste dig dyrebare besøgende og skade din
+                søgemaskinerangering. Heldigvis er der en række ting, du kan
+                gøre for at optimere din hjemmesides hastighed.
+              </p>
+
+              <p>
+                Mange af punkterne i dette blogindlæg ligner dem fra forrige
+                indlæg:
+                <a
+                  href="/hastighedsoptimering"
+                  target="_blank"
+                  class="font-semibold"
+                  >Hastighedsoptimering på hjemmesider er en nødvendighed!</a
+                >
+                Men med en WordPress-hjemmeside er der særlige forhold, man skal
+                være opmærksom på. Valget af tema kan for eksempel påvirke
+                hastigheden markant, ligesom plugins kan tilføre ekstra kode,
+                der kan gøre din side langsommere. Derfor er det vigtigt at
+                vælge lette og optimerede temaer samt begrænse brugen af plugins
+                til kun de mest nødvendige. Disse faktorer er afgørende for at
+                opretholde en hurtig og effektiv WordPress-hjemmeside.
+              </p>
+              <div class="space-y-2">
+                <p class="font-semibold text-lg">
+                  Hvorfor er hastighed så vigtigt?
+                </p>
+
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Brugeroplevelse: Hurtige hjemmesider giver en bedre
+                    brugeroplevelse. Besøgende er mere tilbøjelige til at blive
+                    på din side og interagere med dit indhold.
+                  </li>
+
+                  <li>
+                    Søgemaskiner: Søgemaskiner som Google prioriterer hurtige
+                    hjemmesider i deres søgeresultater.
+                  </li>
+
+                  <li>
+                    Konverteringer: En hurtig hjemmeside kan øge dine
+                    konverteringsrater, da besøgende er mere tilbøjelig til at
+                    foretage et køb eller udfylde en formular.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold text-lg">
+                  Tips til hastighedsoptimering på WordPress hjemmesider
+                </p>
+                <p>
+                  Som nævnt i indlægget
+                  <a
+                    href="/hastighedsoptimering"
+                    target="_blank"
+                    class="font-semibold"
+                    >her</a
+                  >
+                  er ting som billedoptimering, aktivering af cache, valg en god
+                  hostingudbyder, brug af CDN, reducering af HTTP-forespørgsler
+                  og optimering af serverens ydeevne stadig meget relevant for
+                  hastighedsoptimering på et Wordpress site. Dog er der nogle
+                  særlige ting du også skal have fokus på, når du har din
+                  hjemmeside igennem CMS-systemet Wordpress.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Vælg en god hosting:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Sørg for at have en hosting plan, der passer til dine behov.
+                  </li>
+                  <li>
+                    Overvej at bruge et managed WordPress-hosting, da de ofte er
+                    optimeret til WordPress.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Vælg et hastighedsoptimeret tema:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Ikke alle WordPress-temaer er skabt lige. Nogle temaer er
+                    tungere og langsommere end andre. Vælg et tema, der er kendt
+                    for sin hastighed og effektivitet. Nogle af de mest populære
+                    valg er temaer som GeneratePress, Astra og Neve.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-2">
+                <p class="font-semibold">Optimer dine billeder:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Komprimer dine billeder før upload. Og husk at slette de
+                    billeder som ikke er i brug. Et gratis værktøj man kan bruge
+                    til billedkomprimering er Squoosh, som du kan finde
+                    <a
+                      href="https://squoosh.app/"
+                      target="_blank"
+                      class="font-semibold"
+                      >her.</a
+                    >
+                  </li>
+                  <li>
+                    Brug formater som WebP i stedet for JPG for at opnå bedre
+                    komprimering.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Minimer din kode:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Brug et plugin som Autoptimize eller WP Optimize for at
+                    fjerne unødvendig kode.
+                  </li>
+                  <li>Kombiner og minimer dine CSS- og JavaScript-filer.</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Implementer caching:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Brug et caching-plugin som WP Rocket eller W3 Total Cache
+                    for at gemme statiske versioner af dine sider.
+                  </li>
+                  <li>
+                    Aktiver browser-caching for at reducere antallet af
+                    HTTP-anmodninger.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Reducer antallet af plugins:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Hvert plugin tilføjer ekstra kode til din hjemmeside.
+                    Begræns dig til de mest nødvendige plugins og slet de plug
+                    ins som ikke er i brug.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Optimer din database:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>Fjern unødvendige data fra din database.</li>
+                  <li>Optimere dine databasetabeller</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold">Brug et CDN:</p>
+                <ul class="pl-4 space-y-2" style="list-style: circle">
+                  <li>
+                    Et Content Delivery Network (CDN) kan hjælpe med at levere
+                    dit indhold hurtigere til besøgende, der befinder sig
+                    geografisk langt væk.
+                  </li>
+                </ul>
+              </div>
+              <p>
+                Hastighedsoptimering på WordPress kræver lidt arbejde, men det
+                er en investering, der vil betale sig på den lange bane. Ved at
+                følge disse tips kan du forbedre din hjemmesides ydeevne og give
+                dine besøgende en bedre oplevelse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

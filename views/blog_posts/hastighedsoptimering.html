@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+    <section class="bg-unidBeige">
+      <div class="width_standard padding_y_standard space_y_standard mx-auto">
+        <div
+          class="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-10/12 space-y-8"
+        >
+          <div class="flex text-center">
+            <div class="w-5 h-5">
+              % include(global_content['ui_icons']['arrow'])
+            </div>
+            <a
+              href="/blog"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+            >
+              Tilbage til blog
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+              ></span>
+            </a>
+          </div>
+          <div class="pb-6 mb-6 space-y-4">
+            <h2 class="mb-3">
+              Hastighedsoptimering på hjemmesider er en nødvendighed!
+            </h2>
+            <p class="font-medium">5. september 2024 • Denise Hansen</p>
+            <div class="border-b border-unidLightBlue"></div>
+
+            <div class="flex items-center space-x-2">
+              <p class="">Del blogindlæg:</p>
+              <a
+                href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M13.397,20.997v-8.196h2.765l0.411-3.209h-3.176V7.548c0-0.926,0.258-1.56,1.587-1.56h1.684V3.127	C15.849,3.039,15.025,2.997,14.201,3c-2.444,0-4.122,1.492-4.122,4.231v2.355H7.332v3.209h2.753v8.202H13.397z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://twitter.com/intent/tweet?url=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809	c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793	c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05	c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032	c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028	c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22	c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:2500/post"
+                target="_blank"
+                class=""
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="flex-none h-5"
+                  fill="currentColor"
+                >
+                  <circle cx="4.983" cy="5.009" r="2.188" />
+                  <path
+                    d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zM3.095 8.855H6.87V20.994H3.095z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <img
+              src="/assets/images/blog/hastighedsoptimering.webp"
+              class="w-full object-cover rounded-lg"
+              alt="Grafik af hastighedsoptimering på hjemmeside."
+            />
+
+            <div class="space-y-6" style="hyphens: auto">
+              <div class="space-y-2">
+                <p class="font-semibold text-lg">
+                  Hvorfor hjemmesidehastighed er afgørende
+                </p>
+
+                <p>
+                  Hastighedsoptimering er en vigtig faktor, der påvirker
+                  brugeroplevelsen, SEO, konverteringsrater og dit brand som
+                  helhed. En hurtig hjemmeside holder brugerne engagerede,
+                  forbedrer søgemaskine rangeringer og fører til højere
+                  konverteringer. Hvis din hjemmeside er langsom, risikerer du
+                  at miste besøgende, hvilket kan skade både din indtjening og
+                  omdømme.
+                </p>
+
+                <p>
+                  Det siges faktisk at de fleste brugere danner sig et
+                  førstehåndsindtryk af en hjemmeside inden for de første 50
+                  millisekunder.
+                </p>
+
+                <p>
+                  Det er utroligt hurtigt, ikke? Det betyder, at du har en meget
+                  kort periode til at fange din besøgendes opmærksomhed og give
+                  dem et positivt indtryk.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold text-lg">
+                  Hvordan forbedrer man sin hjemmesides hastighed?
+                </p>
+                <ol class="pl-4 space-y-4" style="list-style: auto">
+                  <li>
+                    Billedoptimering: Billeder fylder ofte meget på en
+                    hjemmeside. Ved at komprimere billeder uden at gå på
+                    kompromis med kvaliteten kan du reducere filstørrelsen
+                    markant. Brug formater som WebP i stedet for JPG for at opnå
+                    bedre komprimering. Til at komprimere sine billeder kan man
+                    f.eks. bruge værktøjet
+                    <a
+                      href="https://squoosh.app/"
+                      target="_blank"
+                      class="font-semibold"
+                      >Squoosh.</a
+                    >
+                  </li>
+
+                  <li>
+                    Aktiver cache: Caching hjælper med at gemme kopier af dine
+                    sider lokalt på brugernes enheder, så de ikke skal hente alt
+                    indhold fra serveren hver gang. Dette reducerer load-tider
+                    betydeligt, især for tilbagevendende besøgende.
+                  </li>
+
+                  <li>
+                    Minimalistisk design: Overflødige designelementer kan gøre
+                    din side tung og langsom at loade. Fokuser på enkelhed og
+                    fjern unødvendige funktioner, der ikke tilføjer værdi til
+                    brugeroplevelsen.
+                  </li>
+
+                  <li>
+                    Brug af CDN (Content Delivery Network): Et CDN distribuerer
+                    dit indhold over flere servere globalt, hvilket gør det
+                    hurtigere for brugerne at få adgang til dit indhold, uanset
+                    hvor de befinder sig. Dette kan især være nyttigt for
+                    internationale websites.
+                  </li>
+
+                  <li>
+                    Reducer HTTP-forespørgsler: Hver gang en browser indlæser en
+                    side, skal den lave flere HTTP-forespørgsler for at hente
+                    forskellige filer (CSS, JavaScript, billeder osv.). Ved at
+                    minimere antallet af forespørgsler ved hjælp af teknikker
+                    som sammensmeltning af CSS- og JavaScript-filer kan du
+                    reducere load-tiden.
+                  </li>
+
+                  <li>
+                    Optimer serverens ydeevne: En hurtig server er grundlaget
+                    for en hurtig hjemmeside. Vælg en hosting-udbyder, der
+                    tilbyder høj ydeevne, og overvej at opgradere din
+                    serverkapacitet, hvis din hjemmeside vokser.
+                  </li>
+
+                  <li>
+                    Lazy loading: Med lazy loading indlæses billeder og videoer
+                    først, når de er synlige på skærmen, hvilket reducerer den
+                    oprindelige load-tid. Dette er særligt effektivt for sider
+                    med meget visuelt indhold.
+                  </li>
+
+                  <li>
+                    Optimer CSS og JavaScript: Store CSS- og JavaScript-filer
+                    kan bremse din hjemmeside. Komprimer og minificér dine filer
+                    for at reducere deres størrelse og dermed forbedre
+                    load-tiderne. Udskyd også indlæsning af ikke-kritiske
+                    scripts, så de ikke blokerer rendering af siden. Hvis din
+                    hjemmeside er bygget op med et CMS system, så er det vigtigt
+                    at kigge på om dit tema er hastighedsoptimeret. Nogle temaer
+                    er flotte og har mange effekter, men det kan desværre også
+                    være grunden til at hastigheden ikke er i top.
+                  </li>
+                </ol>
+              </div>
+
+              <p>
+                Hvis du har en Wordpress side kan man hente et hav af plugins,
+                bl.a. til at optimere sin hjemmesides hastighed. Det kan du læse
+                mere om i indlægget her, som netop omhandler plugins til
+                WordPress.
+              </p>
+              <div class="space-y-2">
+                <p class="font-semibold text-lg">
+                  Fordelene ved en hurtig hjemmeside
+                </p>
+                <ol class="pl-4 space-y-4" style="list-style: auto">
+                  <li>
+                    Forbedret brugeroplevelse: En hurtig hjemmeside resulterer i
+                    glade og engagerede brugere. Langsomme
+                    indlæsningshastigheder kan føre til frustration og høj
+                    bounce rate, mens hurtigere load-tider holder brugerne
+                    længere på din side.
+                  </li>
+                  <li>
+                    Bedre SEO resultater: Google og andre søgemaskiner
+                    favoriserer hurtige hjemmesider. En langsom hjemmeside kan
+                    skade din SEO-rangering, hvilket gør det sværere for
+                    potentielle kunder at finde dig.
+                  </li>
+                  <li>
+                    Øget konverteringsrate: Der er en direkte sammenhæng mellem
+                    hjemmesidens hastighed og konverteringer. Studier viser, at
+                    selv en lille forsinkelse i load-tid kan reducere
+                    konverteringsraten betydeligt. Hurtigere sider fører til
+                    mere effektiv konvertering af besøgende til kunder.
+                  </li>
+                  <li>
+                    Styrk dit brand: En hurtig hjemmeside signalerer
+                    professionalisme og pålidelighed. Brugere associerer ofte
+                    hastighed med kvalitet, så en optimeret side kan styrke dit
+                    brand og skabe et positivt indtryk hos dine kunder.
+                  </li>
+                </ol>
+              </div>
+
+              <p>
+                At optimere din hjemmesides hastighed er ikke længere et valg –
+                det er et krav for at få succes i den konkurrenceprægede
+                digitale verden. Fra optimering af billeder til implementering
+                af CDN, kan selv de mindste forbedringer gøre en stor forskel på
+                både din hjemmesides ydeevne og dens resultater.
+              </p>
+
+              <p>
+                Et nyttigt værktøj til at måle din hjemmesides hastighed er
+                <a
+                  href="https://pagespeed.web.dev/"
+                  target="_blank"
+                  class="font-semibold"
+                  >Google PageSpeed Insights.</a
+                >
+              </p>
+
+              <p>Held og lykke med optimeringen!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>
