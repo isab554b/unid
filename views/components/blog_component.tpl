@@ -11,7 +11,7 @@
     
     
     <!-- prettier-ignore -->
-    <h4 class="text-xl text-unidDarkBlue">{{ post["info"]["title"] }}</h2>
+    <h4 class="text-xl text-unidPurple">{{ post["info"]["title"] }}</h2>
     <p class="text-base text-unidDarkBlue" >
       {{ post["info"]["description"] }}
     </p>

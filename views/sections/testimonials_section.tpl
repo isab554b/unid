@@ -1,4 +1,4 @@
-<section class="bg-unidLigthPink">
+<section class="bg-unidYellow">
   <div class="width_standard mx-auto padding_y_standard space_y_standard">
     <div class="flex justify-center">
       <div
