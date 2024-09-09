@@ -33,17 +33,17 @@
       </div>
     </div>
     <div class="flex justify-center text-center gap-1.5">
-      <p class="italic text-sm">
+      <p class="italic text-sm text-unidDarkBlue">
         Du skal være logget ind for at købe et abonnement. Har du ikke en
         bruger?
       </p>
       <a
         href="/signup"
-        class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+        class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
       >
         Opret en bruger
         <span
-          class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+          class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
         ></span>
       </a>
     </div>

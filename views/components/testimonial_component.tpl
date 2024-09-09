@@ -5,14 +5,14 @@
       <!-- prettier-ignore -->
       % include(f'{frontpage_content["testimonials_section"]["testimonial_icon"]}')
     </div>
-    <p class="text-unidPurple italic">{{ testimonial["text"] }}</p>
+    <p class="text-unidDarkBlue italic">{{ testimonial["text"] }}</p>
   </div>
   <div class="inline-flex items-center gap-4">
     <div class="justify-center flex flex-col">
       <p id="content_box_header_text">
         {{ testimonial["author_name"] }}
       </p>
-      <p class="text-unidPurple text-sm">
+      <p class="text-unidDarkBlue text-sm">
         {{ testimonial["author_job_title"] }}
       </p>
     </div>

@@ -1,6 +1,6 @@
 % include('components/header_bar_component')
 <header
-  class="text-white text-base bg-unidLightBlue sticky top-0 z-50 transition-all duration-300 ease-in-out"
+  class="text-white text-base bg-unidBlue sticky top-0 z-50 transition-all duration-300 ease-in-out"
 >
   <div class="width_big py-8 mx-auto flex items-center justify-between">
     <div class="flex">
@@ -40,7 +40,7 @@
 <!-- Mobil navigation -->
 <nav
   id="mobile-nav"
-  class="flex flex-col items-center lg:hidden bg-unidLightBlue text-white p-4 space-y-2"
+  class="flex flex-col items-center lg:hidden bg-unidBlue text-white p-4 space-y-2"
 >
   % include('elements/nav_items_element')
 </nav>

@@ -7,52 +7,53 @@
     @apply font-montserrat bg-unidYellow text-unidPurple selection:bg-unidPurple selection:text-white scroll-smooth;
   }
   h1 {
-    @apply text-unidPurple font-saira text-5xl md:text-6xl font-bold;
+    @apply text-unidDarkBlue font-saira text-5xl md:text-6xl font-bold;
   }
   h2 {
-    @apply text-unidPurple font-saira text-4xl md:text-5xl font-bold;
+    @apply text-unidDarkBlue font-saira text-4xl md:text-5xl font-bold;
   }
   h3 {
-    @apply text-unidPurple font-saira text-3xl md:text-4xl font-bold;
+    @apply text-unidDarkBlue font-saira text-3xl md:text-4xl font-bold;
   }
   h4 {
-    @apply text-unidPurple font-saira text-2xl md:text-3xl font-bold;
+    @apply text-unidDarkBlue font-saira text-2xl md:text-3xl font-bold;
   }
   h5 {
-    @apply text-unidPurple font-saira text-xl md:text-2xl font-bold;
+    @apply text-unidDarkBlue font-saira text-xl md:text-2xl font-bold;
   }
+
   #h1_subheader {
-    @apply text-unidPurple font-montserrat text-lg md:text-2xl leading-8 md:leading-10;
+    @apply text-unidDarkBlue font-montserrat text-lg md:text-2xl leading-8 md:leading-10;
   }
   #subheader {
-    @apply text-unidPurple font-montserrat text-lg md:text-lg leading-relaxed;
+    @apply text-unidDarkBlue font-montserrat text-lg md:text-lg leading-relaxed;
   }
   #decorative_header {
-    @apply text-unidPurple text-base tracking-widest uppercase;
+    @apply text-unidDarkBlue text-base tracking-widest uppercase;
   }
   #content_box_header_text {
-    @apply font-bold text-lg;
+    @apply text-unidDarkBlue font-bold text-lg;
   }
   #content_box_header_styling {
-    @apply bg-unidLightBlue text-center p-6 items-center;
+    @apply bg-unidBlue text-center p-6 items-center;
   }
   #content_box_styling {
-    @apply w-full h-full rounded-lg text-white justify-center items-center bg-unidYellow border-2 border-unidLightBlue;
+    @apply w-full h-full rounded-lg text-white justify-center items-center bg-unidYellow border-2 border-unidBlue;
   }
   #introduction_text {
     @apply text-lg font-medium;
   }
   #paragraph_title {
-    @apply text-2xl font-saira font-semibold;
+    @apply text-2xl text-unidDarkBlue font-saira font-semibold;
   }
   #paragraph_text {
-    @apply text-base;
+    @apply text-unidDarkBlue text-base;
   }
   #selling_point {
-    @apply leading-relaxed flex text-xs lg:text-sm text-unidLightBlue font-bold;
+    @apply leading-relaxed flex text-xs lg:text-sm text-unidBlue font-bold;
   }
   #primary_button {
-    @apply text-white text-sm w-full md:text-base font-bold bg-unidLightBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidLightBlueHover hover:scale-105;
+    @apply text-white text-sm w-full md:text-base font-bold bg-unidBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidBlueHover hover:scale-105;
   }
   #secondary_button {
     @apply text-white text-sm w-full md:text-base font-bold hover:scale-105 items-center gap-2 hover:text-unidPurple hover:bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;
@@ -79,36 +80,36 @@
     @apply h-9 w-9;
   }
   #form_label {
-    @apply text-unidPurple text-base font-semibold;
+    @apply text-unidDarkBlue text-base font-semibold;
   }
   #profile_form_label {
-    @apply text-unidPurple text-base font-semibold;
+    @apply text-unidDarkBlue text-base font-semibold;
   }
   #form_input {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
 
   #second_form_input {
-    @apply w-full py-3 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
 
   .form_input_no_icon {
-    @apply w-full py-2 px-5 rounded-md border border-unidLightBlue placeholder:italic placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full py-2 px-5 rounded-md border border-unidBlue placeholder:italic placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   #password_input {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   #form_input_error {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-red-500 placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-red-500 placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   .form_input_error {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-red-500 placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-red-500 placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   #form_input_error_message {
     @apply text-red-500 text-xs transition ease-in-out duration-300;
   }
   #form_input_success {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-green-500 placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-green-500 placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   .width_small {
     @apply w-10/12 md:w-8/12 lg:w-6/12 2xl:w-4/12;

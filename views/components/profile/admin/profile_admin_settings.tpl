@@ -25,12 +25,12 @@
             <div id="icon_medium" class="fill-unidPurple">
               % include(global_content['ui_icons']['user'])
             </div>
-            <p id="content_box_header_text">
+            <p class="font-bold text-lg text-white">
               {{ customer["first_name"] }} {{ customer["last_name"] }}
             </p>
           </div>
         </div>
-        <div class="flex flex-col gap-8 p-6 text-unidPurple">
+        <div class="flex flex-col gap-8 p-6 text-unidDarkBlue">
           <div class="space-y-8 text-sm">
             <div class="space-y-2 text-sm">
               <div class="space-y-1">

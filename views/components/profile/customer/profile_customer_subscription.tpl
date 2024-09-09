@@ -17,10 +17,10 @@
     % for subscription_key, subscription_value in services_and_prices_content['subscription_section']['subscriptions']['subscription_default'].items():
     <div>
       <div
-        class="rounded-lg border-2 bg-unidYellow border-unidLightBlue flex flex-col"
+        class="rounded-lg border-2 bg-unidYellow border-unidBlue flex flex-col"
       >
         <div class="flex flex-col lg:flex-row justify-between gap-6">
-          <div class="text-unidPurple space-y-1 p-6">
+          <div class="text-unidDarkBlue space-y-1 p-6">
             <h3>{{ subscription_value["info"]["hours"] }}</h3>
           </div>
         </div>
@@ -29,8 +29,8 @@
           <div class="space-y-2">
             <!-- prettier-ignore -->
             % for point in subscription_value['selling_points']:
-            <div class="flex items-center gap-2 text-unidPurple">
-              <div class="text-unidPurple w-5 h-5">
+            <div class="flex items-center gap-2 text-unidDarkBlue">
+              <div class="text-unidDarkBlue w-5 h-5">
                 % include(global_content['ui_icons']['checkmark'])
               </div>
               <p>{{ point["text"] }}</p>
@@ -38,14 +38,14 @@
             % end
           </div>
           <div class="flex items-center justify-between gap-4">
-            <p class="text-unidPurple text-base lg:text-lg">Pris</p>
+            <p class="text-unidDarkBlue text-base lg:text-lg">Pris</p>
             <div class="flex items-center gap-2">
               <p
-                class="text-unidPurple text-right text-2xl xl:text-3xl font-saira font-bold"
+                class="text-unidDarkBlue text-right text-2xl xl:text-3xl font-saira font-bold"
               >
                 {{ subscription_value["info"]["price"] }}
               </p>
-              <div class="flex flex-col text-xs text-unidPurple">
+              <div class="flex flex-col text-xs text-unidDarkBlue">
                 <p>ekskl.</p>
                 <p>moms</p>
               </div>
@@ -87,13 +87,10 @@
         <div id="icon_medium" class="fill-unidPurple">
           % include(global_content['ui_icons']['cart'])
         </div>
-        <p id="content_box_header_text">
-          <!-- prettier-ignore -->
-          Abonnement
-        </p>
+        <p class="font-bold text-lg text-white">Abonnement</p>
       </div>
     </div>
-    <div class="flex flex-col gap-8 p-6 text-unidPurple">
+    <div class="flex flex-col gap-8 p-6 text-unidDarkBlue">
       <!-- USER -->
       <div class="space-y-2 text-sm">
         <div class="space-y-1">
@@ -102,25 +99,25 @@
         </div>
         <div class="space-y-2">
           <div class="flex gap-2">
-            <div class="text-unidPurple w-5 h-5">
+            <div class="text-unidDarkBlue w-5 h-5">
               % include(global_content['ui_icons']['checkmark'])
             </div>
             <p>Kontrol af ydeevne og hastighed for hjemmesiden</p>
           </div>
           <div class="flex gap-2">
-            <div class="text-unidPurple w-5 h-5">
+            <div class="text-unidDarkBlue w-5 h-5">
               % include(global_content['ui_icons']['checkmark'])
             </div>
             <p>Opdatering af tema og plugins</p>
           </div>
           <div class="flex gap-2">
-            <div class="text-unidPurple w-5 h-5">
+            <div class="text-unidDarkBlue w-5 h-5">
               % include(global_content['ui_icons']['checkmark'])
             </div>
             <p>Overvågning af website med Google Search Console</p>
           </div>
           <div class="flex gap-2">
-            <div class="text-unidPurple w-5 h-5">
+            <div class="text-unidDarkBlue w-5 h-5">
               % include(global_content['ui_icons']['checkmark'])
             </div>
             <p>
@@ -135,11 +132,11 @@
         <p id="form_label">Opsig abonnement</p>
         <hr />
         <div class="space-y-1">
-          <p class="text-unidPurple text-sm">
+          <p class="text-unidDarkBlue text-sm">
             Ønsker du at opsige dit abonnement, bedes du udfylde nedenstående
             formular.
           </p>
-          <p class="text-unidPurple text-sm">
+          <p class="text-unidDarkBlue text-sm">
             Opsigelse af abonnementet skal ske inden månedens udgang. Hvis du
             opsiger midt i måneden, vil du ikke få refunderet betalingen for den
             resterende del af måneden.
@@ -158,14 +155,14 @@
           </div>
           <div class="relative w-full text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
             >
               <div id="icon_small" class="fill-white text-white w-5 h-5">
                 % include(global_content['ui_icons']['user_circle'])
               </div>
             </div>
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
             >
               <div id="icon_small" class="fill-white text-white w-5 h-5">
                 % include(global_content['ui_icons']['user_circle'])
@@ -186,14 +183,14 @@
           </div>
           <div class="relative w-full text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
             >
               <div id="icon_small" class="fill-white text-white w-5 h-5">
                 % include(global_content['ui_icons']['email'])
               </div>
             </div>
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
             >
               <div id="icon_small" class="fill-white text-white w-5 h-5">
                 % include(global_content['ui_icons']['email'])
@@ -215,7 +212,7 @@
           </div>
           <div class="relative w-full overflow-auto text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue h-full rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue h-full rounded-bl-md rounded-tl-md"
             >
               <div id="icon_small" class="fill-white text-white w-5 h-5">
                 % include(global_content['ui_icons']['message'])
@@ -240,10 +237,10 @@
       <p
         id="cancelMessageSent"
         style="display: none"
-        class="text-unidPurple text-sm"
+        class="text-unidDarkBlue text-sm"
       ></p>
       % else:
-      <p class="text-unidPurple text-sm">
+      <p class="text-unidDarkBlue text-sm">
         Du kan først opsige dit abonnement efter 3 måneder fra købsdatoen.
       </p>
       % end

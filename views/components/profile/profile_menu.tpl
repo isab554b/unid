@@ -1,6 +1,4 @@
-<div
-  class="w-full h-fit sticky top-44 bg-unidLightBlue rounded-lg p-6 space-y-4"
->
+<div class="w-full h-fit sticky top-44 bg-unidBlue rounded-lg p-6 space-y-4">
   <!-- prettier-ignore -->
   % if user and "user_role_id" in user:
     % if user["user_role_id"] == 1:

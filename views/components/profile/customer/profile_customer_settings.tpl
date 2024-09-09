@@ -19,12 +19,12 @@
             <div id="icon_medium" class="fill-unidPurple">
               % include(global_content['ui_icons']['user'])
             </div>
-            <p id="content_box_header_text">
+            <p class="font-bold text-lg text-white">
               {{ user["first_name"] }} {{ user["last_name"] }}
             </p>
           </div>
         </div>
-        <div class="flex flex-col p-6 text-unidPurple">
+        <div class="flex flex-col p-6 text-unidDarkBlue">
           <form id="update_profile_form">
             <div class="space-y-8 text-sm">
               <div class="space-y-4 text-sm">
@@ -82,7 +82,7 @@
                   <button
                     type="button"
                     id="updateProfileButton"
-                    class="text-unidPurple items-center flex gap-1.5 text-sm font-semibold"
+                    class="text-unidDarkBlue items-center flex gap-1.5 text-sm font-semibold"
                   >
                     <div id="icon_small">
                       % include(global_content['ui_icons']['pen'])
@@ -106,7 +106,7 @@
               </div>
             </div>
           </form>
-          <div class="text-unidPurple mx-auto flex-col space-y-4 text-sm">
+          <div class="text-unidDarkBlue mx-auto flex-col space-y-4 text-sm">
             <p id="message"></p>
           </div>
         </div>

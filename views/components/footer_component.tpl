@@ -1,4 +1,4 @@
-<footer class="text-white text-sm bg-unidLightBlue">
+<footer class="text-white text-sm bg-unidBlue">
   <div
     class="width_big mx-auto gap-6 py-10 flex justify-between items-center flex-col lg:flex-row"
   >

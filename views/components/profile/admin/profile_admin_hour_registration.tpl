@@ -18,7 +18,7 @@
           <div id="icon_medium" class="fill-unidPurple">
             % include(global_content['ui_icons']['stop_watch'])
           </div>
-          <p id="content_box_header_text">Timeregistrering</p>
+          <p class="font-bold text-lg text-white">Timeregistrering</p>
         </div>
       </div>
       <div class="flex flex-col gap-10 p-6 text-unidPurple">
@@ -31,12 +31,12 @@
             <div class="">
               <div class="grid grid-cols-6 gap-2 items-center">
                 <label for="customer" class="grid col-span-2">
-                  <p class="font-semibold">Vælg kunde:</p>
+                  <p class="font-semibold text-unidDarkBlue">Vælg kunde:</p>
                 </label>
                 <select
                   id="customer"
                   name="customer"
-                  class="w-full py-2 px-5 grid col-span-4 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300 focus:ring-2 focus:ring-unidYellow focus:outline-none"
+                  class="w-full py-2 px-5 grid col-span-4 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300 focus:ring-2 focus:ring-unidYellow focus:outline-none"
                   placeholder="Choose a customer…"
                 >
                   % for customer in active_customers:
@@ -59,10 +59,10 @@
             </div>
             <div class="grid lg:grid-cols-6 gap-2 items-center">
               <label for="title" class="grid lg:col-span-2">
-                <p class="font-semibold">Opgavetitel:</p>
+                <p class="font-semibold text-unidDarkBlue">Opgavetitel:</p>
               </label>
               <textarea
-                class="w-full py-2 px-5 grid lg:col-span-4 rounded-md border border-unidLightBlue placeholder:italic placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300"
+                class="w-full py-2 px-5 grid lg:col-span-4 rounded-md border border-unidLightBlue placeholder:italic placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300"
                 id="title"
                 name="title"
                 accept-charset="UTF-8"
@@ -72,10 +72,12 @@
             </div>
             <div class="grid lg:grid-cols-6 gap-2 items-center">
               <label for="description" class="grid lg:col-span-2">
-                <p class="font-semibold">Opgavebeskrivelse:</p>
+                <p class="font-semibold text-unidDarkBlue">
+                  Opgavebeskrivelse:
+                </p>
               </label>
               <textarea
-                class="w-full py-2 px-5 grid lg:col-span-4 rounded-md border border-unidLightBlue placeholder:italic placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300"
+                class="w-full py-2 px-5 grid lg:col-span-4 rounded-md border border-unidLightBlue placeholder:italic placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300"
                 id="description"
                 name="description"
                 accept-charset="UTF-8"
@@ -91,13 +93,13 @@
             </div>
             <div class="grid md:grid-cols-6 space-y-2 items-center">
               <label for="hours" class="grid col-span-2">
-                <p class="font-semibold">Tid brugt:</p>
+                <p class="font-semibold text-unidDarkBlue">Tid brugt:</p>
               </label>
               <div class="grid col-span-4">
                 <div class="flex justify-between w-fit md:justify-normal gap-4">
                   <div class="flex items-center gap-2">
                     <input
-                      class="w-full py-2 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300"
+                      class="w-full py-2 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300"
                       type="number"
                       id="hours"
                       name="hours"
@@ -109,7 +111,7 @@
                   </div>
                   <div class="flex items-center gap-2">
                     <input
-                      class="w-full py-2 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidBlue transition ease-in-out duration-300"
+                      class="w-full py-2 px-5 rounded-md border border-unidLightBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300"
                       type="number"
                       id="minutes"
                       name="minutes"

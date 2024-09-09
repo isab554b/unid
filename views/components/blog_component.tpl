@@ -11,12 +11,12 @@
     
     
     <!-- prettier-ignore -->
-    <h4 class="text-xl">{{ post["info"]["title"] }}</h2>
-    <p class="text-base" >
+    <h4 class="text-xl text-unidDarkBlue">{{ post["info"]["title"] }}</h2>
+    <p class="text-base text-unidDarkBlue" >
       {{ post["info"]["description"] }}
     </p>
     <!-- prettier-ignore -->
-    <p class="font-medium text-sm">{{ post["info"]["author"] }} • {{ post["info"]["date"] }}</p>
+    <p class="font-medium text-sm text-unidDarkBlue">{{ post["info"]["author"] }} • {{ post["info"]["date"] }}</p>
     </div>
     </a>
   </div>

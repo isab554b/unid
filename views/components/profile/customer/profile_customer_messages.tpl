@@ -18,13 +18,13 @@
           <div id="icon_medium" class="fill-unidPurple">
             % include(global_content['ui_icons']['message'])
           </div>
-          <p id="content_box_header_text">
+          <p class="font-bold text-lg text-white">
             <!-- prettier-ignore -->
             {{ profile_content["customer_specific_content"]["profile_customer_messages"]["box_header_text"] }}
           </p>
         </div>
       </div>
-      <div class="flex flex-col gap-10 p-6 text-unidPurple">
+      <div class="flex flex-col gap-10 p-6 text-unidDarkBlue">
         <form
           id="contactForm"
           enctype="multipart/form-data"
@@ -79,7 +79,7 @@
               <div class="gap-4 lg:flex space-y-1.5 lg:space-y-0 items-center">
                 <label for="file">Upload fil:</label>
                 <input
-                  class="hover:cursor-pointer text-unidLightBlue gap-2 space-x-6 w-fit"
+                  class="hover:cursor-pointer text-unidBlue gap-2 space-x-6 w-fit"
                   type="file"
                   id="file"
                   name="file"

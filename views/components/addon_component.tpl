@@ -5,7 +5,7 @@
     <tbody>
       <tr class="align-top">
         <!-- Title and Text -->
-        <td class="text-unidPurple p-4 text-left align-top w-2/3">
+        <td class="text-unidDarkBlue p-4 text-left align-top w-2/3">
           <div class="space-y-1">
             <h5>{{ addon["info"]["title"] }}</h5>
             <p>{{ addon["info"]["text"] }}</p>
@@ -14,10 +14,12 @@
         <!-- Price -->
         <td class="px-4 py-3 text-right align-top w-1/3">
           <div class="flex justify-end items-center gap-2">
-            <p class="text-unidPurple text-xl xl:text-2xl font-saira font-bold">
+            <p
+              class="text-unidDarkBlue text-xl xl:text-2xl font-saira font-bold"
+            >
               {{ addon["info"]["price"] }}
             </p>
-            <div class="flex flex-col text-xs text-unidPurple text-right">
+            <div class="flex flex-col text-xs text-unidDarkBlue text-right">
               <p>ekskl.</p>
               <p>moms</p>
             </div>

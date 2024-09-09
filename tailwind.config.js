@@ -5,14 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        unidBlue: "#1D1B6E",
-        unidLightBlue: "#A0B4D3",
-        unidLightBlueHover: "#AEBFDA",
+        unidBlue: "#92AACF",
+        unidBlueHover: "#98B1D6",
+        unidDarkBlue: "#2A2C64",
+        unidLightBlue: "#CAD7E5",
         unidPurple: "#59437B",
-        unidLightPurple: "#E4CBE5",
+        unidLightPurple: "#E3CBE3",
         unidYellow: "#F7F0E6",
-        unidPink: "#F5DBE3",
-        unidBeige: "#F2EBED",
+        unidLigthPink: "#F4E9EC",
       },
       fontFamily: {
         saira: "'Saira', sans-serif",

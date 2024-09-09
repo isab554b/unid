@@ -4,7 +4,7 @@
   </div>
   <div class="relative w-full">
     <div
-      class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+      class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
     >
       <div id="icon_small" class="fill-white text-white w-5 h-5">
         % include(global_content['ui_icons']['lock'])

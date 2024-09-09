@@ -7,7 +7,7 @@
       alt="{{ case['illustration_alt'] }}"
     />
     <div
-      class="absolute inset-0 bg-unidLightBlue rounded-lg opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out"
+      class="absolute inset-0 bg-unidBlue rounded-lg opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out"
     ></div>
     <div class="absolute inset-0 flex items-center justify-center p-4">
       <h3

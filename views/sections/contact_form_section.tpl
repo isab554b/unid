@@ -8,11 +8,11 @@
     />
   </div>
   <div
-    class="bg-unidPink order-first lg:order-last mx-auto flex flex-col w-full p-10 space-y-8 rounded-lg"
+    class="bg-unidYellow order-first lg:order-last mx-auto flex flex-col w-full p-10 space-y-8 rounded-lg"
   >
     <div class="space-y-4">
       <h3>{{ contact_content["contact_form_section"]["header_text"] }}</h3>
-      <p>
+      <p class="text-unidDarkBlue">
         {{ contact_content["contact_form_section"]["subheader_text"] }}
       </p>
     </div>
@@ -23,14 +23,14 @@
         </div>
         <div class="relative w-full">
           <div
-            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
           >
             <div id="icon_small" class="fill-white text-white w-5 h-5">
               % include(global_content['ui_icons']['user_circle'])
             </div>
           </div>
           <div
-            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
           >
             <div id="icon_small" class="fill-white text-white w-5 h-5">
               % include(global_content['ui_icons']['user_circle'])
@@ -51,14 +51,14 @@
         </div>
         <div class="relative w-full">
           <div
-            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
           >
             <div id="icon_small" class="fill-white text-white w-5 h-5">
               % include(global_content['ui_icons']['email'])
             </div>
           </div>
           <div
-            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue rounded-bl-md rounded-tl-md"
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
           >
             <div id="icon_small" class="fill-white text-white w-5 h-5">
               % include(global_content['ui_icons']['email'])
@@ -79,7 +79,7 @@
         </div>
         <div class="relative w-full overflow-auto">
           <div
-            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightBlue h-full rounded-bl-md rounded-tl-md"
+            class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue h-full rounded-bl-md rounded-tl-md"
           >
             <div id="icon_small" class="fill-white text-white w-5 h-5">
               % include(global_content['ui_icons']['message'])
@@ -103,7 +103,7 @@
     <p
       id="contactMessageSent"
       style="display: none"
-      class="text-unidPurple text-sm"
+      class="text-unidDarkBlue text-sm"
     ></p>
   </div>
 </div>

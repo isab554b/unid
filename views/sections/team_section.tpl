@@ -1,7 +1,7 @@
-<div class="bg-unidPink">
+<div class="bg-unidLigthPink">
   <div class="width_standard padding_y_standard space-y-24 mx-auto">
     <div
-      class="gap-14 md:gap-10 grid grid-cols-1 xl:grid-cols-12 text-unidPurple"
+      class="gap-14 md:gap-10 grid grid-cols-1 xl:grid-cols-12 text-unidDarkBlue"
     >
       <div class="grid col-span-1 xl:col-span-5">
         <div class="flex flex-col gap-y-6 md:gap-y-8">

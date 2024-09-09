@@ -9,7 +9,7 @@
   />
   <div class="space-y-3">
     <h3 class="">{{ highlight["title"] }}</h3>
-    <p class="text-base">{{ highlight["text"] }}</p>
+    <p class="text-base text-unidDarkBlue">{{ highlight["text"] }}</p>
   </div>
 </div>
 % end

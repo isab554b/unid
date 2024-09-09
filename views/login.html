@@ -61,28 +61,28 @@
         class="width_small flex flex-col lg:col-span-2 space-y-10 lg:space-y-12 justify-center mx-auto py-20 lg:py-16"
       >
         <div class="flex text-center">
-          <div class="w-5 h-5">
+          <div class="w-5 h-5 text-unidDarkBlue">
             % include(global_content['ui_icons']['arrow'])
           </div>
           <a
             href="/"
-            class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out"
+            class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
           >
             Tilbage til forsiden
             <span
-              class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+              class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
             ></span>
           </a>
         </div>
-        <div class="space-y-3 lg:space-y-6">
-          <h1>{{login_content['header_text']}}</h1>
-        </div>
-        <form class="space-y-6 lg:space-y-8">
+
+        <h1>{{login_content['header_text']}}</h1>
+
+        <form class="space-y-4 lg:space-y-6">
           <div id="username">
             <!-- USERNAME -->
             <!-- prettier-ignore -->
             % include('utilities/input_fields/default_input_field', label_for=global_content['form_inputs']['username']['label_for'], form_label=global_content['form_inputs']['username']['text'], form_svg='user', type=global_content['form_inputs']['username']['type'], name=global_content['form_inputs']['username']['name'], inputmode=global_content['form_inputs']['username']['inputmode'], placeholder=global_content['form_inputs']['username']['placeholder'], form_info=global_content['form_inputs']['username']['form_info'])
-            <div class="flex text-xs gap-2 pt-2 text-unidPurple">
+            <div class="flex text-xs gap-2 pt-2 text-unidDarkBlue">
               <p>Har du glemt dit brugernavn?</p>
               <a
                 href="/reset_username"
@@ -90,16 +90,16 @@
               >
                 Nulstil brugernavn
                 <span
-                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
                 ></span>
               </a>
             </div>
           </div>
-          <div class="form_input_error_message">
+          <div>
             <!-- PASSWORD -->
             <!-- prettier-ignore -->
             % include('utilities/input_fields/password_input_field')
-            <div class="flex text-xs gap-2 pt-2 text-unidPurple">
+            <div class="flex text-xs gap-2 pt-2 text-unidDarkBlue">
               <p>Har du glemt din kode?</p>
               <a
                 href="/reset_password"
@@ -107,7 +107,7 @@
               >
                 Nulstil kode
                 <span
-                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
                 ></span>
               </a>
             </div>
@@ -133,7 +133,7 @@
               % include('utilities/buttons/primary_button', link='login(event)', type='submit', button_text=login_content['button_text'])
             </div>
             <div
-              class="flex pt-2 text-sm gap-2 text-unidLightBlue border-t border-unidLightBlue"
+              class="flex pt-2 text-sm gap-2 text-unidBlue border-t border-unidLightBlue"
             >
               <p>Har du ikke en bruger?</p>
               <a
@@ -142,7 +142,7 @@
               >
                 Opret bruger
                 <span
-                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                  class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidBlue"
                 ></span>
               </a>
             </div>
@@ -150,7 +150,7 @@
         </form>
       </div>
       <div
-        class="bg-unidLightBlue relative flex py-14 lg:py-0 justify-center mx-auto"
+        class="bg-unidBlue relative flex py-14 lg:py-0 justify-center mx-auto"
       >
         <a href="/">
           <img

@@ -11,10 +11,10 @@
     % for clipcard_key, clipcard_value in services_and_prices_content['clipcard_section']['clipcards']['clipcard_default'].items():
     <div>
       <div
-        class="rounded-lg border-2 bg-unidYellow border-unidLightBlue flex flex-col"
+        class="rounded-lg border-2 bg-unidYellow border-unidBlue flex flex-col"
       >
         <div class="flex flex-col lg:flex-row justify-between gap-6">
-          <div class="text-unidPurple space-y-1 p-6">
+          <div class="text-unidDarkBlue space-y-1 p-6">
             <p class="text-sm tracking-widest title-font font-medium">
               {{ clipcard_value["info"]["title"] }}
             </p>
@@ -26,8 +26,8 @@
           <div class="space-y-2">
             <!-- prettier-ignore -->
             % for point in clipcard_value['selling_points']:
-            <div class="flex items-center gap-2 text-unidPurple">
-              <div class="text-unidPurple w-5 h-5">
+            <div class="flex items-center gap-2 text-unidDarkBlue">
+              <div class="text-unidDarkBlue w-5 h-5">
                 % include(global_content['ui_icons']['checkmark'])
               </div>
               <p>{{ point["text"] }}</p>
@@ -35,14 +35,14 @@
             % end
           </div>
           <div class="flex items-center justify-between gap-4">
-            <p class="text-unidPurple text-base lg:text-lg">Pris</p>
+            <p class="text-unidDarkBlue text-base lg:text-lg">Pris</p>
             <div class="flex items-center gap-2">
               <p
-                class="text-unidPurple text-right text-2xl xl:text-3xl font-saira font-bold"
+                class="text-unidDarkBlue text-right text-2xl xl:text-3xl font-saira font-bold"
               >
                 {{ clipcard_value["info"]["price"] }}
               </p>
-              <div class="flex flex-col text-xs text-unidPurple">
+              <div class="flex flex-col text-xs text-unidDarkBlue">
                 <p>ekskl.</p>
                 <p>moms</p>
               </div>
@@ -84,9 +84,9 @@
     % for task in tasks:
     <div id="content_box_styling">
       <div id="content_box_header_styling">
-        <p id="content_box_header_text">{{ task["task_title"] }}</p>
+        <p class="font-bold text-lg text-white">{{ task["task_title"] }}</p>
       </div>
-      <div class="flex flex-col gap-8 p-6 text-unidPurple">
+      <div class="flex flex-col gap-8 p-6 text-unidDarkBlue">
         <!-- USER -->
         <div class="space-y-2 text-sm">
           <div class="space-y-1">
@@ -117,7 +117,7 @@
     <!-- prettier-ignore -->
     % end
     % else:
-    <div class="space-y-1">
+    <div class="space-y-1 text-unidDarkBlue">
       <p class="text-sm font-bold">
         Hov, du har ikke fået lavet noget endnu...
       </p>

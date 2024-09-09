@@ -1,5 +1,5 @@
 <!-- PRICES -->
-<div class="bg-unidPink">
+<div class="bg-unidYellow">
   <div
     class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
   >
@@ -34,7 +34,7 @@
         % include('components/pricing_default_component')
       </div>
       <div class="flex justify-center text-center">
-        <p class="italic text-sm">
+        <p class="italic text-sm text-unidDarkBlue">
           Der kan forekomme yderligere omkostninger i forbindelse med køb af
           tema eller plugins. <br />
           Ved køb af en af de ovenstående pakker, har UNID Studio ret, til at
@@ -46,7 +46,7 @@
 </div>
 
 <!-- ADDONS -->
-<div class="bg-unidBeige">
+<div class="bg-unidLigthPink">
   <div
     class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
   >
@@ -66,7 +66,7 @@
         % include('components/addon_component')
       </div>
       <div class="flex justify-center text-center">
-        <p class="italic text-sm">
+        <p class="italic text-sm text-unidDarkBlue">
           Ved køb af hjemmesidepakke får man -20% på alle tilkøb. Rabatten er
           fratrukket ovenstående priser.
         </p>
@@ -97,7 +97,7 @@
         <!-- prettier-ignore -->
         % include('components/clipcard_component')
       </div>
-      <div class="flex justify-center text-center gap-1.5">
+      <div class="flex justify-center text-center gap-1.5 text-unidDarkBlue">
         <p class="italic text-sm">
           Du skal være logget ind for at købe et klippekort. Har du ikke en
           bruger?
@@ -108,7 +108,7 @@
         >
           Opret en bruger
           <span
-            class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+            class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
           ></span>
         </a>
       </div>

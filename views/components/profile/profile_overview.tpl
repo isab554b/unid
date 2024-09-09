@@ -1,12 +1,12 @@
 <div class="grid gap-10 md:gap-8">
   <div
-    class="w-full h-full bg-unidLightBlue rounded-lg text-white justify-between xl:flex items-center p-6 space-y-2"
+    class="w-full h-full bg-unidBlue rounded-lg text-white justify-between xl:flex items-center p-6 space-y-2"
   >
     <!-- prettier-ignore -->
     % if "user_role_id" in user:
     <!-- prettier-ignore -->
     % if user["user_role_id"] == 1:
-    <p id="content_box_header_text">
+    <p class="text-white font-bold text-lg">
       Velkommen, {{ first_name }} {{ last_name }}!
     </p>
     <!-- prettier-ignore -->
@@ -41,7 +41,7 @@
 
     <!-- prettier-ignore -->
     % elif user["user_role_id"] == 2:
-    <p id="content_box_header_text">
+    <p class="text-white font-bold text-lg">
       Velkommen, {{ first_name }} {{ last_name }}!
     </p>
     <div class="flex gap-1 text-sm">
@@ -60,9 +60,9 @@
     <div>
       <div id="content_box_styling">
         <div id="content_box_header_styling">
-          <p id="content_box_header_text">Klippekort</p>
+          <p class="font-bold text-lg text-white">Klippekort</p>
         </div>
-        <div class="flex flex-col gap-10 p-6 text-unidPurple">
+        <div class="flex flex-col gap-10 p-6 text-unidDarkBlue">
           <div
             class="justify-center space-y-1 items-center py-8 lg:py-10 text-center"
           >
