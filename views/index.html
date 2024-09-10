@@ -55,7 +55,22 @@
     <!-- prettier-ignore -->
     % include('components/header_component') 
     % include('sections/hero_section')
-    % include('sections/testimonials_section')
+    <div class="width_standard padding_y_standard mx-auto space-y-8">
+      <div class="gap-12 lg:gap-16 flex lg:flex-row flex-col items-center">
+        % include('sections/services_section')
+      </div>
+      <div class="">
+        <a href="/services_and_prices#services">
+          <button
+            class="text-white text-sm md:text-base w-full lg:w-fit font-bold bg-unidBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidBlueHover hover:scale-105"
+          >
+            Se services
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- % include('sections/testimonials_section') -->
     % include('components/footer_component')
 
     <!-- SCRIPT -->

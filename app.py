@@ -149,6 +149,7 @@ try:
     error_content = content.error_content
     # Content for this page
     frontpage_content = content.frontpage_content
+    services_and_prices_content = content.services_and_prices_content
     logger.success("Content imported successfully.")
 except Exception as e:
     logger.error(f"Error importing content: {e}")
@@ -186,6 +187,7 @@ def index():
                         global_content=global_content,
                         user=user,
                         username=username,
+                        services_and_prices_content=services_and_prices_content,
                         )
 
     except Exception as e:

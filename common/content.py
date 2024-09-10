@@ -258,8 +258,8 @@ about_us_content = {
         "header_text": "Vores vision",
         "decorative_header_text": "Vision",
         "introduction_text": "Vi glæder os over at støtte ambitiøse studerende på deres iværksætterrejse.",
-        "illustration": "digital_design.svg",
-        "illustration_alt": "Illustration af digitalt design",
+        "illustration": "student_discount.png",
+        "illustration_alt": "Grafik til UNID Studio, der tilbyder studierabat på alle deres hjemmesidepakker.",
         # Paragraphs
         "paragraphs": [
             {
@@ -482,12 +482,12 @@ services_and_prices_content = {
                 "text": "Skal du udvikle en app og mangler et design? Eller har du brug for en prototype til dit website? Vi designer professionelle interaktive prototyper i Figma, som kan bruges til brugertests, eller til at sende direkte til din udvikler.",
             },
             {
-                "title": "Visuel identitet",
-                "text": "Mangler du en visuel identitet, vil være letgenkendelig og skille dig ud fra mængden? Så kan vi hjælpe dig med at skabe en unik identitet. På baggrund af dine ønsker, kan vi udforme et logo, en farvepalette, finde typografier og evt. designe et 5. element, der matcher din virksomeheds identitet – og det budskab du ønsker at sende til kunden.",
+                "title": "Visuel identitet & grafisk design",
+                "text": "Mangler du en visuel identitet, vil være letgenkendelig og skille dig ud fra mængden? Så kan vi hjælpe dig med at skabe en unik identitet. På baggrund af dine ønsker, kan vi udforme et logo, en farvepalette og finde typografier. Vi har også ekspertise indenfor grafisk design, og kan hjælpe med grafisk opsætning af layout, visitkort, brochurer, plakater samt udarbejdelse af SoMe content.",
             },
             {
-                "title": "Grafisk design",
-                "text": "Vi har ekspertise indenfor grafisk design, og kan hjælpe med grafisk opsætning af layout, visitkort, brochurer, plakater samt udarbejdelse af SoMe content.",
+                "title": "Vedligeholdelse",
+                "text": "Vi håndterer gerne vedligeholdelsen af dit website, så det altid er opdateret, sikkert og kører optimalt. Med regelmæssige opdateringer og løbende overvågning sørger vi for, at dit site fungerer fejlfrit.",
             },
         ],
     },
