@@ -36,8 +36,8 @@
     <div class="lg:w-1/2">
       <!-- prettier-ignore -->
       <img
-        class="w-full"
-        alt="hero"
+        class="h-auto"
+        alt="Grafik"
         src="/assets/illustrations/{{frontpage_content['hero_section']['image']}}"
       />
     </div>

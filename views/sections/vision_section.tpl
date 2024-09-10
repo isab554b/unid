@@ -23,7 +23,7 @@
     <div class="flex justify-center">
       <!-- prettier-ignore -->
       <img
-            class="h-auto"
+            class="lg:h-auto w-3/4 lg:w-full"
             src="/assets/illustrations/{{ about_us_content['vision_section']['illustration'] }}"
             alt="{{ about_us_content['vision_section']['illustration_alt'] }}"
           />

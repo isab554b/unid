@@ -5,6 +5,7 @@
     <img
       src="/assets/illustrations/{{ contact_content['illustration'] }}"
       alt="{{ contact_content['illustration_alt'] }}"
+      class="lg:h-auto w-3/4 lg:w-full"
     />
   </div>
   <div
