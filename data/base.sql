@@ -56,7 +56,6 @@ INSERT INTO card_types (clipcard_type_id, clipcard_type_title, clipcard_type_tim
 
 -- ##############################
 -- SUBSCRIPTIONS
-DROP TABLE IF EXISTS subscriptions;
 CREATE TABLE IF NOT EXISTS subscriptions (
 	subscription_id	    	INTEGER NOT NULL UNIQUE,
 	subscription_price		INTEGER NOT NULL,
@@ -96,6 +95,7 @@ CREATE TABLE IF NOT EXISTS clipcards_payments (
 	FOREIGN KEY(clipcard_id) REFERENCES clipcards(clipcard_id)
 ) WITHOUT ROWID;
 
+
 CREATE TABLE IF NOT EXISTS subscriptions_payments (
 	payment_id	        INTEGER NOT NULL UNIQUE,
 	user_id				INTEGER NOT NULL,
@@ -120,6 +120,7 @@ INSERT INTO user_roles (user_role_id, user_role_title) VALUES
 (1, 'customer'),
 (2, 'staff');
 
+
 CREATE TABLE IF NOT EXISTS customers (
 	customer_id			INTEGER NOT NULL UNIQUE,
 	user_role_id		INTEGER NOT NULL,
@@ -128,6 +129,7 @@ CREATE TABLE IF NOT EXISTS customers (
 	PRIMARY KEY(customer_id),
 	FOREIGN KEY(user_role_id) REFERENCES user_roles(user_role_id)
 ) WITHOUT ROWID;
+
 
 CREATE TABLE IF NOT EXISTS staff (
 	staff_id			INTEGER NOT NULL UNIQUE,
@@ -166,7 +168,6 @@ JOIN card_types ct ON cc.clipcard_type_id = ct.clipcard_type_id
 WHERE cc.is_active = 1;
 
 
-DROP VIEW IF EXISTS active_subscriptions;
 CREATE VIEW active_subscriptions AS
 SELECT s.subscription_id,
        s.subscription_price,

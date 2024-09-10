@@ -615,9 +615,9 @@ function initializeStripe() {
   } else {
     console.log("Stripe.js is loaded");
 
-    // Initialize Stripe with your test publishable key
+    // Initialize Stripe with your publishable key
     stripe = Stripe(
-      "pk_test_51OlrinIT5aFkJJVME1wzlmcAYt94JwO7fcCRo8WjTK9uJE9jFg03nwExjdvx7ck3OvY600CIc5XfxhXy2V9sSGs300zG3IPjzV"
+      "pk_live_51OlrinIT5aFkJJVMtRornGygVXxwrAaYQ257LxlxjyP0AspoONwJBN1sitgOzy7V1PjZJKAvIvcMWxT0HpBJ6ep100CwO34lQV"
     );
 
     // Add event listeners to buttons

@@ -50,7 +50,7 @@ finally:
 ##############################
 #   CLIPCARD CHECKOUT SESSION
 #   Set Stripe API key from environment variable
-stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 # Route to create a Stripe checkout session
 @post('/create_checkout_session')
@@ -184,7 +184,7 @@ def extract_price(price_str):
         raise ValueError("Price format is incorrect")
 
 # Set Stripe API key from environment variable
-stripe.api_key = "sk_test_51OlrinIT5aFkJJVMeEUrQBIp7uJyMOQEbO295rfabj8ZW3C0Uy5sUzsYyvZOoLqI0hwbSj5qmg9qMrZMKhqOlUyo009gCzGBC9"
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 @post('/create_subscription_checkout_session')
 def create_subscription_checkout_session():

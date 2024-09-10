@@ -171,7 +171,7 @@ def profile():
                 current_time = time.time() 
 
                 time_difference = current_time - subscription_start_time
-                can_cancel = time_difference > 60 #7889472
+                can_cancel = time_difference > 7889472
 
                 current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
@@ -277,7 +277,7 @@ def profile_template(template_name):
                 subscription_start_time = int(subscription_info['created_at'])
                 current_time = time.time()
                 time_difference = current_time - subscription_start_time
-                can_cancel = time_difference > 60  # Time period for cancellation
+                can_cancel = time_difference > 7889472
                 current_user['subscription_id'] = subscription_info['subscription_id']
                 current_user['has_active_subscription'] = True
             else:
