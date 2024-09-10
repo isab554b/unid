@@ -313,7 +313,7 @@ about_us_content = {
 contact_content = {
     "header_text": "Kontakt",
     "subheader_text": "Uanset om du har et eller flere spørgsmål, så er vi altid parate, til at hjælpe dig. Lad os høre om din idé, og vi vil herefter i fælleskab skræddersy én løsning, der passer perfekt til dig og din virksomhed. Vi ser frem, til at høre fra dig!",
-    "illustration": "graphic_design.png",
+    "illustration": "contact.png",
     "illustration_alt": "Illustration af grafisk design",
     # CONTACT FORM SECTION
     "contact_form_section": {
@@ -469,8 +469,8 @@ services_and_prices_content = {
     "services_section": {
         "header_text": "Det kan vi hjælpe dig med",
         "decorative_header_text": "Services",
-        "illustration": "graphic_design.png",
-        "illustration_alt": "Illustration af grafisk design",
+        "illustration": "services.png",
+        "illustration_alt": "Grafik der illustrerer de services UNID Studio tilbyder.",
         # Paragraphs
         "paragraphs": [
             {

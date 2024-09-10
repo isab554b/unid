@@ -20,10 +20,10 @@
         % end
       </div>
     </div>
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center">
       <!-- prettier-ignore -->
       <img
-          class="h-auto w-3/4"
+          class="h-auto "
           src="/assets/illustrations/{{ services_and_prices_content['services_section']['illustration'] }}"
           alt="{{ services_and_prices_content['services_section']['illustration_alt'] }}"
         />

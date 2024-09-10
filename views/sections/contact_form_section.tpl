@@ -1,7 +1,7 @@
 <div
   class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 justify-center items-center"
 >
-  <div class="w-2/3 flex items-center justify-center mx-auto">
+  <div class="flex items-center justify-center mx-auto">
     <img
       src="/assets/illustrations/{{ contact_content['illustration'] }}"
       alt="{{ contact_content['illustration_alt'] }}"

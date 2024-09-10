@@ -56,7 +56,7 @@
     % include('components/header_component')
     <section class="text-unidPurple">
       <div>
-        <div class="bg-unidLigthPink">
+        <section class="bg-unidLigthPink">
           <div class="width_standard padding_y_standard space-y-24 mx-auto">
             <div class="flex justify-center">
               <div
@@ -69,9 +69,13 @@
             <!-- prettier-ignore -->
             % include('sections/highlights_section')
           </div>
+        </section>
+        <div class="width_standard padding_y_standard space-y-24 mx-auto">
+          % include('sections/vision_section')
         </div>
+
         <!-- prettier-ignore -->
-        % include('sections/vision_section')
+
         % include('sections/skills_section')
         % include('sections/team_section')
       </div>
