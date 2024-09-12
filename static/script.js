@@ -172,7 +172,7 @@ async function login(event) {
       } else {
         // If login is successful, log a success message and redirect to the homepage
         console.log("Login successful");
-        window.location.href = "/";
+        window.location.href = "/profile";
       }
     } else {
       // Handle non-JSON response
