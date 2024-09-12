@@ -3,16 +3,18 @@
 <div class="w-full flex justify-center overflow-auto">
   <table class="table-auto w-full max-w-4xl text-left whitespace-no-wrap">
     <tbody>
-      <tr class="align-top">
+      <tr class="align-middle">
         <!-- Title and Text -->
         <td class="text-unidDarkBlue p-4 text-left align-top w-2/3">
           <div class="space-y-1">
             <h5>{{ addon["info"]["title"] }}</h5>
-            <p>{{ addon["info"]["text"] }}</p>
+            <p class="text-sm md:text-base lg:text-base xl:text-base">
+              {{ addon["info"]["text"] }}
+            </p>
           </div>
         </td>
         <!-- Price -->
-        <td class="px-4 py-3 text-right align-top w-1/3">
+        <td class="px-4 py-3 text-right align-middle w-1/3">
           <div class="flex justify-end items-center gap-2">
             <p
               class="text-unidDarkBlue text-xl xl:text-2xl font-saira font-bold"

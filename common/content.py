@@ -536,7 +536,7 @@ services_and_prices_content = {
                     "info": {
                         "title": "- til den lille start up",
                         "hours": "Get started",
-                        "discount": "Studiepris: 6.400 DKK",
+                        "discount": "6.400 DKK",
                         "price": "8.000 DKK",
                     },
                     "selling_points": [
@@ -555,7 +555,7 @@ services_and_prices_content = {
                     "info": {
                         "title": "– til dig der vil godt i gang",
                         "hours": "Let's go",
-                        "discount": "Studiepris: 9.600 DKK",
+                        "discount": "9.600 DKK",
                         "price": "12.000 DKK",
                     },
                     "selling_points": [
@@ -575,7 +575,7 @@ services_and_prices_content = {
                     "info": {
                         "title": "– til dig der vil have en webshop",
                         "hours": "Get paid",
-                        "discount": "Studiepris: 14.800 DKK",
+                        "discount": "14.800 DKK",
                         "price": "18.500 DKK",
                     },
                     "selling_points": [

@@ -24,7 +24,7 @@
         <p class="text-unidDarkBlue text-base lg:text-lg">Pris</p>
         <div class="flex items-center gap-2">
           <p
-            class="text-unidDarkBlue text-right text-2xl xl:text-3xl font-saira font-bold"
+            class="text-unidDarkBlue text-right text-xl xl:text-2xl font-saira font-bold"
           >
             {{ subscription["info"]["price"] }}
           </p>

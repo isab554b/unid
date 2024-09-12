@@ -32,7 +32,7 @@
         % include('components/subscription_component')
       </div>
     </div>
-    <div class="flex justify-center text-center gap-1.5">
+    <div class="flex justify-center flex-col lg:flex-row text-center gap-1.5">
       <p class="italic text-sm text-unidDarkBlue">
         Du skal være logget ind for at købe et abonnement. Har du ikke en
         bruger?

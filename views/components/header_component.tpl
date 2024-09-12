@@ -35,12 +35,12 @@
       </div>
     </div>
   </div>
-</header>
 
-<!-- Mobil navigation -->
-<nav
-  id="mobile-nav"
-  class="flex flex-col items-center lg:hidden bg-unidBlue text-white p-4 space-y-2"
->
-  % include('elements/nav_items_element')
-</nav>
+  <!-- Mobil navigation -->
+  <nav
+    id="mobile-nav"
+    class="flex-col flex items-center hidden bg-unidBlue text-white p-4 space-y-2"
+  >
+    % include('elements/nav_items_element')
+  </nav>
+</header>

@@ -452,17 +452,19 @@ $(document).ready(function () {
 // BURGERMENU
 document.addEventListener("DOMContentLoaded", function () {
   var burgerButton = document.getElementById("icon_large");
-  if (burgerButton) {
+  var mobileNav = document.getElementById("mobile-nav");
+
+  if (burgerButton && mobileNav) {
     burgerButton.addEventListener("click", function () {
-      var mobileNav = document.getElementById("mobile-nav");
-      if (mobileNav) {
-        mobileNav.classList.toggle("hidden");
-      } else {
-        console.error("Mobile navigation element not found");
-      }
+      mobileNav.classList.toggle("hidden");
     });
   } else {
-    console.error("Burger menu button not found");
+    if (!burgerButton) {
+      console.error("Burger menu button not found");
+    }
+    if (!mobileNav) {
+      console.error("Mobile navigation element not found");
+    }
   }
 });
 

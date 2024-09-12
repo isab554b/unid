@@ -97,7 +97,9 @@
         <!-- prettier-ignore -->
         % include('components/clipcard_component')
       </div>
-      <div class="flex justify-center text-center gap-1.5 text-unidDarkBlue">
+      <div
+        class="flex justify-center flex-col lg:flex-row text-center gap-1.5 text-unidDarkBlue"
+      >
         <p class="italic text-sm">
           Du skal være logget ind for at købe et klippekort. Har du ikke en
           bruger?

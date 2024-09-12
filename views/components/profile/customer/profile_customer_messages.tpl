@@ -24,7 +24,7 @@
           </p>
         </div>
       </div>
-      <div class="flex flex-col gap-10 p-6 text-unidDarkBlue">
+      <div class="flex flex-col gap-10 text-unidDarkBlue p-6">
         <form
           id="contactForm"
           enctype="multipart/form-data"
@@ -43,7 +43,7 @@
                 </p>
               </label>
               <input
-                class="form_input_no_icon"
+                class="form_input_no_icon w-full"
                 type="text"
                 id="subject"
                 name="subject"
@@ -65,7 +65,7 @@
                 </p>
               </label>
               <textarea
-                class="form_input_no_icon"
+                class="form_input_no_icon w-full"
                 id="message"
                 name="message"
                 required
@@ -79,7 +79,7 @@
               <div class="gap-4 lg:flex space-y-1.5 lg:space-y-0 items-center">
                 <label for="file">Upload fil:</label>
                 <input
-                  class="hover:cursor-pointer text-unidBlue gap-2 space-x-6 w-fit"
+                  class="hover:cursor-pointer text-unidBlue gap-2 space-x-6 w-full"
                   type="file"
                   id="file"
                   name="file"
