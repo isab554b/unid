@@ -80,7 +80,7 @@ global_content = {
         "nav_bar": {
             "nav_items": [
                 {"text": "Services & Priser", "link": "/services_and_prices"},
-                {"text": "Portfolio", "link": "/portfolio"},
+                {"text": "Cases", "link": "/cases"},
                 {"text": "Om UNID Studio", "link": "/om_unid_studio"},
                 {"text": "Kontakt", "link": "/contact"},
                 {"text": "Blog", "link": "/blog"},
@@ -249,7 +249,7 @@ about_us_content = {
         "highlights": [
             {"illustration": "tools.png", "illustration_alt": "Illustration med kreative værktøjer", "title": "Erfaring", "text": "Vi har stor erfaring indenfor grafisk design og udvikling af websites. Med vores ekspertise, kan vi skræddersy en løsning efter dine ønsker og behov."},
             {"illustration": "book.png", "illustration_alt": "Illustration med en bog", "title": "KEA Ignite", "text": "Vi har et samarbejde med KEA. Hvis du er iværksætter, og går på KEA, så giver vi rabat på vores ydelser."},
-            {"illustration": "screen.png", "illustration_alt": "Illustration med en skærm med former på", "title": "Tidligere cases", "text": "Vi vægter tilfredshedgaranti højt, og afslutter ikke en case, før kunden er tilfreds. Vores tidligere cases, kan ses i vores portfolio."},
+            {"illustration": "screen.png", "illustration_alt": "Illustration med en skærm med former på", "title": "Tidligere cases", "text": "Vi vægter tilfredshedgaranti højt, og afslutter ikke en case, før kunden er tilfreds. Vores tidligere projekter, kan ses under cases."},
             {"illustration": "phone_mail.png", "illustration_alt": "Illustration med en telefon og et brev", "title": "Kontakt os", "text": "Lad os høre om din idé. Vi er altid parate, til at hjælpe - og vi skræddersyer gerne én løsning til netop din virksomhed."},
         ],
     },
@@ -357,8 +357,8 @@ login_content = {
 ##############################
 #   PORTFOLIO
 portfolio_content = {
-    "header_text": "Portfolio",
-    "subheader_text": "Velkommen til vores portfolio! Her kan du se vores seneste arbejde og projekter, hvor vi har skabt unikke visuelle identiteter, logoer, websites og meget mere.",
+    "header_text": "Cases",
+    "subheader_text": "Velkommen til vores cases! Her kan du se vores seneste arbejde og projekter, hvor vi har skabt unikke visuelle identiteter, logoer, websites og meget mere.",
     "cases_section": [
         {"icon": "user.svg", "text": "Oversigt", "template": "profile_overview"},
         {"icon": "card.svg", "text": "Klippekort", "template": "profile_admin_clipcard"},
@@ -368,8 +368,8 @@ portfolio_content = {
     ],
     # Cases
     "cases": [
-            {"illustration": "imput1.webp", "illustration_alt": "Billede af Imputs forside", "title": "Imput", "link": "/portfolio_imput"},
-            {"illustration": "nomi1.jpg", "illustration_alt": "Billede af Nomi Creations forside", "title": "Nomi Creations", "link": "/portfolio_nomi"},
+            {"illustration": "imput1.webp", "illustration_alt": "Billede af Imputs forside", "title": "Imput", "link": "/imput"},
+            {"illustration": "nomi1.jpg", "illustration_alt": "Billede af Nomi Creations forside", "title": "Nomi Creations", "link": "/nomi_creations"},
         ],
 }
 

@@ -1,9 +1,8 @@
 <!-- prettier-ignore -->
 % for clipcard_key, clipcard in services_and_prices_content['clipcard_section']['clipcards']['clipcard_default'].items():
 <div>
-  <div class="flex justify-end"></div>
   <div
-    class="rounded-lg border-2 bg-unidLigthPink border-unidBlue flex flex-col"
+    class="rounded-lg border-2 bg-unidLigthPink border-unidDarkBlue flex flex-col"
   >
     <div class="flex flex-col lg:flex-row justify-between gap-6">
       <div class="text-unidDarkBlue space-y-1 p-6">

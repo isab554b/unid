@@ -4,7 +4,7 @@
   </div>
   <div class="relative w-full overflow-auto">
     <div
-      class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue h-full rounded-bl-md rounded-tl-md"
+      class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidPurple h-full rounded-bl-md rounded-tl-md"
     >
       <div id="icon_small" class="fill-white text-white w-5 h-5">
         % include(global_content['ui_icons']['message'])

@@ -25,7 +25,7 @@
         class="group transition duration-300 cursor-pointer hover:scale-105 ease-in-out"
         >Privatlivspolitik
         <span
-          class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+          class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"
         ></span
       ></a>
     </div>

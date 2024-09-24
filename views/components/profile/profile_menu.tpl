@@ -1,4 +1,6 @@
-<div class="w-full h-fit sticky top-44 bg-unidBlue rounded-lg p-6 space-y-4">
+<div
+  class="w-full h-fit sticky top-44 bg-unidLigthPink border-2 border-unidDarkBlue rounded-lg p-6 space-y-4"
+>
   <!-- prettier-ignore -->
   % if user and "user_role_id" in user:
     % if user["user_role_id"] == 1:
@@ -7,11 +9,13 @@
     class="menu_button secondary_button w-full flex cursor-pointer"
     data-template="{{ customer_profile_menu['template'] }}"
   >
-    <div class="h-6 w-6">
+    <div class="h-6 w-6 text-unidDarkBlue">
       <!-- prettier-ignore -->
       % include(f'{customer_profile_menu["icon"]}')
     </div>
-    <p class="font-bold">{{ customer_profile_menu["text"] }}</p>
+    <p class="font-bold text-unidDarkBlue">
+      {{ customer_profile_menu["text"] }}
+    </p>
   </button>
   % end
   <!-- prettier-ignore -->
@@ -21,11 +25,11 @@
     class="menu_button secondary_button w-full flex cursor-pointer"
     data-template="{{ admin_profile_menu['template'] }}"
   >
-    <div class="h-6 w-6">
+    <div class="h-6 w-6 text-unidDarkBlue">
       <!-- prettier-ignore -->
       % include(f'{admin_profile_menu["icon"]}')
     </div>
-    <p class="font-bold">{{ admin_profile_menu["text"] }}</p>
+    <p class="font-bold text-unidDarkBlue">{{ admin_profile_menu["text"] }}</p>
   </button>
   <!-- prettier-ignore -->
   % end 

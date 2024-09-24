@@ -39,10 +39,10 @@ finally:
 
 ##############################
 #   PORTFOLIO
-@get("/portfolio")
-def portfolio():
+@get("/cases")
+def cases():
 
-    page_name = "portfolio"
+    page_name = "cases"
 
     try:
         # Securely retrieve user cookie
@@ -87,10 +87,10 @@ def portfolio():
 
 ##############################
 #   PORTFOLIO IMPUT
-@get("/portfolio_imput")
-def portfolio():
+@get("/imput")
+def cases():
 
-    page_name = "portfolio/portfolio_imput"
+    page_name = "cases/imput"
 
     try:
         # Securely retrieve user cookie
@@ -112,7 +112,7 @@ def portfolio():
         # Show template
         logger.success(f"Succesfully showing template for {page_name}")
         return template(page_name,
-                        title="UNID Studio - Portfolio: Imput",
+                        title="UNID Studio - Cases: Imput",
                         # A-Z
                         global_content=global_content,
                         portfolio_content=portfolio_content,
@@ -135,10 +135,10 @@ def portfolio():
 
 ##############################
 #   PORTFOLIO NOMI
-@get("/portfolio_nomi")
-def portfolio():
+@get("/nomi_creations")
+def cases():
 
-    page_name = "portfolio/portfolio_nomi"
+    page_name = "cases/nomi_creations"
 
     try:
         # Securely retrieve user cookie
@@ -160,7 +160,7 @@ def portfolio():
         # Show template
         logger.success(f"Succesfully showing template for {page_name}")
         return template(page_name,
-                        title="UNID Studio - Portfolio: Nomi Creations ",
+                        title="UNID Studio - Cases: Nomi Creations ",
                         # A-Z
                         global_content=global_content,
                         portfolio_content=portfolio_content,

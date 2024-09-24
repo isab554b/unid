@@ -1,4 +1,4 @@
-<div class="bg-unidBlue text-white">
+<div class="bg-unidDarkBlue text-white">
   <div class="width_standard padding_y_standard space-y-24 mx-auto">
     <div class="flex flex-col gap-y-14">
       <div class="flex md:justify-center text-center">

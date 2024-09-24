@@ -35,13 +35,13 @@
     @apply text-unidDarkBlue font-bold text-lg;
   }
   #content_box_header_styling {
-    @apply bg-unidBlue text-center p-6 items-center;
+    @apply bg-unidLightPurple text-center p-6 items-center border-b-2 rounded-t-md border-unidDarkBlue;
   }
   #content_box_styling {
-    @apply w-full h-full rounded-lg text-white justify-center items-center bg-unidYellow border-2 border-unidBlue;
+    @apply w-full h-full rounded-lg text-white justify-center items-center bg-unidLigthPink border-2 border-unidDarkBlue;
   }
   #introduction_text {
-    @apply text-lg font-medium;
+    @apply text-lg font-medium text-unidDarkBlue;
   }
   #paragraph_title {
     @apply text-2xl text-unidDarkBlue font-saira font-semibold;
@@ -56,19 +56,22 @@
     @apply text-white text-sm w-full md:text-base font-bold bg-unidDarkBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105;
   }
   #secondary_button {
-    @apply text-white text-sm w-full md:text-base font-bold hover:scale-105 items-center gap-2 hover:text-unidPurple hover:bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;
+    @apply text-white text-sm w-full md:text-base font-bold hover:scale-105 items-center gap-2 hover:text-unidDarkBlue hover:bg-unidLightPurple py-3.5 px-7 rounded-md transition ease-in-out duration-300;
+  }
+  #third_button {
+    @apply text-unidDarkBlue text-sm w-full md:text-base font-bold bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105;
   }
   #login_button {
-    @apply text-white text-base hover:scale-105 font-bold items-center gap-2 hover:text-unidPurple hover:bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;
+    @apply text-white text-base hover:scale-105 font-bold items-center gap-2 hover:text-unidDarkBlue hover:bg-unidLigthPink py-3.5 px-7 rounded-md transition ease-in-out duration-300;
   }
   .secondary_button {
-    @apply text-white text-base hover:scale-105 font-bold items-center gap-2 hover:text-unidPurple hover:bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;
+    @apply text-unidDarkBlue text-base hover:scale-105 font-bold items-center gap-2 hover:text-unidDarkBlue hover:bg-unidLightPurple py-3.5 px-7 rounded-md transition ease-in-out duration-300;
   }
   .secondary_button_selected {
-    @apply text-base hover:scale-105 font-bold items-center gap-2 text-unidPurple bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;
+    @apply text-base hover:scale-105 font-bold items-center gap-2 text-unidDarkBlue bg-unidLightPurple py-3.5 px-7 rounded-md transition ease-in-out duration-300;
   }
   #icon_hover {
-    @apply hover:cursor-pointer p-2 rounded-full text-unidYellow hover:text-unidPurple hover:bg-unidYellow transition ease-in-out duration-300 hover:scale-110;
+    @apply hover:cursor-pointer p-2 rounded-full text-unidYellow hover:text-unidPurple hover:bg-unidLigthPink transition ease-in-out duration-300 hover:scale-110;
   }
   #icon_small {
     @apply h-5 w-5;
@@ -86,18 +89,18 @@
     @apply text-unidDarkBlue text-base font-semibold;
   }
   #form_input {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidLightPurple placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
 
   #second_form_input {
-    @apply w-full py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
+    @apply w-full py-3 px-5 rounded-md border border-unidLightPurple placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
 
   .form_input_no_icon {
-    @apply w-full py-2 px-5 rounded-md border border-unidBlue placeholder:italic placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
+    @apply w-full py-2 px-5 rounded-md border border-unidPurple placeholder:italic placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   #password_input {
-    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidBlue placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
+    @apply w-full ps-16 py-3 px-5 rounded-md border border-unidLightPurple placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;
   }
   #form_input_error {
     @apply w-full ps-16 py-3 px-5 rounded-md border border-red-500 placeholder:text-unidLightBlue text-unidDarkBlue transition ease-in-out duration-300;

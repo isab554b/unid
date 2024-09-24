@@ -1,12 +1,14 @@
 <div id="content_box_styling">
-  <div class="bg-unidBlue p-6 items-center">
+  <div
+    class="bg-unidLightPurple rounded-t-md border-b-2 border-unidDarkBlue p-6 items-center"
+  >
     <div
       class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
     >
-      <div id="icon_medium" class="fill-unidPurple">
+      <div id="icon_medium" class="text-unidDarkBlue">
         % include(f'{box_icon}')
       </div>
-      <p class="text-white font-bold text-lg">{{ box_title }}</p>
+      <p class="text-unidDarkBlue font-bold text-lg">{{ box_title }}</p>
     </div>
   </div>
   <div class="flex flex-col gap-4 p-6 items-center">

@@ -11,7 +11,7 @@
     % for clipcard_key, clipcard_value in services_and_prices_content['clipcard_section']['clipcards']['clipcard_default'].items():
     <div>
       <div
-        class="rounded-lg border-2 bg-unidYellow border-unidBlue flex flex-col"
+        class="rounded-lg border-2 bg-unidLigthPink border-unidDarkBlue flex flex-col"
       >
         <div class="flex flex-col lg:flex-row justify-between gap-6">
           <div class="text-unidDarkBlue space-y-1 p-6">
@@ -51,7 +51,7 @@
           <!-- Display button -->
           <button
             type="button"
-            id="primary_button"
+            id="third_button"
             class="buy-button"
             data-clipcard-type="{{ clipcard_value['info']['hours'] }}"
             data-clipcard-price="{{ clipcard_value['info']['price'] }}"

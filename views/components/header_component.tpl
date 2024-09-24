@@ -39,7 +39,7 @@
   <!-- Mobil navigation -->
   <nav
     id="mobile-nav"
-    class="flex-col flex items-center hidden bg-unidBlue text-white p-4 space-y-2"
+    class="flex-col flex items-center hidden bg-unidDarkBlue text-white p-4 space-y-2"
   >
     % include('elements/nav_items_element')
   </nav>

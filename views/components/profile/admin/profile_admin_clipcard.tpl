@@ -19,10 +19,10 @@
           <div
             class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
           >
-            <div id="icon_medium" class="fill-unidPurple">
+            <div id="icon_medium" class="text-unidDarkBlue">
               % include(global_content['ui_icons']['card'])
             </div>
-            <p class="font-bold text-lg text-white">
+            <p class="font-bold text-lg text-unidDarkBlue">
               {{ clipcard["first_name"] }} {{ clipcard["last_name"] }}
             </p>
           </div>

@@ -56,7 +56,7 @@
       </div>
       <div class="space-y-2">
         <a href="/contact"
-          ><button type="button" id="primary_button">Kontakt nu</button></a
+          ><button type="button" id="third_button">Kontakt nu</button></a
         >
       </div>
     </div>

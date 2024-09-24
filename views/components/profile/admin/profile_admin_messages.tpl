@@ -22,14 +22,14 @@
           <div
             class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
           >
-            <div id="icon_medium" class="fill-unidPurple">
+            <div id="icon_medium" class="text-unidDarkBlue">
               % include(global_content['ui_icons']['message'])
             </div>
             <p id="content_box_header_text">{{ message["message_subject"] }}</p>
           </div>
           <p>Sendt den: {{ message["formatted_created_at"] }}</p>
         </div>
-        <div class="flex flex-col gap-8 p-6 text-unidPurple">
+        <div class="flex flex-col gap-8 p-6 text-unidDarkBlue">
           <div class="space-y-8 text-sm">
             <div class="space-y-2 text-sm">
               <div class="space-y-1">
@@ -75,7 +75,7 @@
                     <div>
                       <p>Se vedhæftede filer</p>
                       <span
-                        class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidPurple"
+                        class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
                       ></span>
                     </div>
                   </div>

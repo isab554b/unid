@@ -17,7 +17,7 @@
     % for subscription_key, subscription_value in services_and_prices_content['subscription_section']['subscriptions']['subscription_default'].items():
     <div>
       <div
-        class="rounded-lg border-2 bg-unidYellow border-unidBlue flex flex-col"
+        class="rounded-lg border-2 bg-unidLigthPink border-unidDarkBlue flex flex-col"
       >
         <div class="flex flex-col lg:flex-row justify-between gap-6">
           <div class="text-unidDarkBlue space-y-1 p-6">
@@ -54,7 +54,7 @@
           <!-- Display button -->
           <button
             type="button"
-            id="primary_button"
+            id="third_button"
             class="buy-button"
             data-subscription-type="{{ subscription_value['info']['hours'] }}"
             data-subscription-price="{{ subscription_value['info']['price'] }}"
@@ -84,10 +84,10 @@
       <div
         class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
       >
-        <div id="icon_medium" class="fill-unidPurple">
+        <div id="icon_medium" class="text-unidDarkBlue">
           % include(global_content['ui_icons']['cart'])
         </div>
-        <p class="font-bold text-lg text-white">Abonnement</p>
+        <p class="font-bold text-lg text-unidDarkBlue">Abonnement</p>
       </div>
     </div>
     <div class="flex flex-col gap-8 p-6 text-unidDarkBlue">
@@ -155,16 +155,22 @@
           </div>
           <div class="relative w-full text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightPurple rounded-bl-md rounded-tl-md"
             >
-              <div id="icon_small" class="fill-white text-white w-5 h-5">
+              <div
+                id="icon_small"
+                class="fill-unidDarkBlue text-unidDarkBlue w-5 h-5"
+              >
                 % include(global_content['ui_icons']['user_circle'])
               </div>
             </div>
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightPurple rounded-bl-md rounded-tl-md"
             >
-              <div id="icon_small" class="fill-white text-white w-5 h-5">
+              <div
+                id="icon_small"
+                class="fill-unidDarkBlue text-unidDarkBlue w-5 h-5"
+              >
                 % include(global_content['ui_icons']['user_circle'])
               </div>
             </div>
@@ -183,16 +189,22 @@
           </div>
           <div class="relative w-full text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightPurple rounded-bl-md rounded-tl-md"
             >
-              <div id="icon_small" class="fill-white text-white w-5 h-5">
+              <div
+                id="icon_small"
+                class="fill-unidDarkBlue text-unidDarkBlue w-5 h-5"
+              >
                 % include(global_content['ui_icons']['email'])
               </div>
             </div>
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightPurple rounded-bl-md rounded-tl-md"
             >
-              <div id="icon_small" class="fill-white text-white w-5 h-5">
+              <div
+                id="icon_small"
+                class="fill-unidDarkBlue text-unidDarkBlue w-5 h-5"
+              >
                 % include(global_content['ui_icons']['email'])
               </div>
             </div>
@@ -212,9 +224,12 @@
           </div>
           <div class="relative w-full overflow-auto text-sm">
             <div
-              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidBlue h-full rounded-bl-md rounded-tl-md"
+              class="absolute inset-y-0 start-0 flex items-center px-4 bg-unidLightPurple h-full rounded-bl-md rounded-tl-md"
             >
-              <div id="icon_small" class="fill-white text-white w-5 h-5">
+              <div
+                id="icon_small"
+                class="fill-unidDarkBlue text-unidDarkBlue w-5 h-5"
+              >
                 % include(global_content['ui_icons']['message'])
               </div>
             </div>

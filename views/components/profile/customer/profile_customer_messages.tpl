@@ -15,10 +15,10 @@
         <div
           class="flex md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 items-center justify-center"
         >
-          <div id="icon_medium" class="fill-unidPurple">
+          <div id="icon_medium" class="text-unidDarkBlue">
             % include(global_content['ui_icons']['message'])
           </div>
-          <p class="font-bold text-lg text-white">
+          <p class="font-bold text-lg text-unidDarkBlue">
             <!-- prettier-ignore -->
             {{ profile_content["customer_specific_content"]["profile_customer_messages"]["box_header_text"] }}
           </p>
@@ -79,7 +79,7 @@
               <div class="gap-4 lg:flex space-y-1.5 lg:space-y-0 items-center">
                 <label for="file">Upload fil:</label>
                 <input
-                  class="hover:cursor-pointer text-unidBlue gap-2 space-x-6 w-full"
+                  class="hover:cursor-pointer text-unidDarkBlue gap-2 space-x-6 w-full lg:w-fit"
                   type="file"
                   id="file"
                   name="file"
@@ -97,7 +97,7 @@
           <p
             id="messageSent"
             style="display: none"
-            class="text-unidLightBlue text-sm"
+            class="text-unidDarkBlue text-sm"
           ></p>
         </div>
       </div>

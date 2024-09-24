@@ -1,8 +1,9 @@
 <!-- prettier-ignore -->
 % for subscription_key, subscription in services_and_prices_content['subscription_section']['subscriptions']['subscription_default'].items():
 <div>
-  <div class="flex justify-end"></div>
-  <div class="rounded-lg border-2 bg-unidYellow border-unidBlue flex flex-col">
+  <div
+    class="rounded-lg border-2 bg-unidYellow border-unidDarkBlue flex flex-col"
+  >
     <div class="flex flex-col lg:flex-row justify-between gap-6">
       <div class="text-unidDarkBlue space-y-1 p-6">
         <h3>{{ subscription["info"]["hours"] }}</h3>
