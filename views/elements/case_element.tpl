@@ -1,8 +1,8 @@
 % for case in cases:
-<div class="relative h-full group hover:cursor-pointer">
+<div class="relative group hover:cursor-pointer">
   <a href="{{ case['link'] }}">
     <img
-      class="w-auto h-full object-cover object-center rounded-lg"
+      class="w-auto object-cover object-center rounded-lg"
       src="/assets/images/portfolio/{{ case['illustration'] }}"
       alt="{{ case['illustration_alt'] }}"
     />

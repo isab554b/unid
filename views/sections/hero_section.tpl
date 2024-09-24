@@ -6,8 +6,8 @@
       class="lg:flex-grow lg:w-1/2 lg:gap-14 gap-10 flex flex-col lg:items-start lg:text-left items-center text-center"
     >
       <div class="lg:gap-6 gap-4 flex flex-col space-y-4">
-        <h1 class="text-unidPurple">
-          <span class="font-bold">Skrædersyede</span>
+        <h1 class="text-unidDarkBlue">
+          <span class="font-bold">Skræddersyede</span>
           <br />
           <span class="font-light">digitale</span>
           <span class="italic font-semibold">løsninger</span>
@@ -25,11 +25,11 @@
       <div class="w-fit flex flex-row gap-4">
         <a href="/services_and_prices#services">
           <!-- prettier-ignore -->
-          <button class=" text-white text-sm w-full md:text-base font-bold font-saira bg-unidBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidBlueHover hover:scale-105">VIS PRISER</button>
+          <button class=" text-white text-sm w-full md:text-base font-bold font-saira bg-unidDarkBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105">VIS PRISER</button>
         </a>
         <a href="/contact">
           <!-- prettier-ignore -->
-          <button class=" text-unidDarkBlue text-sm w-full md:text-base font-bold font-saira bg-unidLigthPink border-4 border-unidBlue py-2.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidBlue hover:scale-105">KONTAKT OS</button>
+          <button class=" text-unidDarkBlue text-sm w-full md:text-base font-bold font-saira bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105">KONTAKT OS</button>
         </a>
       </div>
     </div>

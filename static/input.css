@@ -7,19 +7,19 @@
     @apply font-montserrat bg-unidYellow text-unidPurple selection:bg-unidPurple selection:text-white scroll-smooth;
   }
   h1 {
-    @apply text-unidPurple font-saira text-5xl md:text-6xl font-bold;
+    @apply text-unidDarkBlue font-saira text-5xl md:text-6xl font-bold;
   }
   h2 {
-    @apply text-unidPurple font-saira text-4xl md:text-5xl font-bold;
+    @apply text-unidDarkBlue font-saira text-4xl md:text-5xl font-bold;
   }
   h3 {
-    @apply text-unidPurple font-saira text-3xl md:text-4xl font-bold;
+    @apply text-unidDarkBlue font-saira text-3xl md:text-4xl font-bold;
   }
   h4 {
-    @apply text-unidPurple font-saira text-2xl md:text-3xl font-bold;
+    @apply text-unidDarkBlue font-saira text-2xl md:text-3xl font-bold;
   }
   h5 {
-    @apply text-unidPurple font-saira text-xl md:text-2xl font-bold;
+    @apply text-unidDarkBlue font-saira text-xl md:text-2xl font-bold;
   }
 
   #h1_subheader {
@@ -29,7 +29,7 @@
     @apply text-unidDarkBlue font-montserrat text-lg md:text-lg leading-relaxed;
   }
   #decorative_header {
-    @apply text-unidPurple text-base tracking-widest uppercase;
+    @apply text-unidDarkBlue text-base tracking-widest uppercase;
   }
   #content_box_header_text {
     @apply text-unidDarkBlue font-bold text-lg;
@@ -50,10 +50,10 @@
     @apply text-unidDarkBlue text-base;
   }
   #selling_point {
-    @apply leading-relaxed flex text-xs lg:text-sm text-unidBlue font-bold;
+    @apply leading-relaxed flex text-xs lg:text-sm text-unidPurple font-semibold;
   }
   #primary_button {
-    @apply text-white text-sm w-full md:text-base font-bold bg-unidBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:bg-unidBlueHover hover:scale-105;
+    @apply text-white text-sm w-full md:text-base font-bold bg-unidDarkBlue py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105;
   }
   #secondary_button {
     @apply text-white text-sm w-full md:text-base font-bold hover:scale-105 items-center gap-2 hover:text-unidPurple hover:bg-unidYellow py-3.5 px-7 rounded-md transition ease-in-out duration-300;

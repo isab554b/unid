@@ -1,7 +1,7 @@
 % for testimonial in frontpage_content['testimonials_section']['testimonials']:
 <div class="bg-unidLigthPink p-8 rounded-lg space-y-12">
   <div class="space-y-6">
-    <div id="icon_medium" class="size-6 text-unidLightBlue">
+    <div id="icon_medium" class="size-6 text-unidPurple">
       <!-- prettier-ignore -->
       % include(f'{frontpage_content["testimonials_section"]["testimonial_icon"]}')
     </div>

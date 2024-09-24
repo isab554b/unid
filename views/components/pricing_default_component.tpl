@@ -2,12 +2,14 @@
 % for price_key, price in services_and_prices_content['prices_section']['pricings']['pricing_default'].items():
 <div>
   <div class="flex justify-end">
-    <div class="w-2/3 lg:w-3/5 bg-unidBlue border-unidLightBlue rounded-t-lg">
+    <div
+      class="w-2/3 lg:w-3/5 bg-unidLightPurple border-2 border-unidDarkBlue border-b-0 rounded-t-lg"
+    >
       <div class="flex gap-2 p-3 text-unidBeige items-center justify-center">
-        <div class="w-6 h-6 text-white">
+        <div class="w-6 h-6 text-unidDarkBlue">
           % include(global_content['ui_icons']['discount'])
         </div>
-        <p class="font-medium text-sm tracking-wider text-white">
+        <p class="font-medium text-sm tracking-wider text-unidDarkBlue">
           Studiepris:
           <br />
           <span class="font-bold">{{ price["info"]["discount"] }}</span>
@@ -16,7 +18,7 @@
     </div>
   </div>
   <div
-    class="rounded-l-lg rounded-br-lg border-2 bg-unidLigthPink border-unidBlue flex flex-col"
+    class="rounded-l-lg rounded-br-lg border-2 bg-unidLigthPink border-unidDarkBlue flex flex-col"
   >
     <div class="flex flex-col lg:flex-row justify-between gap-6">
       <div class="text-unidDarkBlue space-y-1 p-6">

@@ -39,10 +39,10 @@ finally:
 
 ##############################
 #   ABOUT_US
-@get("/about_us")
-def about_us():
+@get("/om_unid_studio")
+def om_unid_studio():
 
-    page_name = "about_us"
+    page_name = "om_unid_studio"
 
     try:
         # Securely retrieve user cookie

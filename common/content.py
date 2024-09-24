@@ -81,7 +81,7 @@ global_content = {
             "nav_items": [
                 {"text": "Services & Priser", "link": "/services_and_prices"},
                 {"text": "Portfolio", "link": "/portfolio"},
-                {"text": "Om UNID Studio", "link": "/about_us"},
+                {"text": "Om UNID Studio", "link": "/om_unid_studio"},
                 {"text": "Kontakt", "link": "/contact"},
                 {"text": "Blog", "link": "/blog"},
             ],
@@ -222,14 +222,14 @@ frontpage_content = {
         # Testiomonials
         "testimonials": [
             {
-                "text": "Redesignet af vores website er moderne, brugervenligt og effektivt i at præsentere vores services på en engagerende måde. Det er tydeligt at se og mærke, at UNID Studio er dedikeret, til at levere en kvalitetsoplevelse for deres kunder, og jeg kan varmt anbefale deres services.",
-                "author_name": "Oliver Belmadani",
-                "author_job_title": "CEO, Affiliater ApS",
+                "text": "Vi har haft en rigtig god oplevelse med at få lavet vores hjemmeside, www.dragørelservice.dk. UNID Studio har ydet en fantastisk service, været meget hjælpsomme og lyttede virkelig til vores ønsker. De var yderst professionelle og udførte opgaven til perfektion. Vi er meget tilfredse med resultatet!",
+                "author_name": "Radwan Radwan",
+                "author_job_title": "Dragør El-Service ApS",
             },
             {
-                "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi inventore nam eos incidunt, consequatur animi libero modi doloremque esse? Amet qui doloribus nam saepe vitae.",
-                "author_name": "Lorem ipsum",
-                "author_job_title": "Lorem ipsum",
+                "text": "UNID studio er en lille energisk og grundig virksomhed, der meget konkurrencedygtigt kan hjælpe små og store virksomheder med at udvikle deres digitale tilstedeværelse. De leverer en håndholdt service og er meget imødekommende overfor deres kunders individuelle ønsker og behov.",
+                "author_name": "Jens Stanek",
+                "author_job_title": "KEA Startup Hub",
             },
         ],
     }
