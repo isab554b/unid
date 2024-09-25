@@ -7,17 +7,16 @@
     >
       <div class="lg:gap-6 gap-4 flex flex-col space-y-4">
         <h1 class="text-unidDarkBlue">
-          <span class="font-bold">Skræddersyede</span>
+          <span class="font-bold">Professionelle</span>
           <br />
-          <span class="font-light">digitale</span>
-          <span class="italic font-semibold">løsninger</span>
+          <span class="font-light">& skræddersyede</span>
+          <span class="italic font-semibold">hjemmesider</span>
         </h1>
 
         <p id="h1_subheader" class="text-unidDarkBlue">
-          Vi bestræber os på at lave
-          <span class="font-semibold italic">unikke</span> og
-          <span class="font-semibold italic">kvalitetsløsninger</span>, som
-          opfylder hver enkel kundes behov
+          Vi bestræber os på at lave skræddersyede
+          <span class="font-semibold">hjemmesider og webshops</span>
+          leveret i professionel kvalitet
           <span class="font-semibold italic">- helt uden bindinger!</span>
         </p>
       </div>

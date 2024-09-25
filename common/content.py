@@ -370,6 +370,7 @@ portfolio_content = {
     "cases": [
             {"illustration": "imput1.webp", "illustration_alt": "Billede af Imputs forside", "title": "Imput", "link": "/imput"},
             {"illustration": "nomi1.jpg", "illustration_alt": "Billede af Nomi Creations forside", "title": "Nomi Creations", "link": "/nomi_creations"},
+            {"illustration": "dragoer3.webp", "illustration_alt": "Billede af Dragør El-Services forside", "title": "Dragør El-Service", "link": "/dragoer_el_service"},
         ],
 }
 

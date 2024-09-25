@@ -56,92 +56,122 @@
     % include('components/header_component')
     <section class="bg-unidLigthPink">
       <div class="width_standard padding_y_standard space_y_standard mx-auto">
-        <div class="flex flex-col gap-y-6 md:gap-y-8">
-          <div
-            class="w-full gap-10 grid items-center grid-cols-1 md:grid-cols-2"
-          >
-            <div class="flex flex-col gap-y-6 md:gap-y-8">
-              <div class="flex text-center">
-                <div class="w-5 h-5 text-unidDarkBlue">
-                  % include(global_content['ui_icons']['arrow'])
-                </div>
-                <a
-                  href="/cases"
-                  class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
-                >
-                  Tilbage til portfolio
-                  <span
-                    class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
-                  ></span>
-                </a>
-              </div>
-              <div class="space-y-2">
-                <!-- prettier-ignore -->
-                <p id="decorative_header">Webshop</p>
-                <h2>Nomi Creations</h2>
-              </div>
-              <div class="space-y-6">
-                <div class="space-y-2">
-                  <p id="paragraph_text">
-                    Nomi Creations er en webshop, der specialiserer sig i
-                    børneplakater. Vi har været med fra begyndelsen og har
-                    leveret en omfattende løsning, der inkluderer design af
-                    logo, 5. element, og visuel identitet. Vi har også udviklet
-                    en skræddersyet webplatform, der præcist matcher kundens
-                    vision og ønsker for webshoppen.
-                  </p>
-                </div>
-                <div class="space-y-2">
-                  <p id="paragraph_text">
-                    For denne case har vi desuden udført dybdegående analyser og
-                    omfattende tests af websitet, specifikt rettet mod Nomi
-                    Creations’ målgruppe. Dette sikrer en optimal
-                    brugeroplevelse og effektiv målretning af produkterne til de
-                    rette kunder.
-                  </p>
-                </div>
+        <div class="flex flex-col">
+          <div class="flex text-center mb-4">
+            <!-- Tilføjet margin bund -->
+            <div class="w-5 h-5 text-unidDarkBlue">
+              % include(global_content['ui_icons']['arrow'])
+            </div>
+            <a
+              href="/cases"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+            >
+              Tilbage til cases
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+              ></span>
+            </a>
+          </div>
 
-                <div class="w-full md:w-fit lg:w-full xl:w-fit pt-6">
-                  <a href="https://nomicreations.dk/" target="_blank">
-                    <button type="button" id="primary_button">
-                      Se website
-                    </button>
-                  </a>
+          <!-- Mobil tekst -->
+          <div class="col-span-3 md:hidden mb-4">
+            <!-- Tilføjet margin bund -->
+            <div class="space-y-2">
+              <p id="decorative_header">Webshop</p>
+              <h2>Nomi Creations</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 h-auto">
+            <div class="col-span-2 h-full relative">
+              <img
+                src="/assets/images/portfolio/nomi_mockup.jpg"
+                alt="Nomi Creations' hjemmeside som ses på computer, tablet og mobil."
+                class="object-cover w-full h-full"
+                style="object-position: 75% 20%"
+              />
+              <div class="absolute top-4 left-4 z-10 md:block hidden">
+                <div class="space-y-2">
+                  <p id="decorative_header">Webshop</p>
+                  <h2>Nomi Creations</h2>
                 </div>
               </div>
             </div>
-            <div class="flex justify-center">
-              <!-- prettier-ignore -->
-              <img
-                  alt="Billede af Nomi Creations forside på deres website."
-                  class="h-auto"
-                  src="/assets/images/portfolio/nomi5.png"
+
+            <div class="grid grid-rows-2 gap-4 h-full">
+              <div class="h-full">
+                <img
+                  src="/assets/images/portfolio/nomi2.png"
+                  alt="Nomi Creations' logo."
+                  class="object-cover w-full h-full"
                 />
+              </div>
+              <div class="h-full">
+                <img
+                  src="/assets/images/portfolio/nomi4.jpg"
+                  alt="Visitkort til Nomi Creations"
+                  class="object-cover w-full h-full"
+                />
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
-          <div>
-            <img
-              alt="Nomi Creations’ styletile, der afspejler deres visuelle identitet."
-              class="w-full object-cover h-full"
-              src="/assets/images/portfolio/nomi3.png"
-            />
+    <section class="bg-unidYellow">
+      <div
+        class="flex flex-col gap-y-6 md:gap-y-8 width_standard padding_y_standard space_y_standard mx-auto"
+      >
+        <div
+          class="w-full flex flex-col md:flex-row gap-10 md:gap-20 items-start"
+        >
+          <div class="flex flex-col gap-y-6 md:gap-y-8 md:w-2/3 w-full">
+            <div class="space-y-2">
+              <p id="decorative_header">Processen</p>
+              <h2>Hvad har vi udført?</h2>
+            </div>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  Nomi Creations er en webshop, der specialiserer sig i
+                  børneplakater. Vi har været med fra begyndelsen og har leveret
+                  en omfattende løsning, der inkluderer design af logo, 5.
+                  element, og visuel identitet. Vi har også udviklet en
+                  skræddersyet webplatform, der præcist matcher kundens vision
+                  og ønsker for webshoppen.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  For denne case har vi desuden udført dybdegående analyser og
+                  omfattende tests af hjemmesiden, specifikt rettet mod Nomi
+                  Creations’ målgruppe. Dette sikrer en optimal brugeroplevelse
+                  og effektiv målretning af produkterne til de rette kunder.
+                </p>
+              </div>
+
+              <div class="w-full md:w-fit lg:w-full xl:w-fit pt-6">
+                <a href="https://nomicreations.dk/" target="_blank">
+                  <button type="button" id="third_button">Se webshop</button>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="">
-            <img
-              alt="Nomi Creations’ visitkort."
-              class="w-full object-cover h-full"
-              src="/assets/images/portfolio/nomi4.jpg"
-            />
-          </div>
-          <div class="">
-            <img
-              alt="Nomi Creations’ logo."
-              class="w-full object-cover h-full"
-              src="/assets/images/portfolio/nomi2.png"
-            />
+
+          <div
+            class="flex flex-col items-center bg-unidLightPurple md:w-1/3 w-full py-8 md:pb-16"
+          >
+            <div class="text-unidDarkBlue space-y-4 text-left">
+              <h5>Services udført:</h5>
+              <li>Visuel identitet</li>
+              <li>Logo</li>
+              <li>Unikt 5. element</li>
+              <li>Designmanual</li>
+              <li>Webshop</li>
+              <li>Grafisk design af tryksager</li>
+              <li>Dybdegående analyser og tests</li>
+            </div>
           </div>
         </div>
       </div>

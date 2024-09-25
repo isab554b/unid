@@ -20,6 +20,7 @@ module.exports = {
       },
       backgroundImage: {
         watermark: "url('/assets/graphics/watermark.png')",
+        watermarkUniverse: "url('/assets/graphics/watermark-universe.png')",
       },
     },
     plugins: [],

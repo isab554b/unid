@@ -1,9 +1,24 @@
 <section class="bg-unidDarkBlue">
   <div class="width_standard padding_y_standard mx-auto flex flex-col gap-y-14">
-    <div class="flex">
-      <div class="space-y-2 md:w-1/2">
+    <div class="flex flex-col gap-y-6 md:gap-y-8">
+      <div class="space-y-2">
         <p class="text-white text-base tracking-widest uppercase">Services</p>
-        <h2 class="text-white">Det kan vi hjælpe dig med</h2>
+        <h2 class="text-white">Vi er klar til at hjælpe dig</h2>
+      </div>
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <p class="text-white md:w-3/4">
+            Hos UNID Studio tilbyder vi en række services, der hjælper dig med
+            at skabe en professionel online tilstedeværelse. Vi udvikler
+            hjemmesider i WordPress, programmerer skræddersyede projekter og
+            bygger webshops i Woocommerce. Vi skaber visuelle identiteter og
+            tilbyder grafisk design til alt fra logoer til SoMe-content.
+            Derudover tilbyder vi vedligeholdelse af WordPress-hjemmesider
+            gennem et serviceabonnement, hvor vi sikrer, at din side altid er
+            opdateret, sikker og funktionsdygtig. Vi sørger for løsninger, der
+            matcher dine unikke behov.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -14,7 +29,7 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
@@ -47,7 +62,7 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
@@ -85,7 +100,7 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
@@ -123,7 +138,7 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
