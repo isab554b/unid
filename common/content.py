@@ -516,8 +516,8 @@ services_and_prices_content = {
                     },
                     "selling_points": [
                         {"text": "Kontrol af ydeevne og hastighed for hjemmesiden"},
-                        {"text": "Opdatering af tema og plugins"},
-                        {"text": "Overvågning af website med Google Search Console"},
+                        {"text": "Regelmæssige opdateringer af både tema og plugins"},
+                        {"text": "Overvågning af hjemmesiden med Google Search Console"},
                         {"text": "30 minutters sparring / vores ekspertise til udbedring af fejl"},
                     ]
                 },
@@ -738,15 +738,27 @@ blog_content = {
     "posts": {
             # Clipcard default
             "post_default": {
-                "post_a": {
+                "post_d": {
                     "info": {
-                        "title": "Hastighedsoptimering på hjemmesider er en nødvendighed!",
-                        "description": "Hastighedsoptimering er en vigtig faktor, der påvirker brugeroplevelsen, SEO, konverteringsrater og dit brand som helhed. En hurtig hjemmeside holder brugerne engagerede, forbedrer søgemaskine rangeringer...",
+                        "title": "WordPress webshop i WooCommerce - Er det gratis at lave en webshop?",
+                        "description": "At oprette en webshop kan være en spændende rejse, men det kræver også en vis tålmodighed og forståelse af platformen. En populær løsning til at bygge en webshop er WordPress i kombination med WooCommerce...",
                         "author": "Denise Hansen",
-                        "date": "5. september 2024",
-                        "link": "/hastighedsoptimering",
-                        "image": "hastighedsoptimering.webp",
-                        "image_alt": "Grafik af hastighedsoptimering på hjemmeside.",
+                        "date": "30. september 2024",
+                        "link": "/wordpress-webshop-i-woocommerce",
+                        "image": "webshop.webp",
+                        "image_alt": "Grafik til webshop udviklet i WordPress med WooCommerce.",
+
+                    },
+                },
+                "post_c": {
+                    "info": {
+                        "title": "Hvem laver gode hjemmesider? - Kvalitet versus pris",
+                        "description": "Når du står overfor at skulle vælge en webdesigner eller webudvikler til din hjemmeside, kan det være fristende at vælge det billigste tilbud. Men ofte er det ikke prisen, der er den vigtigste indikator for kvalitet...",
+                        "author": "Denise Hansen",
+                        "date": "29. september 2024",
+                        "link": "/hvem-laver-gode-hjemmesider",
+                        "image": "hjemmeside.webp",
+                        "image_alt": "Grafik til hvem der laver gode hjemmesider.",
 
                     },
                 },
@@ -756,14 +768,24 @@ blog_content = {
                         "description": "Er du træt af, at din WordPress-hjemmeside loader langsomt? En langsom hjemmeside kan koste dig dyrebare besøgende og skade din søgemaskinerangering. Heldigvis er der en række ting, du kan gøre for at optimere din hjemmesides hastighed...",
                         "author": "Denise Hansen",
                         "date": "5. september 2024",
-                        "link": "/wp_hastighedsoptimering",
+                        "link": "/hastighedsoptimer-din-wordpress-hjemmeside",
                         "image": "wp_hastighedsoptimering.webp",
                         "image_alt": "Grafik af hastighedsoptimering på WordPress side.",
 
                     },
                 },
-               
-               
+                "post_a": {
+                    "info": {
+                        "title": "Hastighedsoptimering på hjemmesider er en nødvendighed!",
+                        "description": "Hastighedsoptimering er en vigtig faktor, der påvirker brugeroplevelsen, SEO, konverteringsrater og dit brand som helhed. En hurtig hjemmeside holder brugerne engagerede, forbedrer søgemaskine rangeringer...",
+                        "author": "Denise Hansen",
+                        "date": "5. september 2024",
+                        "link": "/hastighedsoptimering-paa-hjemmesider-er-en-noedvendighed",
+                        "image": "hastighedsoptimering.webp",
+                        "image_alt": "Grafik af hastighedsoptimering på hjemmeside.",
+
+                    },
+                },               
             },
         }
 } 

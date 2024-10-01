@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+
+    <section class="bg-unidLigthPink">
+      <div
+        class="width_standard pt-6 pb-32 space_y_standard space-y-24 mx-auto"
+      >
+        <div class="flex text-center">
+          <div class="w-5 h-5 text-unidDarkBlue">
+            % include(global_content['ui_icons']['arrow'])
+          </div>
+          <a
+            href="/"
+            class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+          >
+            Tilbage til forsiden
+            <span
+              class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+            ></span>
+          </a>
+        </div>
+        <div class="flex justify-center">
+          <div
+            class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
+          >
+            <h1>Design & visuel identitet</h1>
+            <p id="subheader">
+              Design og visuel identitet er hjørnestenen i, hvordan din
+              virksomhed præsenterer sig for verden. Vi hjælper med at skabe en
+              sammenhængende og mindeværdig visuel identitet, der afspejler din
+              virksomheds værdier og personlighed.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-6 md:gap-y-8">
+          <div
+            class="w-full gap-10 grid items-center grid-cols-1 md:grid-cols-2"
+          >
+            <div class="flex flex-col gap-y-6 md:gap-y-8">
+              <div class="space-y-2">
+                <p id="decorative_header">Visuel identitet</p>
+                <h2>Har du styr på din visuelle identitet?</h2>
+              </div>
+              <div class="space-y-6">
+                <div class="space-y-4">
+                  <p id="paragraph_text">
+                    Fra logoer og farveskemaer til typografi og grafiske
+                    elementer arbejder vi tæt sammen med dig for at udvikle et
+                    design, der fanger opmærksomheden og efterlader et varigt
+                    indtryk. Vi tager højde for din målgruppe og branchens
+                    trends for at sikre, at den visuelle identitet ikke blot er
+                    æstetisk tiltalende, men også relevant og effektiv. Vores
+                    proces inkluderer grundig research og konceptudvikling, så
+                    vi kan skabe en helhedsorienteret identitet, der afspejler
+                    din virksomheds kerneværdier og vision.
+                  </p>
+                  <p id="paragraph_text">
+                    Med en stærk visuel identitet kan du differentiere dig fra
+                    konkurrenterne. Det handler ikke kun om at se godt ud, men
+                    om at fortælle din historie gennem design og skabe en
+                    følelsesmæssig forbindelse, der engagerer og fastholder dine
+                    kunder. Uanset om du er en nystartet virksomhed eller ønsker
+                    at forny din eksisterende identitet, er vi her for at guide
+                    dig hele vejen og sikre, at dit brand står klart og tydeligt
+                    i markedet.
+                  </p>
+                </div>
+              </div>
+              <div class="w-full md:w-fit lg:w-full xl:w-fit">
+                <a href="/kontakt">
+                  <button type="button" id="third_button">Kontakt nu</button>
+                </a>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <img
+                class="lg:h-auto w-3/4 lg:w-full"
+                src="/assets/illustrations/design.webp"
+                alt="Grafik der illustrerer, at UNID Studio designer og udvikler visuelle identiteter."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

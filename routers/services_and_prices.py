@@ -84,3 +84,196 @@ def services_and_prices():
             db.close()
             logger.info("Database connection closed")
         logger.info(f"Completed request for /{page_name}")
+
+
+##############################
+#   HJEMMESIDER I WORDPRESS
+@get("/hjemmesider_i_wordpress")
+def hjemmesider_i_wordpress():
+
+    page_name = "hjemmesider_i_wordpress"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Hjemmesider i WordPress",
+                        # A-Z
+                        global_content=global_content,
+                        services_and_prices_content=services_and_prices_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed request for /{page_name}")
+
+##############################
+#   WEBSHOP I WOOCOMMERCE
+@get("/webshop_i_woocommerce")
+def webshop_i_woocommerce():
+
+    page_name = "webshop_i_woocommerce"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Webshop i WooCommerce",
+                        # A-Z
+                        global_content=global_content,
+                        services_and_prices_content=services_and_prices_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed request for /{page_name}")
+
+##############################
+#   INTERAKTIVE PROTOTYPER
+@get("/interaktive_prototyper")
+def interaktive_prototyper():
+
+    page_name = "interaktive_prototyper"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Interaktive prototyper",
+                        # A-Z
+                        global_content=global_content,
+                        services_and_prices_content=services_and_prices_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed request for /{page_name}")
+
+##############################
+#   DESIGN OG VISUEL IDENTITET
+@get("/design_og_visuel_identitet")
+def design_og_visuel_identitet():
+
+    page_name = "design_og_visuel_identitet"
+
+    try:
+        # Securely retrieve user cookie
+        user_cookie = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
+
+        # Validate cookie, then fetch user details from db
+        if user_cookie and isinstance(user_cookie, dict):
+            db = master.db()
+            username = user_cookie.get('username')
+            user = db.execute("SELECT * FROM users WHERE username = ? LIMIT 1", (username,)).fetchone()
+            logger.success(f"Valid user cookie found for /{page_name}, retrieved data from database")
+            logger.info(f"Logged in user: {username}")
+
+        # Handle scenarios where no valid cookie is found (e.g., user not logged in)
+        else:
+            user = username = None
+            logger.warning(f"No valid user cookie found for /{page_name}, perhaps user is not logged in yet")
+
+        # Show template
+        logger.success(f"Succesfully showing template for {page_name}")
+        return template(page_name,
+                        title="UNID Studio - Design & visuel identitet",
+                        # A-Z
+                        global_content=global_content,
+                        services_and_prices_content=services_and_prices_content,
+                        user=user,
+                        username=username
+                        )
+
+    except Exception as e:
+        if "db" in locals():
+            db.rollback()
+            logger.info("Database transaction rolled back due to exception")
+        logger.error(f"Error during request for /{page_name}: {e}")
+        raise
+
+    finally:
+        if "db" in locals():
+            db.close()
+            logger.info("Database connection closed")
+        logger.info(f"Completed request for /{page_name}")

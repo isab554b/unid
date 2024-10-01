@@ -23,19 +23,19 @@
     </div>
 
     <div
-      class="w-full gap-6 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 text-center"
+      class="w-full gap-6 grid  md:grid-cols-2 lg:grid-cols-4 grid-cols-1 text-center"
     >
       <div
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full "
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h4>Hjemmesider i WordPress</h4>
+              <h5>Hjemmesider i WordPress</h5>
             </div>
           </div>
 
@@ -44,17 +44,17 @@
               <div class="text-left gap-2 text-unidDarkBlue">
                 <p>
                   Vi tilbyder skræddersyede hjemmesider. Vi sørger altid for at
-                  tilpasse funktioner og indhold, så de passer til dine
+                  tilpasse funktionalitet og indhold, så de passer til dine
                   specifikke behov og krav.
                 </p>
               </div>
             </div>
 
-            <!-- <div class="space-y-2">
-            <a href="/"
+            <div class="space-y-2">
+            <a href="/hjemmesider_i_wordpress"
               ><button type="button" class="text-unidDarkBlue text-sm w-full md:text-base font-bold bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105"">Læs mere</button></a
             >
-          </div> -->
+          </div>
           </div>
         </div>
       </div>
@@ -62,13 +62,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h4>Webshop i Woocommerce</h4>
+              <h5>Webshop i Woocommerce</h5>
             </div>
           </div>
 
@@ -76,15 +76,13 @@
             <div class="space-y-2">
               <div class="text-left gap-2 text-unidDarkBlue">
                 <p>
-                  Vi skaber webshops, der optimerer salgsoplevelsen. Med fokus
-                  på design og funktionalitet hjælper vi dig med at øge din
-                  omsætning.
+                  Vi skaber webshops, der effektivt optimerer den fulde salgsoplevelse. Med et skarpt fokus på design og funktionalitet er vi med til at øge din omsætning.
                 </p>
               </div>
             </div>
-            <!--
+            
           <div class="space-y-2">
-            <a href="/"
+            <a href="/webshop_i_woocommerce"
               ><button
                 type="button"
                 class="text-unidDarkBlue text-sm w-full md:text-base font-bold bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105"
@@ -92,7 +90,7 @@
                 Læs mere
               </button></a
             >
-          </div> -->
+          </div>
           </div>
         </div>
       </div>
@@ -100,13 +98,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full "
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h4>Prototyper i Figma</h4>
+              <h5>Interaktive protoyper</h5>
             </div>
           </div>
 
@@ -121,8 +119,8 @@
               </div>
             </div>
 
-            <!-- <div class="space-y-2">
-            <a href="/"
+            <div class="space-y-2">
+            <a href="/interaktive_prototyper"
               ><button
                 type="button"
                 class="text-unidDarkBlue text-sm w-full md:text-base font-bold bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105"
@@ -130,7 +128,7 @@
                 Læs mere
               </button></a
             >
-          </div> -->
+          </div>
           </div>
         </div>
       </div>
@@ -138,13 +136,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col md:h-[380px]"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h4>Design & visuel identitet</h4>
+              <h5>Design & visuel identitet</h5>
             </div>
           </div>
 
@@ -159,11 +157,11 @@
               </div>
             </div>
 
-            <!-- <div class="space-y-2">
-            <a href="/"
+            <div class="space-y-2">
+            <a href="/design_og_visuel_identitet"
               ><button type="button" class="text-unidDarkBlue text-sm w-full md:text-base font-bold bg-unidLightPurple py-3.5 px-10 rounded-md drop-shadow-xl transition ease-in-out duration-300 hover:scale-105"">Læs mere</button></a
             >
-          </div> -->
+          </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+
+    <section class="bg-unidLigthPink">
+      <div
+        class="width_standard pt-6 pb-32 space_y_standard space-y-24 mx-auto"
+      >
+        <div class="flex text-center">
+          <div class="w-5 h-5 text-unidDarkBlue">
+            % include(global_content['ui_icons']['arrow'])
+          </div>
+          <a
+            href="/"
+            class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+          >
+            Tilbage til forsiden
+            <span
+              class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+            ></span>
+          </a>
+        </div>
+        <div class="flex justify-center">
+          <div
+            class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
+          >
+            <h1>Interaktive prototyper</h1>
+            <p id="subheader">
+              Vi specialiserer os i at udvikle prototyper i Figma, der gør det
+              muligt at skabe interaktive og brugervenlige løsninger. Vores
+              prototyper hjælper med at visualisere dine idéer og
+              konceptualisere brugeroplevelsen.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-6 md:gap-y-8">
+          <div
+            class="w-full gap-10 grid items-center grid-cols-1 md:grid-cols-2"
+          >
+            <div class="flex flex-col gap-y-6 md:gap-y-8">
+              <div class="space-y-2">
+                <p id="decorative_header">Prototyper</p>
+                <h2>Mangler du en prototype?</h2>
+              </div>
+              <div class="space-y-6">
+                <div class="space-y-4">
+                  <p id="paragraph_text">
+                    Vi tilbyder omfattende udvikling af prototyper ved hjælp af
+                    Figma. Vores tilgang indebærer en grundig forståelse af dine
+                    krav og mål, hvilket giver os mulighed for at skabe
+                    intuitive og funktionelle brugergrænseflader. Ved at
+                    bennytte Figma's værktøjer kan vi designe interaktive
+                    elementer, så du kan simulere brugerrejser og visualisere,
+                    hvordan slutproduktet vil fungere.
+                  </p>
+                  <p id="paragraph_text">
+                    Vi fokuserer på at udvikle prototyper, der kan bruges til
+                    brugertests og videreudvikling, hvilket giver en værdifuld
+                    feedback tidligt i designprocessen. Dette sikrer, at
+                    eventuelle problemer kan identificeres og løses hurtigt,
+                    hvilket sparer tid og ressourcer senere i projektet.
+                  </p>
+                </div>
+              </div>
+              <div class="w-full md:w-fit lg:w-full xl:w-fit">
+                <a href="/kontakt">
+                  <button type="button" id="third_button">Kontakt nu</button>
+                </a>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <img
+                class="lg:h-auto w-3/4 lg:w-full"
+                src="/assets/illustrations/prototype.webp"
+                alt="Grafik der illustrerer, at UNID Studio udvikler prototyper."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

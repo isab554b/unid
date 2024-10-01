@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+
+    <section class="bg-unidLigthPink">
+      <div
+        class="width_standard pt-6 pb-32 space_y_standard space-y-24 mx-auto"
+      >
+        <div class="flex text-center">
+          <div class="w-5 h-5 text-unidDarkBlue">
+            % include(global_content['ui_icons']['arrow'])
+          </div>
+          <a
+            href="/"
+            class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+          >
+            Tilbage til forsiden
+            <span
+              class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+            ></span>
+          </a>
+        </div>
+        <div class="flex justify-center">
+          <div
+            class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
+          >
+            <h1>Webshop i Woocommerce</h1>
+            <p id="subheader">
+              Vi specialiserer os i at udvikle moderne og brugervenlige webshops
+              i WooCommerce. Med fokus på funktionalitet, design og
+              kundetilfredshed skaber vi skræddersyede løsninger, der hjælper
+              din virksomhed med at vokse online.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-6 md:gap-y-8">
+          <div
+            class="w-full gap-10 grid items-center grid-cols-1 lg:grid-cols-3"
+          >
+            <div class="lg:col-span-2 flex flex-col gap-y-6 md:gap-y-8">
+              <div class="space-y-2">
+                <!-- prettier-ignore -->
+                <p id="decorative_header">Webshop</p>
+                <h2>Ønsker du at få lavet en webshop?</h2>
+              </div>
+              <div class="space-y-6">
+                <!-- prettier-ignore -->
+                <div class="space-y-4">
+              <p id="paragraph_text">
+                Vores ekspertise ligger i at udvikle webshops på WooCommerce, en
+                af verdens mest populære e-handelsplatforme. Vi kombinerer
+                teknisk know-how med kreativt design for at skabe webshops, der
+                både er visuelt tiltalende og nemme at bruge for både kunder og
+                administratorer.
+              </p>
+              <p id="paragraph_text">
+                Med WooCommerce får du en løsning, der integrerer problemfrit
+                med WordPress og giver dig fuld kontrol over din butik, fra
+                produktkatalog og lagerstyring til betalingsløsninger og
+                forsendelsesmuligheder. Vi sørger for, at din webshop er
+                optimeret til ydeevne, sikkerhed og skalerbarhed, så din
+                virksomhed kan vokse uden begrænsninger.
+              </p>
+              <p id="paragraph_text">
+                Vi sørger for, at din webshop er optimeret til ydeevne,
+                sikkerhed og skalerbarhed, så din virksomhed kan vokse uden
+                begrænsninger.
+              </p>
+            </div>
+              </div>
+              <div class="bg-unidLightPurple p-6 md:p-8 space-y-6">
+                <div class="space-y-2">
+                  <p id="decorative_header">Studerende iværksætter?</p>
+                  <h3>Vi giver dig studierabat</h3>
+                </div>
+                <div class="space-y-4">
+                  <p id="paragraph_text">
+                    Hvis du jonglerer med både iværksætteri og uddannelse,
+                    tilbyder vi særlige studierabatter på vores
+                    webshop-løsninger. Det eneste krav er, at du skal være
+                    iværksætter og indskrevet på en uddannelsesinstitution –
+                    samt kunne fremvise et gyldigt studiekort. Få din
+                    studierabat i dag, og lad os sammen skabe en webshop, der
+                    bliver fundamentet for din fremtidige succes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- prettier-ignore -->
+            % last_price_key = list(services_and_prices_content['prices_section']['pricings']['pricing_default'].keys())[-1]
+        % last_price = services_and_prices_content['prices_section']['pricings']['pricing_default'][last_price_key]
+            <div>
+              <div class="flex justify-end">
+                <div
+                  class="w-2/3 bg-unidLightPurple border-2 border-unidDarkBlue border-b-0 rounded-t-lg"
+                >
+                  <div
+                    class="flex gap-2 p-3 text-unidBeige items-center justify-center"
+                  >
+                    <div class="w-6 h-6 text-unidDarkBlue">
+                      % include(global_content['ui_icons']['discount'])
+                    </div>
+                    <p
+                      class="font-medium text-sm tracking-wider text-unidDarkBlue"
+                    >
+                      Studiepris:
+                      <br />
+                      <span class="font-bold"
+                        >{{ last_price["info"]["discount"] }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-l-lg rounded-br-lg border-2 bg-unidLigthPink border-unidDarkBlue flex flex-col"
+              >
+                <div class="flex flex-col lg:flex-row justify-between gap-6">
+                  <div class="text-unidDarkBlue space-y-1 p-6">
+                    <h3>{{ last_price["info"]["hours"] }}</h3>
+                    <p class="text-sm tracking-widest title-font font-medium">
+                      {{ last_price["info"]["title"] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="border-b border-unidLightBlue mx-6"></div>
+                <div class="p-6 space-y-6">
+                  <div class="space-y-2">
+                    % for point in last_price['selling_points']:
+                    <div class="flex items-center gap-2 text-unidDarkBlue">
+                      <div class="text-unidDarkBlue w-5 h-5">
+                        % include(global_content['ui_icons']['checkmark'])
+                      </div>
+                      <p>{{ point["text"] }}</p>
+                    </div>
+                    % end
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <p class="text-unidDarkBlue text-base lg:text-lg">Pris</p>
+                    <div class="flex items-center gap-2">
+                      <p
+                        class="text-unidDarkBlue text-right text-2xl xl:text-2xl font-saira font-bold"
+                      >
+                        {{ last_price["info"]["price"] }}
+                      </p>
+                      <div class="flex flex-col text-xs text-unidDarkBlue">
+                        <p>ekskl.</p>
+                        <p>moms</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <a href="/kontakt"
+                      ><button type="button" id="third_button">
+                        Kontakt nu
+                      </button></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-unidYellow bg-watermark bg-cover bg-center">
+      <div
+        class="width_standard padding_y_standard space_y_standard space-y-24 mx-auto"
+      >
+        <div
+          class="flex flex-col gap-y-6 md:gap-y-8 bg-unidLigthPink p-6 md:p-8"
+        >
+          <div
+            class="w-full gap-10 grid items-center grid-cols-1 md:grid-cols-2"
+          >
+            <div class="flex flex-col gap-y-6 md:gap-y-8">
+              <div class="space-y-2">
+                <p id="decorative_header">Vedligeholdelse</p>
+
+                <h2>Vedligeholdelse af din webshop</h2>
+              </div>
+              <div class="space-y-6">
+                <div class="space-y-4">
+                  <p id="paragraph_text">
+                    Vedligeholdelse af din webshop er afgørende for at sikre, at
+                    din online forretning kører problemfrit og effektivt.
+                    Regelmæssig opdatering af plugins, temaer og WooCommerce
+                    sikrer ikke kun optimal ydeevne, men også beskyttelse mod
+                    sikkerhedstrusler.
+                  </p>
+                  <p id="paragraph_text">
+                    Vi tilbyder et omfattende vedligeholdelsesabonnement, der
+                    inkluderer overvågning, backup, opdateringer og fejlfinding.
+                    Dette betyder, at du kan fokusere på din forretning, mens vi
+                    sørger for, at din webshop altid er opdateret, sikker og
+                    klar til at håndtere dine kunders behov. En godt
+                    vedligeholdt webshop giver bedre brugeroplevelser og
+                    beskytter din investering på lang sigt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center items-center">
+              <!-- prettier-ignore -->
+              % include('components/subscription_component')
+            </div>
+          </div>
+          <div
+            class="flex justify-center flex-col lg:flex-row text-center gap-1.5"
+          >
+            <p class="italic text-sm text-unidDarkBlue">
+              Du skal være logget ind for at købe et abonnement. Har du ikke en
+              bruger?
+            </p>
+            <a
+              href="/signup"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+            >
+              Opret en bruger
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>
