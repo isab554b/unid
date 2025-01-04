@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+    <section class="bg-unidLigthPink">
+      <div class="width_standard padding_y_standard space_y_standard mx-auto">
+        <div class="flex flex-col">
+          <div class="flex text-center mb-4">
+            <!-- Tilføjet margin bund -->
+            <div class="w-5 h-5 text-unidDarkBlue">
+              % include(global_content['ui_icons']['arrow'])
+            </div>
+            <a
+              href="/cases"
+              class="group transition duration-300 cursor-pointer text-sm hover:scale-105 font-bold ease-in-out text-unidDarkBlue"
+            >
+              Tilbage til cases
+              <span
+                class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-unidDarkBlue"
+              ></span>
+            </a>
+          </div>
+
+          <!-- Mobil tekst -->
+          <div class="col-span-3 md:hidden mb-4">
+            <!-- Tilføjet margin bund -->
+            <div class="space-y-2">
+              <p id="decorative_header">Hjemmeside & visuel identitet</p>
+              <h2>AB Gl. Dalvang</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 h-auto">
+            <div class="col-span-2 h-full relative">
+              <img
+                src="/assets/images/portfolio/dalvang1.png"
+                alt="AB Gl. Dalvangs hjemmeside som ses på computer, tablet og mobil."
+                class="object-cover w-full h-full"
+                style="object-position: 75% 20%"
+              />
+              <div class="absolute top-4 left-4 z-10 md:block hidden">
+                <div class="space-y-2">
+                  <p id="decorative_header">Hjemmeside & visuel identitet</p>
+                  <h2>AB Gl. Dalvang</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-rows-2 gap-4 h-full">
+              <div class="h-full">
+                <img
+                  src="/assets/images/portfolio/dalvang2.png"
+                  alt="AB Gl. Dalvangs hjemmeside"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div class="h-full">
+                <img
+                  src="/assets/images/portfolio/dalvang3.png"
+                  alt="AB Gl. Dalvangs nye designmanual"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-unidYellow">
+      <div
+        class="flex flex-col gap-y-6 md:gap-y-8 width_standard padding_y_standard space_y_standard mx-auto"
+      >
+        <div
+          class="w-full flex flex-col md:flex-row gap-10 md:gap-20 items-start"
+        >
+          <div class="flex flex-col gap-y-6 md:gap-y-8 md:w-2/3 w-full">
+            <div class="space-y-2">
+              <p id="decorative_header">Processen</p>
+              <h2>Hvad har vi udført?</h2>
+            </div>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <p id="paragraph_text">
+                  Til AB Gl. Dalvang har vi leveret en samlet løsning, der
+                  styrker deres brand og optimerer deres kommunikation. Vi
+                  udviklede en moderne visuel identitet med et nyt logo og en
+                  designmanual, der sikrer en ensartet stil på tværs af
+                  materialer. Derudover designede vi en brugervenlig hjemmeside
+                  med integreret bookingsystem, som gør det nemt for kunder at
+                  booke online og effektiviserer deres interne processer. Samlet
+                  set har løsningen givet AB Gl. Dalvang et professionelt
+                  udtryk.
+                </p>
+              </div>
+
+              <div class="w-full md:w-fit lg:w-full xl:w-fit pt-6">
+                <a href="https://www.gl-dalvang.dk/" target="_blank">
+                  <button type="button" id="third_button">Se hjemmeside</button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col items-center bg-unidLightPurple md:w-1/3 w-full py-8 md:pb-16"
+          >
+            <div class="text-unidDarkBlue space-y-4 text-left">
+              <h5>Services udført:</h5>
+              <li>Visuel identitet</li>
+              <li>Logo</li>
+              <li>Designmanual</li>
+              <li>Hjemmeside</li>
+              <li>Bookingsystem</li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

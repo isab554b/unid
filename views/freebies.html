@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/assets/favicon/android-chrome-512x512.png"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    % include('components/header_component')
+    <section class="text-unidPurple">
+      <div>
+        <section class="bg-unidLigthPink">
+          <div class="width_standard padding_y_standard space-y-24 mx-auto">
+            <div class="flex justify-center">
+              <div
+                class="lg:w-2/3 flex justify-center flex-col text-center gap-y-4 md:gap-y-6"
+              >
+                <h1>Freebies</h1>
+                <p id="subheader">
+                  Glæd dig til hver Advent i december, hvor vi har en særlig
+                  overraskelse til dig! Hver søndag afslører vi en ny freebie,
+                  som du kan glæde dig til at udforske og bruge. Hold øje – vi
+                  lover, det bliver noget, du ikke vil gå glip af!
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-y-14">
+              <div class="flex md:justify-end md:text-right">
+                <div class="space-y-2 md:w-1/2">
+                  <p id="decorative_header">Nedtælling til Jul</p>
+                  <h2>Oplev vores Advent-freebies!</h2>
+                </div>
+              </div>
+              <div
+                class="w-full gap-10 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 text-left"
+              >
+                <div
+                  class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-left"
+                >
+                  <div class="space-y-3">
+                    <img
+                      src="/assets/freebies/freebie-kalender.jpg"
+                      alt="Kalender for 2025"
+                      class="object-cover w-full h-56 bg-center rounded-lg"
+                    />
+                    <h4 class="">1. Advent</h4>
+                    <p class="text-base text-unidDarkBlue">
+                      1. Advent giver vi en gratis kalender for hele næste år –
+                      perfekt til at planlægge dine dage og holde styr på alle
+                      årets begivenheder. Hent den og kom godt i gang med det
+                      nye år!
+                    </p>
+                    <div class="space-y-3">
+                      <a
+                        href="/assets/freebies/kalender-2025.pdf"
+                        target="_blank"
+                      >
+                        <button id="third_button">Hent nu</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-left"
+                >
+                  <div class="space-y-3">
+                    <img
+                      src="/assets/freebies/freebie-tjekliste.png"
+                      alt="Kalender for 2025"
+                      class="object-cover w-full h-56 bg-center rounded-lg"
+                    />
+                    <h4 class="">2. Advent</h4>
+                    <p class="text-base text-unidDarkBlue">
+                      2. Advent forkæler vi dig med en gratis tjekliste, der
+                      hjælper dig med at holde styr på alle de vigtige detaljer,
+                      når du skal lave et website. Hent den nu, gør dit
+                      website-projekt overskueligt og kom godt fra start.
+                    </p>
+                    <div class="space-y-3">
+                      <a
+                        href="/assets/freebies/website-tjekliste.pdf"
+                        target="_blank"
+                      >
+                        <button id="third_button">Hent nu</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-left"
+                >
+                  <div class="space-y-3">
+                    <img
+                      src="/assets/freebies/freebie-styletile.png"
+                      alt="Kalender for 2025"
+                      class="object-cover w-full h-56 bg-center rounded-lg"
+                    />
+                    <h4 class="">3. Advent</h4>
+                    <p class="text-base text-unidDarkBlue">
+                      3. Advent forkæler vi dig med en gratis styletile, der
+                      giver dig et visuelt overblik over alle de vigtige
+                      design-elementer til dit website. Hent den nu, skab
+                      konsistens i dit website-projekt og kom godt fra start.
+                    </p>
+                    <div class="space-y-3">
+                      <a
+                        href="https://www.canva.com/design/DAGSUF6n9B4/KcQRYjyGOciN5ZuNJiLOgg/view?utm_content=DAGSUF6n9B4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
+                        target="_blank"
+                      >
+                        <button id="third_button">Hent nu</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-left"
+                >
+                  <div class="space-y-3">
+                    <img
+                      src="/assets/freebies/freebie-ebog.png"
+                      alt="Kalender for 2025"
+                      class="object-cover w-full h-56 bg-center rounded-lg"
+                    />
+                    <h4 class="">4. Advent</h4>
+                    <p class="text-base text-unidDarkBlue">
+                      4. Advent forkæler vi dig med en gratis e-bog, der giver
+                      dig et overblik over de vigtigste trin til
+                      hastighedsoptimering af din hjemmeside. Hent den nu og
+                      forbedre din hjemmesides ydeevne.
+                    </p>
+                    <div class="space-y-3">
+                      <a href="/assets/freebies/ebog.pdf" target="_blank">
+                        <button id="third_button">Hent nu</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    % include('components/footer_component')
+
+    <!-- SCRIPT -->
+    <script src="/static/script.js"></script>
+  </body>
+</html>

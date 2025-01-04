@@ -66,6 +66,30 @@
             <p id="subheader">{{ contact_content["subheader_text"] }}</p>
           </div>
         </div>
+
+        <div
+          class="flex flex-col md:flex-row lg:flex-row justify-center gap-12 md:gap-28 lg:gap-28"
+        >
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="fill-unidDarkBlue text-unidDarkBlue w-16 h-16 p-2 bg-unidLightPurple rounded-2xl"
+            >
+              % include(global_content['ui_icons']['phone'])
+            </div>
+            <a href="tel:61727838"> <h5>61 72 78 38</h5></a>
+          </div>
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="fill-unidDarkBlue text-unidDarkBlue w-16 h-16 p-2 bg-unidLightPurple rounded-2xl"
+            >
+              % include(global_content['ui_icons']['email'])
+            </div>
+            <a href="mailto:kontakt@unidstudio.dk">
+              <h5>kontakt@unidstudio.dk</h5></a
+            >
+          </div>
+        </div>
+
         % include('sections/contact_form_section')
       </div>
     </section>

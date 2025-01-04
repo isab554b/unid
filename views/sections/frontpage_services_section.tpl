@@ -23,19 +23,19 @@
     </div>
 
     <div
-      class="w-full gap-6 grid  md:grid-cols-2 lg:grid-cols-4 grid-cols-1 text-center"
+      class="w-full gap-4 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 text-center"
     >
       <div
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full "
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max md:w-64 h-full "
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h5>Hjemmesider i WordPress</h5>
+              <h4>Hjemmesider i WordPress</h4>
             </div>
           </div>
 
@@ -62,13 +62,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max md:w-64 h-full"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h5>Webshop i Woocommerce</h5>
+              <h4>Webshop i Woocommerce</h4>
             </div>
           </div>
 
@@ -98,13 +98,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full "
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max md:w-64 h-full "
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h5>Interaktive protoyper</h5>
+              <h4>Interaktive protoyper</h4>
             </div>
           </div>
 
@@ -136,13 +136,13 @@
         class="space-y-4 md:space-y-6 h-full flex flex-col justify-start items-center text-center"
       >
         <div
-          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max w-72 h-full"
+          class="rounded-xl border-8 bg-unidLigthPink border-unidBlue flex flex-col min-h-max md:w-64 h-full"
         >
           <div class="flex flex-col lg:flex-row justify-between gap-6">
             <div
               class="text-unidDarkBlue bg-unidLightPurple rounded-t-sm space-y-1 p-3"
             >
-              <h5>Design & visuel identitet</h5>
+              <h4>Design & visuel identitet</h4>
             </div>
           </div>
 

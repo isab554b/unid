@@ -84,6 +84,7 @@ global_content = {
                 {"text": "Om UNID Studio", "link": "/om_unid_studio"},
                 {"text": "Kontakt", "link": "/contact"},
                 {"text": "Blog", "link": "/blog"},
+                {"text": "Freebies", "link": "/freebies"},
             ],
         },
         "header_bar": {
@@ -371,6 +372,7 @@ portfolio_content = {
             {"illustration": "imput1.webp", "illustration_alt": "Billede af Imputs forside", "title": "Imput", "link": "/imput"},
             {"illustration": "nomi1.jpg", "illustration_alt": "Billede af Nomi Creations forside", "title": "Nomi Creations", "link": "/nomi_creations"},
             {"illustration": "dragoer3.webp", "illustration_alt": "Billede af Dragør El-Services forside", "title": "Dragør El-Service", "link": "/dragoer_el_service"},
+            {"illustration": "dalvang_mockup.png", "illustration_alt": "Billede af AB Gl. Dalvangs forside", "title": "AB. Gl Dalvang", "link": "/gl_dalvang"},
         ],
 }
 

@@ -106,8 +106,8 @@ def send_email(subject, body, to_email):
     msg.attach(MIMEText(body, 'plain'))
 
     try:
-        server = smtplib.SMTP('smtp.simply.com', 587)  # Erstat med SMTP-serveradresse og port for SimplyMail
-        server.starttls()  # Start TLS for sikkerhed
+        server = smtplib.SMTP('smtp.simply.com', 587)  
+        server.starttls() 
         server.login(from_email, from_password)
         server.sendmail(from_email, to_email, msg.as_string())
         server.quit()
@@ -123,6 +123,12 @@ def send_email_handler():
     full_name = request.forms.get('full_name')
     email = request.forms.get('email')
     message = request.forms.get('message')
+
+    website = request.forms.get('website')
+
+    if website:
+        logger.warning(f"{function_name} detected spam")
+        return {"error": "Spam detected"}
 
     subject = f"Kontakformular - {full_name}"
     body = f"Navn: {full_name}\nEmail: {email}\n\nBesked:\n{message}"

@@ -9,7 +9,7 @@
     />
   </div>
   <div
-    class="bg-unidYellow order-first lg:order-last mx-auto flex flex-col w-full p-10 space-y-8 rounded-lg"
+    class="bg-unidYellow order-first lg:order-last mx-auto flex flex-col w-full p-4 md:p-10 lg:p-10 space-y-8 rounded-lg"
   >
     <div class="space-y-4">
       <h3>{{ contact_content["contact_form_section"]["header_text"] }}</h3>
@@ -112,6 +112,7 @@
           ></textarea>
         </div>
       </label>
+      <input type="text" name="website" style="display: none" />
       <button type="submit" id="third_button" class="contact-submit-button">
         Send besked
       </button>
